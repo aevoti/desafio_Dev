@@ -1,0 +1,14 @@
+C:\_aspc_agosto_2019\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp2.2\ApiAlunos.deps.json
+C:\_aspc_agosto_2019\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp2.2\ApiAlunos.runtimeconfig.json
+C:\_aspc_agosto_2019\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp2.2\ApiAlunos.runtimeconfig.dev.json
+C:\_aspc_agosto_2019\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp2.2\ApiAlunos.dll
+C:\_aspc_agosto_2019\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp2.2\ApiAlunos.pdb
+C:\_aspc_agosto_2019\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp2.2\ApiAlunos.csprojAssemblyReference.cache
+C:\_aspc_agosto_2019\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp2.2\ApiAlunos.RazorAssemblyInfo.cache
+C:\_aspc_agosto_2019\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp2.2\ApiAlunos.RazorAssemblyInfo.cs
+C:\_aspc_agosto_2019\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp2.2\ApiAlunos.AssemblyInfoInputs.cache
+C:\_aspc_agosto_2019\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp2.2\ApiAlunos.AssemblyInfo.cs
+C:\_aspc_agosto_2019\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp2.2\ApiAlunos.RazorTargetAssemblyInfo.cache
+C:\_aspc_agosto_2019\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp2.2\ApiAlunos.dll
+C:\_aspc_agosto_2019\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp2.2\ApiAlunos.pdb
+C:\_aspc_agosto_2019\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp2.2\ApiAlunos.csproj.CoreCompileInputs.cache
