@@ -1,4 +1,4 @@
-# Teste para Analista Desenvolvedor da AEVO
+# Desafio para Analista Desenvolvedor da AEVO
 
 Olá candidato,
 
@@ -13,7 +13,7 @@ Crie um branch com seu nome, e quando finalizar todo o desenvolvimento, você de
 Neste repositório existe um projeto base em .NET Core 3.1 baseado em um tutorial do Macorrati (referência quando o assunto é .NET) http://www.macoratti.net/19/10/ang7_apinc1.htm 
 Fiquem a vontade para explorar o tutorial. Apesar do projeto deste respositório estar atualizado para a versão 3.1, a estrutura é a mesma.
 
-# O teste
+# O Desafio
 ## Back-End/.NET
 A primeira etapa será o desenvolvimento backend!
 
