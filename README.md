@@ -20,39 +20,37 @@ A primeira etapa será o desenvolvimento backend!
 Descrição:
 
 Neste respositório já existe uma implementação básica com o CRUD para o objeto Aluno.
-Você deverá desenvolver novos métodos para a 'mini api' e reutilizar métodos existentes do projeto base, conforme especificação abaixo:
+Você deverá desenvolver novos métodos para a 'mini api' ou reutilizar métodos existentes do projeto base, para as implementações necessárias.
 
-
-Cada Aluno possui as propriedades AluniId, Nome e Email
+Cada Aluno possui as propriedades AlunoId, Nome e Email
 Sugerimos o retorno dessa 'mini api' nas seguinte urls:
 
 /alunos - [GET] deve retornar todos os alunos cadastrados.
-/carros - [POST] deve cadastrar um novo carro.
-/carros/{id}[GET] deve retornar o carro com ID especificado.
-/carros/{id}[PUT] deve atualizar os dados do carro com ID especificado.
-/carros/{id}[DELETE] deve apagar o carro com ID especificado.
+/aluno - [POST] deve cadastrar um novo aluno.
+/aluno/{id}[GET] deve retornar o aluno com ID especificado.
+/aluno/{id}[PUT] deve atualizar os dados do aluno com ID especificado.
+/aluno/{id}[DELETE] deve apagar o aluno com ID especificado.
 
 Você pode utilizar um banco de dados local SQL Server para a persistência dos dados.
 
-
-## Front-End
+## Front-End /Angular
 Para a segunda etapa do teste, você deverá desenvolver uma SPA (Single Page Application) utilizando Angular e nela deve ser possível:
 
-Ver a lista de alunos cadastrados
-Criar um novo aluno
-Editar um aluno existente
-Pesquisar um aluno pelo nome
-Pesquisar um aluno pelo ID
-Reordenar a lista de Alunos por ordem alfabética
+- Ver a lista de alunos cadastrados
+- Criar um novo aluno
+- Editar um aluno existente
+- Pesquisar um aluno pelo nome
+- Pesquisar um aluno pelo ID
+- Reordenar a lista de Alunos por ordem alfabética
 
 
 ### Observações importantes:
 A base para o projeto Front-End não está neste repositório. Você deverá criar a sua baseado na versão do Angular de sua preferência.
-Você não deve se prender aos arquivos do repositório. Fique a vontade para criar outros.
+Você não deve se prender somente aos arquivos do repositório. Fique a vontade para criar outros.
 Você pode usar ferramentas de automação, mas deverá informar o uso completo para funcionamento do desafio.
 
-Será considerado ponto positivo a utilização de testes de unidade, orientação a objetos, design patterns e rotinas para testes.
-Será considerado ponto positivo o tempo gasto na realização do teste. Menos tempo e tudo funcionando conforme pedido será melhor avaliado.
+Será considerado ponto positivo a utilização de testes de unidade, boas práticas de orientação a objetos, design patterns e rotinas para testes.
+
 
 
 
