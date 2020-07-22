@@ -51,6 +51,7 @@ Você pode usar ferramentas de automação, mas deverá informar o uso completo 
 
 - Será considerado ponto positivo a utilização de testes de unidade, boas práticas de orientação a objetos, design patterns e rotinas para testes.<br>
 - Será considerado ponto positivo a utilização de documentação para o mini projeto.<br>
+- Será considerado ponto positivo e diferencial a publicação do projeto em algum ambiente online.<br>
 
 
 
