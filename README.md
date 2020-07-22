@@ -1,4 +1,3 @@
-![publicacao-function](https://github.com/aevoti/aevoinnovate/blob/master/docs-wiki/imagens/logoAevo.png?raw=true)
 # Teste para Analista Desenvolvedor da AEVO
 
 Olá candidato,
