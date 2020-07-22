@@ -23,34 +23,35 @@ Neste respositório já existe uma implementação básica com o CRUD para o obj
 Você deverá desenvolver novos métodos para a 'mini api' e reutilizar métodos existentes do projeto base, conforme especificação abaixo:
 
 
-Você pode utilizar um banco de dados local SQL Server para a persistência dos dados.
-Cada carro deve ter ID, Marca, Modelo, Ano.
+Cada Aluno possui as propriedades AluniId, Nome e Email
 Sugerimos o retorno dessa 'mini api' nas seguinte urls:
 
-/carros - [GET] deve retornar todos os carros cadastrados.
+/alunos - [GET] deve retornar todos os alunos cadastrados.
 /carros - [POST] deve cadastrar um novo carro.
 /carros/{id}[GET] deve retornar o carro com ID especificado.
 /carros/{id}[PUT] deve atualizar os dados do carro com ID especificado.
 /carros/{id}[DELETE] deve apagar o carro com ID especificado.
 
+Você pode utilizar um banco de dados local SQL Server para a persistência dos dados.
+
 
 ## Front-End
-Para a segunda etapa do teste, você deverá desenvolver uma SPA (Single Page Application) e nela deve ser possível:
+Para a segunda etapa do teste, você deverá desenvolver uma SPA (Single Page Application) utilizando Angular e nela deve ser possível:
 
-Ver a lista de carros cadastrados
-Criar um novo carro
-Editar um carro existente
-Apagar um carro existente
-Obs:
+Ver a lista de alunos cadastrados
+Criar um novo aluno
+Editar um aluno existente
+Pesquisar um aluno pelo nome
+Pesquisar um aluno pelo ID
+Reordenar a lista de Alunos por ordem alfabética
 
-A página deve ser responsiva.
-A página deve funcionar 100% via AJAX, sem outros carregamentos de páginas.
-Ao criar/editar um carro, o campo "marca" deverá ser um SELECT
-Observações importantes:
+
+### Observações importantes:
+A base para o projeto Front-End não está neste repositório. Você deverá criar a sua baseado na versão do Angular de sua preferência.
 Você não deve se prender aos arquivos do repositório. Fique a vontade para criar outros.
-Você pode usar frameworks, tanto para o front-end, quanto para o back-end, mas um código limpo será melhor avaliado.
-Você pode usar ferramentas de automação (Grunt, Gulp), mas deverá informar o uso completo para funcionamento do teste.
-Será considerado ponto positivo no teste a utilização de JS puro, orientação a objetos, design patterns e rotinas para testes.
+Você pode usar ferramentas de automação, mas deverá informar o uso completo para funcionamento do desafio.
+
+Será considerado ponto positivo a utilização de testes de unidade, orientação a objetos, design patterns e rotinas para testes.
 Será considerado ponto positivo o tempo gasto na realização do teste. Menos tempo e tudo funcionando conforme pedido será melhor avaliado.
 
 
