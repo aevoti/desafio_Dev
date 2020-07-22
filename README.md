@@ -11,7 +11,7 @@ Para realizar o teste, você deve dar um fork neste repositório e depois clona-
 Crie um branch com seu nome, e quando finalizar todo o desenvolvimento, você deverá enviar um pull-request com sua versão.
 
 Neste repositório existe um projeto base em .NET Core 3.1 baseado em um tutorial do Macorrati (referência quando o assunto é .NET) http://www.macoratti.net/19/10/ang7_apinc1.htm 
-Fiquem a vontade para explorar o tutorial. Apesar do projeto do respositório estar atualizado para a versão 3.1, a estrutura é a mesma.
+Fiquem a vontade para explorar o tutorial. Apesar do projeto deste respositório estar atualizado para a versão 3.1, a estrutura é a mesma.
 
 # O teste
 ## Back-End/.NET
