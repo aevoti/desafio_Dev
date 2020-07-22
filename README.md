@@ -8,7 +8,7 @@ Esse desafio consiste em uma pequena implementação para avaliarmos seu conheci
 
 Para realizar o desafio, você deve dar um fork neste repositório e depois clona-lo em alguma pasta de sua preferencia na máquina que está realizando o teste.
 
-Crie um branch com seu nome a aprtir da master, e quando finalizar todo o desenvolvimento, você deverá enviar um pull-request com sua versão.
+Crie um branch com seu nome a aprtir da master, e quando finalizar todo o desenvolvimento, você deverá enviar um pull-request com sua versão.<br>
 
 Neste repositório existe um projeto base em .NET Core 3.1 baseado em um tutorial do Macorrati (referência quando o assunto é .NET) http://www.macoratti.net/19/10/ang7_apinc1.htm 
 Fiquem a vontade para explorar o tutorial com os detalhes da configuração do projeto. Apesar do projeto deste respositório estar atualizado para a versão 3.1, a estrutura é a mesma do tutorial.
