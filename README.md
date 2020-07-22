@@ -25,11 +25,11 @@ Você deverá desenvolver novos métodos para a 'mini api' ou reutilizar método
 Cada Aluno possui as propriedades AlunoId, Nome e Email
 Sugerimos o retorno dessa 'mini api' nas seguinte urls:
 
-/alunos - [GET] deve retornar todos os alunos cadastrados.<br>
-/aluno - [POST] deve cadastrar um novo aluno. <br>
-/aluno/{id}[GET] deve retornar o aluno com ID especificado. <br>
-/aluno/{id}[PUT] deve atualizar os dados do aluno com ID especificado. <br>
-/aluno/{id}[DELETE] deve apagar o aluno com ID especificado. <br>
+/alunos      -[GET] deve retornar todos os alunos cadastrados.<br>
+/aluno       -[POST] deve cadastrar um novo aluno. <br>
+/aluno/{id}  -[GET] deve retornar o aluno com ID especificado. <br>
+/aluno/{id}  -[PUT] deve atualizar os dados do aluno com ID especificado. <br>
+/aluno/{id}  -[DELETE] deve apagar o aluno com ID especificado. <br>
 
 Você pode utilizar um banco de dados local SQL Server para a persistência dos dados.
 
