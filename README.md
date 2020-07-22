@@ -50,6 +50,7 @@ Você não deve se prender somente aos arquivos do repositório. Fique a vontade
 Você pode usar ferramentas de automação, mas deverá informar o uso completo para funcionamento do desafio.
 
 Será considerado ponto positivo a utilização de testes de unidade, boas práticas de orientação a objetos, design patterns e rotinas para testes.
+Será considerado ponto positivo a utilização de documentação para o mini projeto.
 
 
 
