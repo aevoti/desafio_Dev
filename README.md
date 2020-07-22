@@ -49,8 +49,8 @@ A base para o projeto Front-End não está neste repositório. Você deverá cri
 Você não deve se prender somente aos arquivos do repositório. Fique a vontade para criar outros.<br>
 Você pode usar ferramentas de automação, mas deverá informar o uso completo para funcionamento do desafio.<br><br>
 
-Será considerado ponto positivo a utilização de testes de unidade, boas práticas de orientação a objetos, design patterns e rotinas para testes.<br>
-Será considerado ponto positivo a utilização de documentação para o mini projeto.<br>
+- Será considerado ponto positivo a utilização de testes de unidade, boas práticas de orientação a objetos, design patterns e rotinas para testes.<br>
+- Será considerado ponto positivo a utilização de documentação para o mini projeto.<br>
 
 
 
