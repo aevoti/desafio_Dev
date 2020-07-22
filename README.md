@@ -2,6 +2,8 @@
 
 Olá candidato,
 
+Primeiramente parabéns por ter chegado até aqui! 
+
 Esse desafio consiste em uma pequena implementação para avaliarmos seu conhecimento em back-end (.NET, C#) e Front-End (HTML5, CSS, JavaScript e Angular)
 
 Para realizar o teste, você deve dar um fork neste repositório e depois clona-lo na pasta <document_root> da máquina que está realizando o teste.
