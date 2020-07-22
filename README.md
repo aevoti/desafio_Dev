@@ -8,4 +8,4 @@ Para realizar o teste, você deve dar um fork neste repositório e depois clona-
 
 Crie um branch com seu nome, e quando finalizar todo o desenvolvimento, você deverá enviar um pull-request com sua versão.
 
-Neste repositório exsite um projeto base .NET Core 
+Neste repositório existe um projeto base em .NET Core baseado em um tutorial do Macorrati (referência quando o assunto é .NET) http://www.macoratti.net/19/10/ang7_apinc1.htm 
