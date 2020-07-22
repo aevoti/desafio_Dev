@@ -13,12 +13,12 @@ Fiquem a vontade para explorar o tutorial. Apesar do projeto do respositório es
 
 # O teste
 ## Back-End/.NET
-A primeira etapa será o desenvolvimento backend
+A primeira etapa será o desenvolvimento backend!
 
 Descrição:
 
 Neste respositório já existe uma implementação básica com o CRUD para o objeto Aluno.
-Você deverá desenvolver novos métodos para a 'mini api' conforme especificação abaixo
+Você deverá desenvolver novos métodos para a 'mini api' e reutilizar métodos existentes do projeto base, conforme especificação abaixo:
 
 
 Você pode utilizar um banco de dados local SQL Server para a persistência dos dados.
@@ -30,7 +30,9 @@ Sugerimos o retorno dessa 'mini api' nas seguinte urls:
 /carros/{id}[GET] deve retornar o carro com ID especificado.
 /carros/{id}[PUT] deve atualizar os dados do carro com ID especificado.
 /carros/{id}[DELETE] deve apagar o carro com ID especificado.
-Front-End
+
+
+## Front-End
 Para a segunda etapa do teste, você deverá desenvolver uma SPA (Single Page Application) e nela deve ser possível:
 
 Ver a lista de carros cadastrados
