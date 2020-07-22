@@ -53,6 +53,8 @@ Você pode usar ferramentas de automação, mas deverá informar o uso completo 
 - Será considerado ponto positivo a utilização de documentação para o mini projeto.<br>
 - Será considerado ponto positivo e diferencial a publicação do projeto em algum ambiente online.<br>
 
+Estamos sempre em busca de melhoria, por isso, caso tenha alguma sugestão fique a vontade pra compartilhar conosco! Boa sorte! 💛
+
 
 
 
