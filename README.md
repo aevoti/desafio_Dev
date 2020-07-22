@@ -45,12 +45,12 @@ Para a segunda etapa do teste, você deverá desenvolver uma SPA (Single Page Ap
 
 
 ### Observações importantes:
-A base para o projeto Front-End não está neste repositório. Você deverá criar a sua baseado na versão do Angular de sua preferência.
-Você não deve se prender somente aos arquivos do repositório. Fique a vontade para criar outros.
-Você pode usar ferramentas de automação, mas deverá informar o uso completo para funcionamento do desafio.
+A base para o projeto Front-End não está neste repositório. Você deverá criar a sua baseado na versão do Angular de sua preferência.<br>
+Você não deve se prender somente aos arquivos do repositório. Fique a vontade para criar outros.<br>
+Você pode usar ferramentas de automação, mas deverá informar o uso completo para funcionamento do desafio.<br><br>
 
-Será considerado ponto positivo a utilização de testes de unidade, boas práticas de orientação a objetos, design patterns e rotinas para testes.
-Será considerado ponto positivo a utilização de documentação para o mini projeto.
+Será considerado ponto positivo a utilização de testes de unidade, boas práticas de orientação a objetos, design patterns e rotinas para testes.<br>
+Será considerado ponto positivo a utilização de documentação para o mini projeto.<br>
 
 
 
