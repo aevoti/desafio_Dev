@@ -26,8 +26,8 @@ namespace ApiAlunos.Controllers
             return await _context.Alunos.ToListAsync();
         }
 
-        // GET: api/Alunos/5
-        [HttpGet("{id}")]
+        // GET: api/Aluno/5
+        [HttpGet("~/api/aluno/{id}")]
         public async Task<ActionResult<Aluno>> GetAluno(int id)
         {
             var aluno = await _context.Alunos.FindAsync(id);
@@ -41,7 +41,7 @@ namespace ApiAlunos.Controllers
         }
 
         // PUT: api/Alunos/5
-        [HttpPut("{id}")]
+        [HttpPut("~/api/aluno/{id}")]
         public async Task<IActionResult> PutAluno(int id, Aluno aluno)
         {
             if (id != aluno.AlunoId)
@@ -71,7 +71,7 @@ namespace ApiAlunos.Controllers
         }
 
         // POST: api/Alunos
-        [HttpPost]
+        [HttpPost("~/api/aluno")]
         public async Task<ActionResult<Aluno>> PostAluno(Aluno aluno)
         {
             _context.Alunos.Add(aluno);
@@ -81,7 +81,7 @@ namespace ApiAlunos.Controllers
         }
 
         // DELETE: api/Alunos/5
-        [HttpDelete("{id}")]
+        [HttpDelete("~/api/aluno/{id}")]
         public async Task<ActionResult<Aluno>> DeleteAluno(int id)
         {
             var aluno = await _context.Alunos.FindAsync(id);
