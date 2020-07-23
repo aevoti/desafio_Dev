@@ -55,7 +55,7 @@ Serão considerados pontos positivos:
 <br>
 
 Qualquer problema ou dificuldade com o repositório, você pode entrar em contato conosco pelos e-mails, marcelo.cogo@aevo.com.br ou rh@aevo.com.br para que possamos sanar todas as dúvidas!
-<br>
+<br><br>
 Estamos sempre em busca de melhoria. Por isso, caso tenha alguma sugestão, fique à vontade para compartilhar conosco! Boa sorte! 💛
 
 
