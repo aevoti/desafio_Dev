@@ -49,7 +49,9 @@ Você pode usar ferramentas de automação, mas deverá informar o uso completo 
 Serão considerados pontos positivos: 
 - utilização de testes de unidade
 - boas práticas de orientação a objetos
-- design patterns e rotinas para testes 
+- design patterns e rotinas para testes
+- utilização de documentação para o mini projeto
+- publicação do projeto em algum ambiente online 
 <br>
 
 Estamos sempre em busca de melhoria. Por isso, caso tenha alguma sugestão, fique à vontade para compartilhar conosco! Boa sorte! 💛
