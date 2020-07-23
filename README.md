@@ -43,7 +43,7 @@ Para a segunda etapa do teste, você deverá desenvolver uma SPA (Single Page Ap
 
 ### Observações importantes:
 A base para o projeto Front-End não está neste repositório. Você deverá criar a sua baseado na versão do Angular de sua preferência.<br>
-Você não deve se prender somente aos arquivos do repositório. Fique a vontade para criar outros.<br>
+Você não deve se prender somente aos arquivos do repositório. Fique à vontade para criar outros.<br>
 Você pode usar ferramentas de automação, mas deverá informar o uso completo para funcionamento do desafio.<br><br>
 
 Serão considerados pontos positivos: 
