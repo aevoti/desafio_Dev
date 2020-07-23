@@ -6,6 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200723130649_inicial.cs" />
+    <Compile Remove="Migrations\20200723130649_inicial.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
 
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.6" />
