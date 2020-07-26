@@ -1,0 +1,24 @@
+th,td{
+    text-align: center;
+}
+th{
+    background-color:#422956;
+    color: white;
+}
+.tbl1
+{
+    width: 400px;
+}
+.tbl2
+{
+    width: 400pxx;
+}
+.container{
+    display: flex;
+}
+.fixed{
+    width: 200px;
+}
+.flex-item{
+    flex-grow: 1;
+}

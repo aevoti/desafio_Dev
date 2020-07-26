@@ -1,0 +1,71 @@
+<div class="container"> 
+    <mat-card>
+      
+        <mat-toolbar color="accent"> 
+          <div align="center" style="color:white;text-align: right;"> 
+            Angular 7 - Alunos - CRUD
+          </div>   
+        </mat-toolbar> 
+      <form [formGroup]="alunoForm"(ngSubmit)="onFormSubmit()">
+        <div class = "container">
+          <div class="col"> 
+              <mat-form-field > 
+                <input formControlName="Nome" matTooltip="Informe o nome do Aluno" matInput placeholder="Nome do aluno"> 
+              </mat-form-field> 
+              <mat-error> 
+                <span *ngIf="!alunoForm.get('Nome').value && alunoForm.get('Nome').touched"></span> 
+              </mat-error> 
+            
+              <mat-form-field > 
+                <input formControlName="Email" matTooltip="Informe o email" matInput placeholder="Email"> 
+              </mat-form-field> 
+              <mat-error> 
+                <span *ngIf="!alunoForm.get('Email').value && alunoForm.get('Email').touched"></span> 
+              </mat-error>
+              <div class="row">
+                <div>
+                  <button type="submit" mat-raised-button color="accent"matTooltip="Clique no botão Enviar"[disabled]="!alunoForm.valid">Enviar</button>
+                </div>
+                <div>
+                  <button type="reset" mat-raised-button color="accent"matTooltip="Clique no botão Resetar" (click)="resetForm()">Resetar</button> 
+                </div>
+    
+              <p *ngIf="dataSaved" style="color:rgb(55, 0, 128);font-size:20px;font-weight:bold" Class="success" align="left"> 
+                {{message}} 
+              </p> 
+              </div>
+          </div>
+          
+            <div> 
+              <mat-form-field > 
+                <input id="#Buscar" matTooltip="Pesquisar aluno" matInput placeholder="Busca" type="search" > 
+              </mat-form-field>
+             
+              <button mat-icon-button class="btn btn-outline-secondary" type="button" matTooltip="Clique no botão Enviar" (click) ="pesquisarAluno()">
+                <mat-icon>search</mat-icon>
+              </button>     
+            </div>
+        </div> 
+          <br><br> 
+        <table class="table" > 
+            <tr ngclass="btn-primary"> 
+              <th class="tbl2">Nome do Aluno</th> 
+              <th class="tbl2">Email</th> 
+              <th class="tbl2">Edita</th> 
+              <th class="tbl2">Deleta</th> 
+            </tr> 
+            <tr *ngFor="let aluno of allAlunos | async"> 
+              <td class="tbl2">{{aluno.nome}}</td> 
+              <td class="tbl2">{{aluno.email}}</td> 
+              <td class="tbl2"> 
+                <button type="button" class="btn btn-info"matTooltip="Clique no botão para Editar"(click)="loadAlunoToEdit(aluno.alunoId)">Editar</button> 
+              </td> 
+              <td class="tbl2"> 
+                <button type="button" class="btn btn-danger"matTooltip="Clique no botão para Deletar"(click)="deleteAluno(aluno.alunoId)">Deletar</button> 
+              </td> 
+            </tr>    
+          </table> 
+      </form> 
+    </mat-card> 
+  
+</div>
