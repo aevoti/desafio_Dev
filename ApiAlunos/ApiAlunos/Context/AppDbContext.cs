@@ -1,4 +1,5 @@
-﻿using ApiAlunos.Models;
+﻿using ApiAlunos.Context.Mappings;
+using ApiAlunos.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApiAlunos.Context
@@ -9,5 +10,10 @@ namespace ApiAlunos.Context
         {
         }
         public DbSet<Aluno> Alunos { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new AlunoMap());
+        }
     }
 }
