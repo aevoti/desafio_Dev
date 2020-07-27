@@ -6,10 +6,12 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UrlInterceptor } from './core/interceptors/url.interceptor';
+import { BaseLayoutComponent } from './base-layout/base-layout.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BaseLayoutComponent
   ],
   imports: [
     BrowserModule,
