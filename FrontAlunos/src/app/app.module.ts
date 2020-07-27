@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AlunoComponent } from './aluno/aluno.component';
-import { AlunoService } from './aluno.service';
+import { AlunoService } from './services/aluno.service';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
@@ -19,9 +19,13 @@ import {MatInputModule      } from '@angular/material/input';
 import {MatTooltipModule    } from '@angular/material/tooltip';
 import {MatToolbarModule    } from '@angular/material/toolbar';
 
+
 import { MatRadioModule } from '@angular/material/radio';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+
+import { OrderModule } from 'ngx-order-pipe';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -46,7 +50,9 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     MatFormFieldModule,
     MatInputModule,
     MatTooltipModule,
-    MatToolbarModule
+    MatToolbarModule,
+    OrderModule,
+    FlexLayoutModule
   ],
   providers: [AlunoService, HttpClientModule, MatDatepickerModule, MatIconModule],
   bootstrap: [AppComponent]

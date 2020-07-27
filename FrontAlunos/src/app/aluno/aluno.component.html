@@ -1,71 +1,74 @@
-<div class="container"> 
-    <mat-card>
+<div>
+<form [formGroup]="alunoForm"(ngSubmit)="onFormSubmit()">
+  <div class = "container" style="padding: 5%;">
+    <div class=" col form-group"> 
+        <mat-form-field style="width:80%;" > 
+          <input formControlName="Nome" matTooltip="Informe o nome do Aluno" matInput placeholder="Nome do aluno"> 
+        </mat-form-field> 
+        <mat-error> 
+          <span *ngIf="!alunoForm.get('Nome').value && alunoForm.get('Nome').touched"></span> 
+        </mat-error> 
       
-        <mat-toolbar color="accent"> 
-          <div align="center" style="color:white;text-align: right;"> 
-            Angular 7 - Alunos - CRUD
-          </div>   
-        </mat-toolbar> 
-      <form [formGroup]="alunoForm"(ngSubmit)="onFormSubmit()">
-        <div class = "container">
-          <div class="col"> 
-              <mat-form-field > 
-                <input formControlName="Nome" matTooltip="Informe o nome do Aluno" matInput placeholder="Nome do aluno"> 
-              </mat-form-field> 
-              <mat-error> 
-                <span *ngIf="!alunoForm.get('Nome').value && alunoForm.get('Nome').touched"></span> 
-              </mat-error> 
-            
-              <mat-form-field > 
-                <input formControlName="Email" matTooltip="Informe o email" matInput placeholder="Email"> 
-              </mat-form-field> 
-              <mat-error> 
-                <span *ngIf="!alunoForm.get('Email').value && alunoForm.get('Email').touched"></span> 
-              </mat-error>
-              <div class="row">
-                <div>
-                  <button type="submit" mat-raised-button color="accent"matTooltip="Clique no botão Enviar"[disabled]="!alunoForm.valid">Enviar</button>
-                </div>
-                <div>
-                  <button type="reset" mat-raised-button color="accent"matTooltip="Clique no botão Resetar" (click)="resetForm()">Resetar</button> 
-                </div>
-    
-              <p *ngIf="dataSaved" style="color:rgb(55, 0, 128);font-size:20px;font-weight:bold" Class="success" align="left"> 
-                {{message}} 
-              </p> 
-              </div>
+        <mat-form-field style="width:80%"> 
+          <input type="email" formControlName="Email" matTooltip="Informe o email" matInput placeholder="Email"> 
+        </mat-form-field> 
+        <mat-error> 
+          <span *ngIf="!alunoForm.get('Email').value && alunoForm.get('Email').touched"></span> 
+        </mat-error>
+        <div class="row">
+          <div style="padding: 10px;">
+            <button type="submit" mat-raised-button color="accent"matTooltip="Clique no botão Enviar"[disabled]="!alunoForm.valid">Enviar</button>
           </div>
-          
-            <div> 
-              <mat-form-field > 
-                <input id="#Buscar" matTooltip="Pesquisar aluno" matInput placeholder="Busca" type="search" > 
-              </mat-form-field>
-             
-              <button mat-icon-button class="btn btn-outline-secondary" type="button" matTooltip="Clique no botão Enviar" (click) ="pesquisarAluno()">
-                <mat-icon>search</mat-icon>
-              </button>     
-            </div>
-        </div> 
-          <br><br> 
-        <table class="table" > 
-            <tr ngclass="btn-primary"> 
-              <th class="tbl2">Nome do Aluno</th> 
-              <th class="tbl2">Email</th> 
-              <th class="tbl2">Edita</th> 
-              <th class="tbl2">Deleta</th> 
-            </tr> 
-            <tr *ngFor="let aluno of allAlunos | async"> 
-              <td class="tbl2">{{aluno.nome}}</td> 
-              <td class="tbl2">{{aluno.email}}</td> 
-              <td class="tbl2"> 
-                <button type="button" class="btn btn-info"matTooltip="Clique no botão para Editar"(click)="loadAlunoToEdit(aluno.alunoId)">Editar</button> 
-              </td> 
-              <td class="tbl2"> 
-                <button type="button" class="btn btn-danger"matTooltip="Clique no botão para Deletar"(click)="deleteAluno(aluno.alunoId)">Deletar</button> 
-              </td> 
-            </tr>    
-          </table> 
-      </form> 
-    </mat-card> 
-  
-</div>
+          <div style="padding: 10px;">
+            <button class="btn btn-secondary" type="reset" mat-raised-button matTooltip="Clique no botão Resetar" (click)="resetForm()">Resetar</button> 
+          </div>
+
+        <p *ngIf="dataSaved || alunoNaoEncontrado" style="color:rgb(55, 0, 128);font-size:20px;font-weight:bold" Class="success" align="left"> 
+          {{message}} 
+        </p> 
+        </div>
+    </div>
+    <div class="col form-group">
+      <div class="row"> 
+        <mat-form-field style="width:80%;"> 
+          <input #campoBusca matTooltip="Pesquisar aluno" matInput placeholder="Busca" > 
+        </mat-form-field>
+        <button mat-icon-button class="btn btn-outline-secondary" type="button" matTooltip="Clique no botão Enviar" (click) ="pesquisarAluno(campoBusca.value)">
+          <mat-icon>search</mat-icon>
+        </button>     
+      </div>
+        <mat-radio-group [(ngModel)]="opcaoPesquisa" aria-label="Select an option" [ngModelOptions]="{standalone: true}">
+          <mat-radio-button  [checked]='true' style="padding: 10px;" value="1">Nome</mat-radio-button>
+          <mat-radio-button style="padding: 10px;" value="2">Id</mat-radio-button>
+        </mat-radio-group>
+    </div>
+  </div> 
+    <br><br>
+    <div class="table-responsive-sm">
+      <table class="table" > 
+        <tr ngclass="btn-primary"> 
+          <th scope="col" (click)="sortAlunos('nome')">
+            Nome do Aluno
+            <span *ngIf="key =='nome'">{{reverse ? '▲' : '▼'}}</span>
+          </th> 
+          <th (click)="sortAlunos('email')">
+            Email
+            <span *ngIf="key =='email'">{{reverse ? '▲' : '▼'}}</span>
+          </th> 
+          <th>Edita</th> 
+          <th>Deleta</th> 
+        </tr> 
+        <tr *ngFor="let aluno of allAlunos | async | orderBy: key : reverse;"> 
+          <td>{{aluno.nome}}</td> 
+          <td>{{aluno.email}}</td> 
+          <td> 
+            <button type="button" class="btn btn-info"matTooltip="Clique no botão para Editar"(click)="loadAlunoToEdit(aluno.alunoId)">Editar</button> 
+          </td> 
+          <td> 
+            <button type="button" class="btn btn-danger"matTooltip="Clique no botão para Deletar"(click)="deleteAluno(aluno.alunoId)">Deletar</button> 
+          </td> 
+        </tr>    
+      </table> 
+    </div>
+</form>
+</div> 

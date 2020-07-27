@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ApiAlunos.Context;
+using ApiAlunos.Interfaces;
+using ApiAlunos.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.VisualBasic;
 
 namespace ApiAlunos
 {
@@ -38,6 +41,17 @@ namespace ApiAlunos
             services.AddDbContext<AppDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
                 );
+            services.AddDbContext<TestDbContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("TestConnection"))
+                );
+
+            services.AddScoped<AppDbContext>();
+            services.AddScoped<IAlunoRepository, AlunoRepository>();
+
+            services.AddSwaggerGen(c =>
+            { 
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo {Title= "API Alunos", Version="v1" });
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
             services.AddMvc(option => option.EnableEndpointRouting = false);
@@ -60,6 +74,12 @@ namespace ApiAlunos
 
             app.UseHttpsRedirection();
             app.UseMvc();
+
+            app.UseSwagger();
+            app.UseSwaggerUI( c=>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Alunos V1");
+            });
         }
     }
 }
