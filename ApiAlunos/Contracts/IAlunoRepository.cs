@@ -7,5 +7,8 @@ namespace Contracts
     {
         PagedList<Aluno> GetAlunos(AlunoParameters parameters);
         Aluno GetAlunoById(int alunoId);
+        void CreateAluno(Aluno aluno);
+        void UpdateAluno(Aluno dbAluno, Aluno aluno);
+        void DeleteAluno(Aluno aluno);
     }
 }

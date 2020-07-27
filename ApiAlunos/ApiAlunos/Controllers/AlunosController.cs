@@ -41,33 +41,75 @@ namespace ApiAlunos.Controllers
         }
 
         // GET: api/Aluno/5
-        [HttpGet("~/api/aluno/{id}")]
-        public async Task<ActionResult<Aluno>> GetAluno(int id)
+        [HttpGet("~/api/aluno/{id}", Name = "AlunoById")]
+        public IActionResult GetAluno(int id)
         {
-            throw new NotImplementedException();
-        }
+            var aluno = _repo.Aluno.GetAlunoById(id);
 
-        // PUT: api/Alunos/5
-        [HttpPut("~/api/aluno/{id}")]
-        public async Task<IActionResult> PutAluno(int id, Aluno aluno)
-        {
-            throw new NotImplementedException();
+            return Ok(aluno);
         }
 
         // POST: api/Alunos
         [HttpPost("~/api/aluno")]
-        public async Task<ActionResult<Aluno>> PostAluno(Aluno aluno)
+        public IActionResult PostAluno(Aluno aluno)
         {
-            throw new NotImplementedException();
+            if (aluno == null)
+            {
+                return BadRequest("O Objeto aluno é nulo");
+            }
 
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _repo.Aluno.CreateAluno(aluno);
+            _repo.Save();
+
+            return CreatedAtRoute("AlunoById", new { id = aluno.AlunoId }, aluno);
+        }
+
+        // PUT: api/Alunos/5
+        [HttpPut("~/api/aluno/{id}")]
+        public IActionResult PutAluno(int id, Aluno aluno)
+        {
+            if (aluno == null)
+            {
+                return BadRequest("O Objeto aluno é nulo");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("");
+            }
+
+            var dbAluno = _repo.Aluno.GetAlunoById(id);
+            if(dbAluno ==  null)
+            {
+                return NotFound();
+            }
+
+            _repo.Aluno.UpdateAluno(dbAluno, aluno);
+            _repo.Save();
+
+            return Ok(dbAluno);
         }
 
         // DELETE: api/Alunos/5
         [HttpDelete("~/api/aluno/{id}")]
-        public async Task<ActionResult<Aluno>> DeleteAluno(int id)
+        public IActionResult DeleteAluno(int id)
         {
-            throw new NotImplementedException();
+            var aluno = _repo.Aluno.GetAlunoById(id);
 
+            if(aluno == null)
+            {
+                return NotFound();
+            }
+
+            _repo.Aluno.DeleteAluno(aluno);
+            _repo.Save();
+
+            return NoContent();
         }
     }
 }
