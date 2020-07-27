@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "alunos-ui"
+    }
+  },
+  "defaultProject": "alunos-ui",
+  "cli": {
+    "analytics": false
+  }
 }
