@@ -262,3 +262,4 @@ C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp
 C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Abstractions.dll
 C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Physical.dll
 C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\System.Linq.Dynamic.Core.dll
