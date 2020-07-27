@@ -1,7 +1,9 @@
+
 import { Injectable } from '@angular/core';
-import { Aluno } from 'src/app/models/alunoModel';
+import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Aluno } from 'src/app/models/alunoModel';
 import { environment } from 'src/environments/environment';
 
 var httpOptions = { headers: new HttpHeaders({ "Content-Type": "application/json" }) };
@@ -11,30 +13,46 @@ var httpOptions = { headers: new HttpHeaders({ "Content-Type": "application/json
 })
 
 export class AlunoService {
-  urlPathApi = environment.apiUrl;
+  urlPathApi = environment.apiUrl + 'alunos/';
 
   constructor(private http: HttpClient) { }
 
-  obterAlunos(): Observable<Aluno[]> {
-    return this.http.get<Aluno[]>(this.urlPathApi);
+  async obterAlunos(): Promise<Aluno[]> {
+    const retorno = await this.http.get<Aluno[]>(this.urlPathApi).toPromise().then();
+    return retorno;
   }
 
-  obterAlunoPorId(alunoid: number): Observable<Aluno> {
+  async obterAlunoPorId(alunoid: number): Promise<Aluno[]> {
     const apiurl = `${this.urlPathApi}/${alunoid}`;
-    return this.http.get<Aluno>(apiurl);
+    return await this.http.get<Aluno>(apiurl).toPromise().then();
   }
 
-  criarAluno(aluno: Aluno): Observable<Aluno> {
-    return this.http.post<Aluno>(this.urlPathApi, aluno, httpOptions);
+  async criarAluno(aluno: Aluno): Promise<Boolean> {
+    try {
+      await this.http.post<Aluno>(this.urlPathApi, aluno, httpOptions).toPromise().then();
+      return true;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  atualizarAluno(alunoid: string, aluno: Aluno): Observable<Aluno> {
-    const apiurl = `${this.urlPathApi}/${alunoid}`;
-    return this.http.put<Aluno>(apiurl, aluno, httpOptions);
+  async atualizarAluno(aluno: Aluno): Promise<Boolean> {
+    try {
+      const apiurl = `${this.urlPathApi}/${aluno.alunoId}`;
+      await this.http.put<Aluno>(apiurl, aluno, httpOptions).toPromise().then();
+      return true;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  deletarAlunoPorId(alunoid: string): Observable<number> {
-    const apiurl = `${this.urlPathApi}/${alunoid}`;
-    return this.http.delete<number>(apiurl, httpOptions);
+  async deletarAlunoPorId(alunoid: number): Promise<Boolean> {
+    try {
+      const apiurl = `${this.urlPathApi}${alunoid}`;
+      await this.http.delete<number>(apiurl, httpOptions).toPromise().then();
+      return true;
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

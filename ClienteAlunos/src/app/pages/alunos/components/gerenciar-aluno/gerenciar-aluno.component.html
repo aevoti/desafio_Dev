@@ -1,0 +1,24 @@
+<div class="border rounded mb-2" style="padding: 5px;">
+    <div class="row">
+        <div class="form-group col-md-2">
+            <label for="inputId">Id Aluno</label>
+            <input type="text" class="form-control" id="inputId" readonly [(ngModel)]="entidadeAluno.alunoId" />
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputnome">Email</label>
+            <input type="email" class="form-control" id="inputnome" placeholder="Nome" [(ngModel)]="entidadeAluno.nome"
+                required>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputemail">Email</label>
+            <input type="email" class="form-control" id="inputemail" aria-describedby="emailHelp"
+                placeholder="Email" [(ngModel)]="entidadeAluno.email" required>
+            <small id="emailHelp" class="form-text text-muted">Insira um email verdadeiro.</small>
+        </div>
+        <div class="row col-md-12 d-flex justify-content-end float-right">
+            <button class="btn btn-primary float-right" title="Salvar" (click)="adicionarAluno()">Salvar</button>
+            <button class="btn btn-danger float-right ml-3" (click)="emitirEsconderGerenciarAluno.emit(false)"
+                title="Cancelar">Cancelar</button>
+        </div>
+    </div>
+</div>

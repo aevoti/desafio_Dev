@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Aluno } from 'src/app/models/alunoModel';
+import { AlunoService } from './services/aluno.service';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-alunos',
@@ -7,97 +10,44 @@ import { Aluno } from 'src/app/models/alunoModel';
   styleUrls: ['./alunos.component.css']
 })
 export class AlunosComponent implements OnInit {
-  public idTipoOrdenacao: String = '0';
-  public idAluno: number = 0;
-  public nomeAluno: String = '';
-  public emailAluno: String = '';
+  public entradaBusca: string;
+  public alunoEditar: Aluno = new Aluno();
+  public listaAlunos: Aluno[] = [];
+  public listaAlunosFiltrada: Aluno[] = [];
+  public exibirGerenciarAluno: boolean = this.listaAlunos.length > 0 ? false : true;
 
-  public exibirAdicionarAluno: boolean = false;
-
-  public listaAlunos: Aluno[] = [
-    
-  ];
-  constructor() { }
+  constructor(private _alunoService: AlunoService) { }
 
   ngOnInit(): void {
-    console.log(this.listaAlunos.length);
+    this.carregarAlunos();
   }
 
-  public btnEditarAluno(idAluno: number) {
-    this.exibirAdicionarAluno = true;
-    this.idAluno = idAluno;
-    this.nomeAluno = 'Teste';
-    this.emailAluno = 'Email';
+  public async carregarAlunos() {
+    this.listaAlunosFiltrada = this.listaAlunos = await this._alunoService.obterAlunos();
   }
 
-  public reordenarLista() {
-    switch (this.idTipoOrdenacao) {
-      case '0': //ID CRESCENTE
-        this.listaAlunos = this.listaAlunos.sort((a, b) => {
-          if (a.AlunoId > b.AlunoId) {
-            return 1;
-          } else if (a.AlunoId < b.AlunoId) {
-            return -1;
-          } else {
-            return 0;
-          }
-        });
-        break;
-      case '1': //ID DECRESCENTE
-        this.listaAlunos = this.listaAlunos.sort((a, b) => {
-          if (a.AlunoId > b.AlunoId) {
-            return -1;
-          } else if (a.AlunoId < b.AlunoId) {
-            return 1;
-          } else {
-            return 0;
-          }
-        });
-        break;
-      case '2': //NOME CRESCENTE
-        this.listaAlunos = this.listaAlunos.sort((a, b) => {
-          if (a.Nome > b.Nome) {
-            return 1;
-          } else if (a.Nome < b.Nome) {
-            return -1;
-          } else {
-            return 0;
-          }
-        });
-        break;
-      case '3': //NOME DECRESCENTE
-        this.listaAlunos = this.listaAlunos.sort((a, b) => {
-          if (a.Nome > b.Nome) {
-            return -1;
-          } else if (a.Nome < b.Nome) {
-            return 1;
-          } else {
-            return 0;
-          }
-        });
-        break;
-      case '4': //EMAIL CRESCENTE
-        this.listaAlunos = this.listaAlunos.sort((a, b) => {
-          if (a.Email > b.Email) {
-            return 1;
-          } else if (a.Email < b.Email) {
-            return -1;
-          } else {
-            return 0;
-          }
-        });
-        break;
-      case '5': //EMAIL DECRESCENTE
-        this.listaAlunos = this.listaAlunos.sort((a, b) => {
-          if (a.Email > b.Email) {
-            return -1;
-          } else if (a.Email < b.Email) {
-            return 1;
-          } else {
-            return 0;
-          }
-        });
-        break;
+  public cliqueAdicionar() {
+    this.alunoEditar = new Aluno();
+    this.exibirGerenciarAluno = true;
+  }
+
+  public eventoEditarAluno(param: any) {
+    this.exibirGerenciarAluno = true;
+    this.alunoEditar.alunoId = param.alunoId;
+    this.alunoEditar.nome = param.nome;
+    this.alunoEditar.email = param.email;
+  }
+
+  public gerenciaBusca(param: any) {
+    if (this.entradaBusca.length == 0){
+      this.listaAlunosFiltrada = this.listaAlunos;
+      return;
+    }
+
+    if (isNaN(Number(this.entradaBusca))) { //BuscaNome
+      this.listaAlunosFiltrada = this.listaAlunos.filter(x => x.nome.toUpperCase().match(this.entradaBusca.toUpperCase()));
+    } else { //BuscaId
+      this.listaAlunosFiltrada = this.listaAlunos.filter(x => x.alunoId == Number(this.entradaBusca));
     }
   }
 

@@ -1,0 +1,20 @@
+<div class="modal fade" id="modalExcluir" tabindex="-1" role="dialog" aria-labelledby="modalExcluir" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Atenção</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Você deseja excluir os registros do aluno <b>{{objetoExclusao ? objetoExclusao.nome : ''}}</b>, de ID
+                <b>{{objetoExclusao ? objetoExclusao.alunoId : ''}}</b>.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" title="Cancelar" id="btnCancelar" >Cancelar</button>
+                <button type="button" class="btn btn-danger" title="Excluir" (click)="excluirAluno()">Excluir</button>
+            </div>
+        </div>
+    </div>
+</div>
