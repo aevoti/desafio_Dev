@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Aluno } from 'src/app/models/alunoModel';
 import { AlunoService } from './services/aluno.service';
 import { Observable } from 'rxjs';
-
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-alunos',
@@ -16,10 +16,12 @@ export class AlunosComponent implements OnInit {
   public listaAlunosFiltrada: Aluno[] = [];
   public exibirGerenciarAluno: boolean = this.listaAlunos.length > 0 ? false : true;
 
-  constructor(private _alunoService: AlunoService) { }
+  constructor(private _alunoService: AlunoService, private _toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.carregarAlunos();
+    this._toastr.success('Hello world!', 'Toastr fun!');
+
   }
 
   public async carregarAlunos() {
@@ -39,7 +41,7 @@ export class AlunosComponent implements OnInit {
   }
 
   public gerenciaBusca(param: any) {
-    if (this.entradaBusca.length == 0){
+    if (this.entradaBusca && this.entradaBusca.length == 0){
       this.listaAlunosFiltrada = this.listaAlunos;
       return;
     }
