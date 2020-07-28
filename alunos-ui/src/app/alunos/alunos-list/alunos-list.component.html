@@ -31,9 +31,9 @@
             <small>{{ aluno.email }}</small>
         </div>
         <div class="actions">
-            <button mat-icon-button>
+            <a [routerLink]="['/', 'alunos', aluno.alunoId, 'edit']" mat-icon-button>
                 <i-feather class="icon" name="edit"></i-feather>
-            </button>
+            </a>
             <button mat-icon-button>
                 <i-feather class="icon" name="trash"></i-feather>
             </button>

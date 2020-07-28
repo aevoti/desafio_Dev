@@ -3,7 +3,7 @@
     Voltar
 </a>
 
-<div class="form-wrapper card">
+<div *ngIf="alunosForm" class="form-wrapper card">
     <h2>{{ pageTitle }}</h2>
     <form [formGroup]="alunosForm" (submit)="onSubmit()">
         <mat-form-field class="form-group">

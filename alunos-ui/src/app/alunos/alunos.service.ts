@@ -5,18 +5,28 @@ import { Observable } from 'rxjs';
 
 import { Aluno } from './aluno';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class AlunosService {
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
-    getAll() : Observable<Aluno[]> {
+    getAll(): Observable<Aluno[]> {
         return this.http
             .get<Aluno[]>('alunos');
     }
 
-    register(aluno: {email: string; none: string } | Aluno) {
+    getById(id: number): Observable<Aluno> {
+        return this.http
+            .get<Aluno>(`alunos/${id}`);
+    }
+
+    register(aluno: { email: string; none: string } | Aluno) {
         return this.http
             .post('alunos', aluno);
+    }
+
+    update(id: number, aluno: { email: string; none: string } | Aluno) {
+        return this.http
+            .put(`alunos/${id}`, { ...aluno, alunoId: id })
     }
 }

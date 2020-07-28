@@ -22,6 +22,10 @@ const routes: Routes = [
       {
         path: 'alunos/new',
         component: AlunosFormComponent
+      },
+      {
+        path: 'alunos/:id/edit',
+        component: AlunosFormComponent
       }
     ]
   }
