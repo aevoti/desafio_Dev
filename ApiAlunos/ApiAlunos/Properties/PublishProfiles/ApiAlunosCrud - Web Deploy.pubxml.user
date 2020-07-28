@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Esse arquivo é usado pelo processo de publicação/pacote do seu projeto Web. É possível personalizar o comportamento deste processo
+ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA6oLj1Uesa0CeDk+FvnrAkwAAAAACAAAAAAAQZgAAAAEAACAAAAAcPcyTNnPvLD7JeoGrK7nCBgxmdhKFevym5TiiWcFARAAAAAAOgAAAAAIAACAAAACL1P1wl/WrI6SMiNAxmf5mbqI7wOK6ojSpT5HNJwOTd4AAAAAquYlWq5L2fxt5p5aMK9Bfps7qK5juii60vz+2WM4UbCKUlLFA/cFi/k8B8v6GXlevfFQlbFR5yLerCNcx5A2eM+z2MHcbEa7WcTSY5glHGP3z+w0DZLgvg9FH40NdotlpN+2SO3tdBYj4xdQMPinz4nFdMZOr5380NjrXvUOKFkAAAAB1it0icpxAG6wHq02B8HLSI8efsEdaIjAQNB5dOJeOXCua26ygNDnxQVkJrpyqijjtnaEgzQiKeZJ5r7Jtb7mY</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="AzureConnection">
+      <Value>Data Source=tcp:alunosdbserver.database.windows.net,1433%3bInitial Catalog=AlunosDataBase%3bUser Id=lucas%40alunosdbserver%3bPassword=Luca%402012</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

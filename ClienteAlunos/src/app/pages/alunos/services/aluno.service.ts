@@ -23,7 +23,7 @@ export class AlunoService {
     return retorno;
   }
 
-  async obterAlunoPorId(alunoid: number): Promise<Aluno[]> {
+  async obterAlunoPorId(alunoid: number): Promise<Aluno> {
     const apiurl = `${this.urlPathApi}/${alunoid}`;
     return await this._http.get<Aluno>(apiurl).toPromise().then();
   }

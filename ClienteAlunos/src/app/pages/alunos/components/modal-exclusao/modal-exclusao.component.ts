@@ -8,16 +8,27 @@ import { AlunoService } from 'src/app/pages/alunos/services/aluno.service';
   styleUrls: ['./modal-exclusao.component.css']
 })
 export class ModalExclusaoComponent implements OnInit {
-  @Input() objetoExclusao: Aluno;
+  @Input() idAlunoExclusao: number;
   @Output() emitirAtualizarLista = new EventEmitter();
+  public alunoExcluir: Aluno = new Aluno();
 
   constructor(private _alunoService: AlunoService) { }
 
   ngOnInit(): void {
   }
 
-  public async excluirAluno() {
-    await this._alunoService.deletarAlunoPorId(this.objetoExclusao.alunoId).then();
+  ngOnChanges(): void {
+    console.log(this.idAlunoExclusao);
+    this._buscarAluno();
+  }
+
+  private async _buscarAluno(): Promise<void> {
+    this.alunoExcluir = await this._alunoService.obterAlunoPorId(this.idAlunoExclusao);
+    console.log(this.alunoExcluir);
+  }
+
+  public async excluirAluno(): Promise<void> {
+    await this._alunoService.deletarAlunoPorId(this.idAlunoExclusao).then();
     this.emitirAtualizarLista.emit(true);
     //Fechando Modal
     const botaoCancelar: HTMLElement = document.getElementById('btnCancelar') as HTMLElement;

@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "restored": true,
+      "restoreTime": "2020-07-28T02:41:11.872056Z"
+    }
+  },
+  "parameters": {
+    "resourceGroup": {
+      "Type": "resourceGroup",
+      "Value": "AlunosCRUD"
+    },
+    "subscriptionId": {
+      "Type": "subscription",
+      "Value": "1df70c19-18e6-486b-9cce-3618c27e4ff1"
+    }
+  }
+}

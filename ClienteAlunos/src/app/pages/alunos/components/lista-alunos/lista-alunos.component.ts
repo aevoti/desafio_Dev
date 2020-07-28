@@ -8,18 +8,19 @@ import { Observable } from 'rxjs';
   styleUrls: ['./lista-alunos.component.css']
 })
 export class ListaAlunosComponent implements OnInit {
+  public p: number = 1;
   @Input() listaAlunos: Aluno[] = [];
   @Output() emitirEditarClique = new EventEmitter();
   @Output() emitirAtualizarListaParent = new EventEmitter();
   public idTipoOrdenacao: string = '0';
-  public alunoExcluir: Aluno = new Aluno();
+  public idAlunoExcluir: number = 0;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  public reordenarLista() {
+  public reordenarLista(): void {
     switch (this.idTipoOrdenacao) {
       case '0': //ID CRESCENTE
         this.listaAlunos = this.listaAlunos.sort((a, b) => {
@@ -90,18 +91,16 @@ export class ListaAlunosComponent implements OnInit {
     }
   }
 
-  public emitirEdicao(alunoId: number, nome: string, email: string) {
+  public emitirEdicao(alunoId: number, nome: string, email: string): void {
     const _aluno: Aluno = new Aluno(alunoId, nome, email);
     this.emitirEditarClique.emit(_aluno);
   }
 
-  public atualizaClienteExcluir(idAluno: number, nomeAluno: string, emailAluno: string) {
-    this.alunoExcluir.alunoId = idAluno;
-    this.alunoExcluir.nome = nomeAluno;
-    this.alunoExcluir.email = emailAluno;
+  public atualizaClienteExcluir(idAluno: number): void {
+    this.idAlunoExcluir = idAluno;
   }
 
-  public emitirAtualizarLista(){
+  public emitirAtualizarLista(): void{
     this.emitirAtualizarListaParent.emit(true);
   }
 

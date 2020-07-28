@@ -257,3 +257,5 @@ C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcor
 C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.csproj.CoreCompileInputs.cache
 C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.ApiAlunosCrud - Web Deploy.json
+C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
