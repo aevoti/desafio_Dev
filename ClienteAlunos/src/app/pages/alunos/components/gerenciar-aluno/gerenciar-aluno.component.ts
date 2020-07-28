@@ -20,6 +20,9 @@ export class GerenciarAlunoComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder, private _alunoService: AlunoService) { }
 
   ngOnInit(): void {
+  }
+
+  ngDoCheck(): void {
     this.alunoForm = this._formBuilder.group({
       alunoId: [0],
       nome: ['', [Validators.required]],
@@ -43,14 +46,4 @@ export class GerenciarAlunoComponent implements OnInit {
     this.emitirEsconderGerenciarAluno.emit(true);
     this.emitirAtualizarListaParent.emit(true);
   }
-
-  private _criarAluno(): void {
-
-  }
-
-  private _atualizarAluno(): void {
-
-  }
-
-
 }

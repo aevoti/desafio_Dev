@@ -28,19 +28,22 @@ export class AlunosComponent implements OnInit {
   }
 
   public cliqueAdicionar() {
+    this.exibirGerenciarAluno = false;
     this.alunoEditar = new Aluno();
     this.exibirGerenciarAluno = true;
   }
 
   public eventoEditarAluno(param: any) {
-    this.exibirGerenciarAluno = true;
+    console.log('editar aluno');
+    this.exibirGerenciarAluno = false;
     this.alunoEditar.alunoId = param.alunoId;
     this.alunoEditar.nome = param.nome;
     this.alunoEditar.email = param.email;
+    this.exibirGerenciarAluno = true;
   }
 
   public gerenciaBusca(param: any) {
-    if (this.entradaBusca && this.entradaBusca.length == 0) {
+    if (this.entradaBusca.length == 0) {
       this.listaAlunosFiltrada = this.listaAlunos;
       return;
     }
