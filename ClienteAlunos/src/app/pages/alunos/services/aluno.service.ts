@@ -14,7 +14,7 @@ var httpOptions = { headers: new HttpHeaders({ "Content-Type": "application/json
 })
 
 export class AlunoService {
-  urlPathApi = environment.apiUrl + 'alunos/';
+  urlPathApi = environment.apiUrl + 'alunos';
 
   constructor(private _http: HttpClient, private _toastr: ToastrService) { }
 
@@ -28,28 +28,30 @@ export class AlunoService {
     return await this._http.get<Aluno>(apiurl).toPromise().then();
   }
 
-  async criarAluno(aluno: Aluno): Promise<Boolean> {
+  async criarAluno(aluno: Aluno): Promise<void> {
     try {
       await this._http.post<Aluno>(this.urlPathApi, aluno, httpOptions).toPromise().then();
-      return true;
+      this._toastr.success('Aluno cadastrado.', 'Sucesso!');
     } catch (error) {
+      this._toastr.error('Houve um erro ao excluir.', 'Erro!');
       console.log(error);
     }
   }
 
-  async atualizarAluno(aluno: Aluno): Promise<Boolean> {
+  async atualizarAluno(aluno: Aluno): Promise<void> {
     try {
       const apiurl = `${this.urlPathApi}/${aluno.alunoId}`;
       await this._http.put<Aluno>(apiurl, aluno, httpOptions).toPromise().then();
-      return true;
+      this._toastr.success('Aluno atualizado.', 'Sucesso!');
     } catch (error) {
+      this._toastr.error('Houve um erro ao excluir.', 'Erro!');
       console.log(error);
     }
   }
 
   async deletarAlunoPorId(alunoid: number): Promise<void> {
     try {
-      const apiurl = `${this.urlPathApi}${alunoid}`;
+      const apiurl = `${this.urlPathApi}/${alunoid}`;
       await this._http.delete<number>(apiurl, httpOptions).toPromise().then();
       this._toastr.success('Aluno excluído.', 'Sucesso!');
     } catch (error) {

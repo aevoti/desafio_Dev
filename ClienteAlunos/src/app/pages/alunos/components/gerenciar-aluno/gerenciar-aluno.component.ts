@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Aluno } from 'src/app/models/alunoModel';
 import { AlunoService } from '../../services/aluno.service';
 import { Observable } from 'rxjs';
+import { FormBuilder, Validators } from '@angular/forms';
+
 AlunoService
 @Component({
   selector: 'app-gerenciar-aluno',
@@ -12,18 +14,43 @@ export class GerenciarAlunoComponent implements OnInit {
   @Input() exibirGerenciarAluno: boolean;
   @Input() entidadeAluno: Aluno;
   @Output() emitirEsconderGerenciarAluno = new EventEmitter();
+  @Output() emitirAtualizarListaParent = new EventEmitter();
+  alunoForm: any;
 
-  constructor(private _alunoService: AlunoService) { }
+  constructor(private _formBuilder: FormBuilder, private _alunoService: AlunoService) { }
 
   ngOnInit(): void {
-  }
+    this.alunoForm = this._formBuilder.group({
+      alunoId: [0],
+      nome: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+    });
 
-  public adicionarAluno() {
-    if (this.entidadeAluno.alunoId == 0 || !this.entidadeAluno.alunoId) {
-      this._alunoService.criarAluno(this.entidadeAluno);
-    } else {
-      this._alunoService.atualizarAluno(this.entidadeAluno);
+    if (this.entidadeAluno.alunoId) {
+      this.alunoForm.controls['alunoId'].setValue(this.entidadeAluno.alunoId);
+      this.alunoForm.controls['nome'].setValue(this.entidadeAluno.nome);
+      this.alunoForm.controls['email'].setValue(this.entidadeAluno.email);
     }
   }
+
+  public async submitFormulario(aluno: Aluno): Promise<void> {
+    if (!this.entidadeAluno.alunoId || this.entidadeAluno.alunoId == 0) {
+      await this._alunoService.criarAluno(aluno);
+    } else {
+      await this._alunoService.atualizarAluno(aluno);
+    }
+    this.alunoForm.reset();
+    this.emitirEsconderGerenciarAluno.emit(true);
+    this.emitirAtualizarListaParent.emit(true);
+  }
+
+  private _criarAluno(): void {
+
+  }
+
+  private _atualizarAluno(): void {
+
+  }
+
 
 }

@@ -17,7 +17,6 @@ export class ListaAlunosComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.listaAlunos)
   }
 
   public reordenarLista() {
@@ -103,7 +102,6 @@ export class ListaAlunosComponent implements OnInit {
   }
 
   public emitirAtualizarLista(){
-    console.log('teste1');
     this.emitirAtualizarListaParent.emit(true);
   }
 

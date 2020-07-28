@@ -14,18 +14,17 @@ export class AlunosComponent implements OnInit {
   public alunoEditar: Aluno = new Aluno();
   public listaAlunos: Aluno[] = [];
   public listaAlunosFiltrada: Aluno[] = [];
-  public exibirGerenciarAluno: boolean = this.listaAlunos.length > 0 ? false : true;
+  public exibirGerenciarAluno: boolean = false;
 
   constructor(private _alunoService: AlunoService, private _toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.carregarAlunos();
-    this._toastr.success('Hello world!', 'Toastr fun!');
-
   }
 
   public async carregarAlunos() {
     this.listaAlunosFiltrada = this.listaAlunos = await this._alunoService.obterAlunos();
+    this.exibirGerenciarAluno = this.listaAlunos.length > 0 ? false : true;
   }
 
   public cliqueAdicionar() {
@@ -41,7 +40,7 @@ export class AlunosComponent implements OnInit {
   }
 
   public gerenciaBusca(param: any) {
-    if (this.entradaBusca && this.entradaBusca.length == 0){
+    if (this.entradaBusca && this.entradaBusca.length == 0) {
       this.listaAlunosFiltrada = this.listaAlunos;
       return;
     }

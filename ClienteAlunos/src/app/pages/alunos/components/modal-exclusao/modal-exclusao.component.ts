@@ -19,6 +19,7 @@ export class ModalExclusaoComponent implements OnInit {
   public async excluirAluno() {
     await this._alunoService.deletarAlunoPorId(this.objetoExclusao.alunoId).then();
     this.emitirAtualizarLista.emit(true);
+    //Fechando Modal
     const botaoCancelar: HTMLElement = document.getElementById('btnCancelar') as HTMLElement;
     botaoCancelar.click();
   }
