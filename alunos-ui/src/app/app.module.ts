@@ -6,6 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UrlInterceptor } from './core/interceptors/url.interceptor';
+import { AlunosModule } from './alunos/alunos.module';
 import { BaseLayoutComponent } from './base-layout/base-layout.component';
 
 @NgModule({
@@ -18,6 +19,7 @@ import { BaseLayoutComponent } from './base-layout/base-layout.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    AlunosModule
   ],
   providers: [
     {

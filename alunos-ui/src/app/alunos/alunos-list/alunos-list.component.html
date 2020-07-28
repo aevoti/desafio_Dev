@@ -1,0 +1,42 @@
+<button mat-button class="icon-text-btn semi-bold">
+    <i-feather class="icon" name="plus"></i-feather>
+    Adicionar aluno
+</button>
+
+<div class="list-header card">
+    <h2>Alunos</h2>
+    <div class="fields list-field-display">
+        <div>
+            <button mat-button id="id-btn">
+                <span>Id</span>
+                <i-feather class="icon" name="chevron-down"></i-feather>
+            </button>
+        </div>
+        <div>
+            <button mat-button>
+                Nome
+                <i-feather class="icon" name="chevron-down"></i-feather>
+            </button>
+        </div>
+        <div>
+            Ações
+        </div>
+    </div>
+</div>
+<ul class="list">
+    <li *ngFor="let aluno of alunos$ | async" class="card list-field-display list-item">
+        <span id="item-id">{{ aluno.alunoId }}</span>
+        <div>
+            <p>{{ aluno.nome }}</p>
+            <small>{{ aluno.email }}</small>
+        </div>
+        <div class="actions">
+            <button mat-icon-button>
+                <i-feather class="icon" name="edit"></i-feather>
+            </button>
+            <button mat-icon-button>
+                <i-feather class="icon" name="trash"></i-feather>
+            </button>
+        </div>
+    </li>
+</ul>
