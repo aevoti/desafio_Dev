@@ -6,6 +6,11 @@ using Microsoft.EntityFrameworkCore;
 using Repository;
 using Xunit;
 
+// Necessário desabilitar a paralelização para conseguir rodar em ordem
+[assembly: CollectionBehavior(DisableTestParallelization = true)]
+// Definindo metodo de ordenação
+[assembly: TestCollectionOrderer("ApiAlunos.Test.Orderers.DisplayNameOrderer", "ApiAlunos.Test")]
+
 namespace ApiAlunos.Test
 {
     public class AlunoRepositoryTests
