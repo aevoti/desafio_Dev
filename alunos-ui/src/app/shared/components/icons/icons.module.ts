@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 
 import { FeatherModule } from 'angular-feather';
-import { ChevronDown, ChevronUp, Edit, Trash, Plus } from 'angular-feather/icons';
+import { ChevronDown, ChevronUp, Edit, Trash, Plus, ArrowLeft } from 'angular-feather/icons';
 
 const icons = {
   ChevronDown,
   ChevronUp,
   Plus,
   Trash,
-  Edit
+  Edit,
+  ArrowLeft
 };
 
 @NgModule({

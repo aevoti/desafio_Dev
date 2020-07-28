@@ -14,4 +14,9 @@ export class AlunosService {
         return this.http
             .get<Aluno[]>('alunos');
     }
+
+    register(aluno: {email: string; none: string } | Aluno) {
+        return this.http
+            .post('alunos', aluno);
+    }
 }
