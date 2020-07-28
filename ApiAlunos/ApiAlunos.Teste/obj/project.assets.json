@@ -7698,11 +7698,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jonat\\Source\\Repos\\desafio_Dev\\ApiAlunos\\ApiAlunos.Teste\\ApiAlunos.Test.csproj",
+      "projectUniqueName": "C:\\Users\\jonat\\source\\repos\\desafio_Dev\\ApiAlunos\\ApiAlunos.Teste\\ApiAlunos.Test.csproj",
       "projectName": "ApiAlunos.Test",
-      "projectPath": "C:\\Users\\jonat\\Source\\Repos\\desafio_Dev\\ApiAlunos\\ApiAlunos.Teste\\ApiAlunos.Test.csproj",
+      "projectPath": "C:\\Users\\jonat\\source\\repos\\desafio_Dev\\ApiAlunos\\ApiAlunos.Teste\\ApiAlunos.Test.csproj",
       "packagesPath": "C:\\Users\\jonat\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jonat\\Source\\Repos\\desafio_Dev\\ApiAlunos\\ApiAlunos.Teste\\obj\\",
+      "outputPath": "C:\\Users\\jonat\\source\\repos\\desafio_Dev\\ApiAlunos\\ApiAlunos.Teste\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -7721,8 +7721,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\jonat\\Source\\Repos\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj": {
-              "projectPath": "C:\\Users\\jonat\\Source\\Repos\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj"
+            "C:\\Users\\jonat\\source\\repos\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj": {
+              "projectPath": "C:\\Users\\jonat\\source\\repos\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj"
             }
           }
         }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jonat\\Source\\Repos\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj": {}
+    "C:\\Users\\jonat\\source\\repos\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jonat\\Source\\Repos\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj": {
+    "C:\\Users\\jonat\\source\\repos\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jonat\\Source\\Repos\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj",
+        "projectUniqueName": "C:\\Users\\jonat\\source\\repos\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj",
         "projectName": "ApiAlunos",
-        "projectPath": "C:\\Users\\jonat\\Source\\Repos\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj",
+        "projectPath": "C:\\Users\\jonat\\source\\repos\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj",
         "packagesPath": "C:\\Users\\jonat\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jonat\\Source\\Repos\\desafio_Dev\\ApiAlunos\\ApiAlunos\\obj\\",
+        "outputPath": "C:\\Users\\jonat\\source\\repos\\desafio_Dev\\ApiAlunos\\ApiAlunos\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

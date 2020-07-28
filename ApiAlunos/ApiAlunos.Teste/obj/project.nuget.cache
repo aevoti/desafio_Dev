@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PH4cHkjNJrvBwflgL3MFj+uTSCU8RsKLejfGkCAJtaMNR6bfZSk54G0akUZ5rph9ww7zZ5OYkCb1lvWitTzvYQ==",
+  "dgSpecHash": "x3plRmmNYA+uV1bhXXoy+PS5nVLK3IMiEdrYJWfP7/Mw7z+9ocqfSpwPdXFEmfF/gOZMy1CYtZv+OZvFfUSMgQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jonat\\Source\\Repos\\desafio_Dev\\ApiAlunos\\ApiAlunos.Teste\\ApiAlunos.Test.csproj",
+  "projectFilePath": "C:\\Users\\jonat\\source\\repos\\desafio_Dev\\ApiAlunos\\ApiAlunos.Teste\\ApiAlunos.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jonat\\.nuget\\packages\\coverlet.collector\\1.2.0\\coverlet.collector.1.2.0.nupkg.sha512",
     "C:\\Users\\jonat\\.nuget\\packages\\fluentassertions\\5.10.3\\fluentassertions.5.10.3.nupkg.sha512",

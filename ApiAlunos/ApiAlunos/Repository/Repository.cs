@@ -28,7 +28,9 @@ namespace ApiAlunos.Repository
 
         public async Task<TEntity> ObterPorId(int id)
         {
-            return await dbSet.FindAsync(id);
+            var entity = await dbSet.FindAsync(id);
+            dbContext.Entry(entity).State = EntityState.Detached;
+            return entity;
         }
 
         public async Task<List<TEntity>> ObterTodos()

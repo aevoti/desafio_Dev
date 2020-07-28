@@ -41,9 +41,6 @@ namespace ApiAlunos
             services.AddDbContext<AppDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
                 );
-            services.AddDbContext<TestDbContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("TestConnection"))
-                );
 
             services.AddScoped<AppDbContext>();
             services.AddScoped<IAlunoRepository, AlunoRepository>();

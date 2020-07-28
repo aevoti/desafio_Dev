@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "x9TgTw4yvuEKWUqIPN3uodda5r9CD/k7vaNrMcOxfA198IYt8u02QKGTjhecxReiDx6QnSQXh3QeqCocxUNAZQ==",
+  "dgSpecHash": "ITG/E+yBa9YQRyuTx/fj1pvl4hu3SQej7U/vKlc8rhIm0gq4eZ+o2tLUPIFv2+e7p18OoqnEKFtTnzKdy6xPIw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jonat\\Source\\Repos\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj",
+  "projectFilePath": "C:\\Users\\jonat\\source\\repos\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jonat\\.nuget\\packages\\microsoft.aspnet.webapi.client\\4.0.20710\\microsoft.aspnet.webapi.client.4.0.20710.nupkg.sha512",
     "C:\\Users\\jonat\\.nuget\\packages\\microsoft.aspnet.webapi.core\\4.0.20710\\microsoft.aspnet.webapi.core.4.0.20710.nupkg.sha512",
