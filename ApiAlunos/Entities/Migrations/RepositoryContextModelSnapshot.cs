@@ -53,6 +53,24 @@ namespace Entities.Migrations
                             AlunoId = 3,
                             Email = "carlos.almeida@outlook.com.br",
                             Nome = "Carlos Almeida"
+                        },
+                        new
+                        {
+                            AlunoId = 4,
+                            Email = "carlos.haha@outlook.com.br",
+                            Nome = "Carlos de Nobrega"
+                        },
+                        new
+                        {
+                            AlunoId = 5,
+                            Email = "douglas.correia@outlook.com.br",
+                            Nome = "Douglas Correia"
+                        },
+                        new
+                        {
+                            AlunoId = 6,
+                            Email = "pamela.albur@outlook.com.br",
+                            Nome = "Pamela Albur"
                         });
                 });
 #pragma warning restore 612, 618

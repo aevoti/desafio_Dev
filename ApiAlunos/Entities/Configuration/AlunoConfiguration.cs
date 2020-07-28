@@ -31,6 +31,24 @@ namespace Entities.Configuration
                         AlunoId = 3,
                         Nome = "Carlos Almeida",
                         Email = "carlos.almeida@outlook.com.br"
+                    },
+                    new Aluno
+                    {
+                        AlunoId = 4,
+                        Nome = "Carlos de Nobrega",
+                        Email = "carlos.haha@outlook.com.br"
+                    },
+                    new Aluno
+                    {
+                        AlunoId = 5,
+                        Nome = "Douglas Correia",
+                        Email = "douglas.correia@outlook.com.br"
+                    },
+                    new Aluno
+                    {
+                        AlunoId = 6,
+                        Nome = "Pamela Albur",
+                        Email = "pamela.albur@outlook.com.br"
                     }
                 );
         }
