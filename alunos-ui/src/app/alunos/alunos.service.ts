@@ -29,4 +29,9 @@ export class AlunosService {
         return this.http
             .put(`alunos/${id}`, { ...aluno, alunoId: id })
     }
+
+    delete(id: number) {
+        return this.http
+            .delete(`alunos/${id}`)
+    }
 }

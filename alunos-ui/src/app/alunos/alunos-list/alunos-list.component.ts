@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AlunosService } from '../alunos.service';
+import { Aluno } from '../aluno';
 
 @Component({
   selector: 'aln-alunos-list',
@@ -16,5 +17,12 @@ export class AlunosListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
+  delete(aluno: Aluno){
+    this.alunosService
+      .delete(aluno.alunoId)
+      .subscribe(
+        res => this.alunos$ = this.alunosService.getAll(),
+        err => {}
+      )
+  }
 }
