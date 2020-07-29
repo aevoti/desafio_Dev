@@ -268,3 +268,5 @@ C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp
 C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.csproj.CoreCompileInputs.cache
 C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\ApiAlunos.xml
+C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.xml

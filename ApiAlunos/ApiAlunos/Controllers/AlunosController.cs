@@ -20,6 +20,9 @@ namespace ApiAlunos.Controllers
         }
 
         // GET: api/Alunos
+        /// <summary>
+        /// Recupera todos alunos
+        /// </summary>
         [HttpGet]
         public IActionResult GetAlunos([FromQuery] AlunoParameters parameters)
         {
