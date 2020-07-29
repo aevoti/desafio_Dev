@@ -28,6 +28,8 @@ RUN dotnet publish -c Release -o out
 
 # run the api
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-alpine AS runtime
+RUN apk add --no-cache icu-libs
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
 WORKDIR /app
 COPY --from=publish /app/ApiAlunos/out ./
 ENTRYPOINT ["dotnet", "ApiAlunos.dll"]

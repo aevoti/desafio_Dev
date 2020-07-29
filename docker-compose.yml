@@ -2,26 +2,30 @@ version: "3"
 
 services:
   api:
-    build: ./ApiAluno
+    build: ./ApiAlunos
     container_name: alunoapi
+    networks:
+      - aluno_network
     ports:
       - "5000:80"
     depends_on:
       - db
 
   db:
-    image: mcr.microsoft.com/mssql/server:2019-CU5-ubuntu-16.04
-    container_name: apialuno_db
-    command: /bin/bash ./entrypoint.sh
+    build: ./Database
+    container_name: alunoapi_db
+    user: root
+    networks:
+      - aluno_network
     environment:
       - ACCEPT_EULA=Y
-      - MSSQL_PID=Development
+      - MSSQL_PID=Developer
       - SA_PASSWORD=C0ns7tasDbp23
     volumes:
-      - aluno_data:/var/opt/mssql/data
-      - ./Database/docker-entrypoint.sh:/entrypoint.sh
-      - ./Database/docker-db-init.sh:/db-init.sh
-      - ./Database/mssql-cars.sql:/db-init.sql
+      - aluno_data:/var/opt/mssql/
 
 volumes:
   aluno_data:
+
+networks:
+  aluno_network:

@@ -1,6 +1,3 @@
-USE [master]
-GO
-
 IF DB_ID('ConsultasDB') IS NOT NULL
   set noexec on               -- prevent creation when already exists
 
