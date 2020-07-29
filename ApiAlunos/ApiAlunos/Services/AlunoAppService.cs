@@ -13,13 +13,18 @@ namespace ApiAlunos.Services
     {
         private readonly IAlunoRepository _alunoRepository;
 
-        public async Task<List<Aluno>> ObterTodosAlunos()
+        public AlunoAppService(IAlunoRepository alunoRepository)
         {
-            var alunos = _alunoRepository.GetAll();
-            return await alunos.ToListAsync();
+            _alunoRepository = alunoRepository;
         }
 
-        public async Task<Aluno> ObterAlunoPorId(Guid id)
+        public async Task<List<Aluno>> ObterTodosAlunos()
+        {
+            var alunos = await _alunoRepository.GetAll();
+            return alunos;
+        }
+
+        public async Task<Aluno> ObterAlunoPorId(int id)
         {
             return await _alunoRepository.GetById(id);
         }
@@ -38,7 +43,7 @@ namespace ApiAlunos.Services
             return alunoAtualizado;
         }
 
-        public async Task<bool> DeletarAluno(Guid id)
+        public async Task<bool> DeletarAluno(int id)
         {
             await _alunoRepository.Delete(id);
             return await _alunoRepository.SaveChangesAsync() > 0;

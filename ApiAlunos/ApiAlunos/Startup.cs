@@ -16,6 +16,9 @@ using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.Hosting;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
+using ApiAlunos.Repositorio;
+using ApiAlunos.Interfaces;
+using ApiAlunos.Services;
 
 namespace ApiAlunos
 {
@@ -33,6 +36,7 @@ namespace ApiAlunos
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddCors(options =>
             {
                 options.AddPolicy("EnableCORS", builder =>
@@ -43,13 +47,13 @@ namespace ApiAlunos
 
             if (_env.IsDevelopment())
             {
-                services.AddDbContext<AppDbContext>(options =>
+                services.AddDbContext<AlunoDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
                 );
             }
             else if (_env.IsProduction())
             {
-                services.AddDbContext<AppDbContext>(options =>
+                services.AddDbContext<AlunoDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("AzureConnection"))
                 );
             }
@@ -60,7 +64,6 @@ namespace ApiAlunos
             //Implementando swagger
             services.AddSwaggerGen(c =>
             {
-
                 c.SwaggerDoc("v1",
                     new OpenApiInfo
                     {
@@ -69,6 +72,10 @@ namespace ApiAlunos
                         Description = "Exemplo de API REST criada com o ASP.NET Core 2.2 para consulta a indicadores econômicos"
                     });
             });
+
+            //DI Services and Repos
+            services.AddScoped<IAlunoRepository, AlunoRepository>();
+            services.AddScoped<IAlunoAppService, AlunoAppService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

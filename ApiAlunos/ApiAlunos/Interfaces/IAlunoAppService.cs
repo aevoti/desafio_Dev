@@ -10,13 +10,13 @@ namespace ApiAlunos.Interfaces
     {
         public Task<List<Aluno>> ObterTodosAlunos();
 
-        public Task<Aluno> ObterAlunoPorId(Guid id);
+        public Task<Aluno> ObterAlunoPorId(int id);
 
         public Task<Aluno> CriarAluno(Aluno aluno);
 
         public Task<Aluno> AtualizarAluno(Aluno aluno);
 
-        public Task<bool> DeletarAluno(Guid id);
+        public Task<bool> DeletarAluno(int id);
 
     }
 }
