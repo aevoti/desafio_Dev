@@ -254,12 +254,12 @@ namespace ApiAlunos.Teste
             var controller = new AlunosController(repository);
             var alunoId = 2;
 
-            var existingPost = await controller.GetAluno(alunoId);
-            var okResult = existingPost.Should().BeOfType<ActionResult<Aluno>>().Subject;
+            var alunoGravado = await controller.GetAluno(alunoId);
+            var okResult = alunoGravado.Should().BeOfType<ActionResult<Aluno>>().Subject;
             var result = okResult.Value.Should().BeAssignableTo<Aluno>().Subject;
 
             var aluno = new Aluno();
-            aluno.AlunoId = 5;
+            aluno.AlunoId = 50;
             aluno.Nome = "Maria Pereira Silva Sauro";
             aluno.Email = "maria.sauro@gmail.com";
 

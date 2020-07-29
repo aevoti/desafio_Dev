@@ -23,41 +23,105 @@ namespace ApiAlunos.Repository
 
         public async Task<IEnumerable<TEntity>> Buscar(Expression<Func<TEntity, bool>> predicate)
         {
-            return await dbSet.AsNoTracking().Where(predicate).ToListAsync();
+            try
+            {
+                return await dbSet.AsNoTracking().Where(predicate).ToListAsync();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public async Task<TEntity> ObterPorId(int id)
         {
-            var entity = await dbSet.FindAsync(id);
-            dbContext.Entry(entity).State = EntityState.Detached;
-            return entity;
+            try
+            {
+                var entity = await dbSet.FindAsync(id);
+                if (entity != null)
+                    dbContext.Entry(entity).State = EntityState.Detached;
+                return entity;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
         public async Task<List<TEntity>> ObterTodos()
         {
-            return await dbSet.ToListAsync();
+            try
+            {
+                return await dbSet.ToListAsync();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
         public async Task Adicionar(TEntity entity)
         {
-            dbSet.Add(entity);
-            await SaveChanges();
+            try
+            {
+                dbSet.Add(entity);
+                await SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
         public async Task Atualizar(TEntity entity)
         {
-            dbSet.Update(entity);
-            await SaveChanges();
+            try
+            {
+                dbSet.Update(entity);
+                await SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
         public async Task Remover(TEntity entity)
         {
-            dbSet.Remove(entity);
-            await SaveChanges();
+            try
+            {
+                dbSet.Remove(entity);
+                await SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
         public async Task<int> SaveChanges()
         {
-            return await dbContext.SaveChangesAsync();
+            try
+            {
+                return await dbContext.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
         public void Dispose()
