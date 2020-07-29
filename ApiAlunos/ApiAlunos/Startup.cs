@@ -19,6 +19,9 @@ using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 using ApiAlunos.Repositorio;
 using ApiAlunos.Interfaces;
 using ApiAlunos.Services;
+using Microsoft.AspNetCore.ResponseCompression;
+using System.IO.Compression;
+using ApiAlunos.Extensions;
 
 namespace ApiAlunos
 {
@@ -60,22 +63,25 @@ namespace ApiAlunos
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
             services.AddMvc(option => option.EnableEndpointRouting = false);
-
-            //Implementando swagger
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1",
-                    new OpenApiInfo
-                    {
-                        Title = "Indicadores Econômicos",
-                        Version = "v1",
-                        Description = "Exemplo de API REST criada com o ASP.NET Core 2.2 para consulta a indicadores econômicos"
-                    });
-            });
-
+          
             //DI Services and Repos
             services.AddScoped<IAlunoRepository, AlunoRepository>();
             services.AddScoped<IAlunoAppService, AlunoAppService>();
+
+            //Adicionando Compressão de resposta
+            services.Configure<GzipCompressionProviderOptions>(options =>
+            {
+                options.Level = CompressionLevel.Optimal;
+            });
+
+            services.AddResponseCompression(options =>
+            {
+                options.Providers.Add<GzipCompressionProvider>();
+            });
+
+
+            // Swagger settings
+            services.AddApiDoc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -92,16 +98,10 @@ namespace ApiAlunos
             }
 
             app.UseCors("EnableCORS");
-
-            // Ativando middlewares para uso do Swagger
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Indicadores Econômicos V1");
-            });
-
+            app.UseApiDoc();
             app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseResponseCompression();
         }
     }
 }

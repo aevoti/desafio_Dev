@@ -29,7 +29,7 @@ namespace ApiAlunos.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Aluno>>> ObterAlunos()
         {
-            return await Ok(_alunoAppService.ObterTodosAlunos());
+            return Ok(await _alunoAppService.ObterTodosAlunos());
         }
 
         /// <summary>
