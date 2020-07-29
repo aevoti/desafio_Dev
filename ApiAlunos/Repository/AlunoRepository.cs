@@ -95,6 +95,7 @@ namespace Repository
             if (string.IsNullOrWhiteSpace(orderQuery))
             {
                 alunos = alunos.OrderBy(a => a.Nome);
+                return;
             }
 
             alunos = alunos.OrderBy(orderQuery);
