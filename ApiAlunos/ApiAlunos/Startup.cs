@@ -38,6 +38,8 @@ namespace ApiAlunos
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
             services.AddMvc(option => option.EnableEndpointRouting = false);
 
+            // Registra o swagger generator
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +54,14 @@ namespace ApiAlunos
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Alunos API v1");
+                c.RoutePrefix = string.Empty; // Interface do swagger atende ao dominio raiz
+            });
 
             app.UseCors("EnableCORS");
 

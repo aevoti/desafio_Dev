@@ -248,8 +248,6 @@ C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp
 C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.csprojAssemblyReference.cache
 C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.AssemblyInfoInputs.cache
 C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.AssemblyInfo.cs
-C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.csproj.CoreCompileInputs.cache
-C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.RazorTargetAssemblyInfo.cache
 C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.csproj.CopyComplete
 C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\staticwebassets\ApiAlunos.StaticWebAssets.Manifest.cache
@@ -263,3 +261,10 @@ C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp
 C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Physical.dll
 C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileSystemGlobbing.dll
 C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\System.Linq.Dynamic.Core.dll
+C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.csproj.CoreCompileInputs.cache
+C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\dougl\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.MvcApplicationPartsAssemblyInfo.cache
