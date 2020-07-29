@@ -4,8 +4,8 @@ COPY *.sln .
 COPY ApiAlunos/*.csproj ./ApiAlunos/
 COPY ApiAlunos.Test/*.csproj ./ApiAlunos.Test/
 COPY Contracts/*.csproj ./Contracts/
-COPY Entities/*.csproj ./Entities
-COPY Repository/*.csproj ./Repository
+COPY Entities/*.csproj ./Entities/
+COPY Repository/*.csproj ./Repository/
 RUN dotnet restore
 
 # copy full solution over
