@@ -1,27 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ApiAlunos.Context;
+﻿using ApiAlunos.Context;
+using ApiAlunos.Extensions;
+using ApiAlunos.Interfaces;
+using ApiAlunos.Repositorio;
+using ApiAlunos.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Swashbuckle.AspNetCore.Swagger;
-using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.Hosting;
-using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
-using ApiAlunos.Repositorio;
-using ApiAlunos.Interfaces;
-using ApiAlunos.Services;
-using Microsoft.AspNetCore.ResponseCompression;
 using System.IO.Compression;
-using ApiAlunos.Extensions;
+using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace ApiAlunos
 {
@@ -96,7 +87,7 @@ namespace ApiAlunos
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            app.UseCustomSerilogRequestLogging();
             app.UseCors("EnableCORS");
             app.UseApiDoc();
             app.UseHttpsRedirection();

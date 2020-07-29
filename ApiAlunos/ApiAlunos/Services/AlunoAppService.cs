@@ -18,6 +18,8 @@ namespace ApiAlunos.Services
             _alunoRepository = alunoRepository;
         }
 
+        public AlunoAppService() { }
+
         public async Task<List<Aluno>> ObterTodosAlunos()
         {
             var alunos = await _alunoRepository.GetAll();

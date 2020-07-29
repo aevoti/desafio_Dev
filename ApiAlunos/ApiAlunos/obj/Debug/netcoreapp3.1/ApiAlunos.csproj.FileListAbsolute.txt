@@ -254,8 +254,19 @@ C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcor
 C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\ApiAlunos.xml
+C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.ApiAlunosCrud - Web Deploy.json
+C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
+C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Serilog.dll
+C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Serilog.AspNetCore.dll
+C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Serilog.Extensions.Hosting.dll
+C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Serilog.Extensions.Logging.dll
+C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Serilog.Formatting.Compact.dll
+C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Serilog.Settings.Configuration.dll
+C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Serilog.Sinks.Console.dll
+C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Serilog.Sinks.Debug.dll
+C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Serilog.Sinks.File.dll
 C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.csproj.CoreCompileInputs.cache
 C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.ApiAlunosCrud - Web Deploy.json
-C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json

@@ -6,6 +6,7 @@ namespace ApiAlunos.Context
     public class AlunoDbContext : DbContext
     {
         public AlunoDbContext(DbContextOptions<AlunoDbContext> options) : base(options) { }
+        public AlunoDbContext() { }
         public DbSet<Aluno> Alunos { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
