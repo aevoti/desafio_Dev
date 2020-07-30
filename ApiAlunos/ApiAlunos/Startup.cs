@@ -55,8 +55,8 @@ namespace ApiAlunos
                 );
             }
 
-            var context = services.BuildServiceProvider().GetService<AppDbContext>();
-            context.Database.Migrate();
+            //var context = services.BuildServiceProvider().GetService<AppDbContext>();
+            //context.Database.Migrate();
 
             services.AddScoped<AppDbContext>();
             services.AddScoped<IAlunoRepository, AlunoRepository>();
