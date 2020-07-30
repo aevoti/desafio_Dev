@@ -18,7 +18,7 @@ namespace ApiAlunos.Test
 {
     public class AlunoControllerTest
     {
-        private AlunosController _alunosController;
+        private AlunoAppService _service;
         public static DbContextOptions<AlunoDbContext> dbContextOptions { get; }
 
         static AlunoControllerTest()
@@ -40,17 +40,19 @@ namespace ApiAlunos.Test
                 new Aluno() { Nome = "Leticia Ribeiro", Email = "ribeiro.leticia@uol.com" }
             );
 
+            context.SaveChanges();
+
             AlunoRepository repository = new AlunoRepository(context);
-            AlunoAppService service = new AlunoAppService(repository);
-            _alunosController = new AlunosController(service);
+            _service = new AlunoAppService(repository);
         }
 
         [Fact]
         public async void ObterAlunosSucesso()
         {
-            var result = await _alunosController.ObterAlunos();
+            var result = await _service.ObterTodosAlunos();
 
-            Assert.IsType<ActionResult<IEnumerable<Aluno>>>(result);
+            Assert.IsType<List<Aluno>>(result);
+            Assert.Equal(result.Count, 2);
         }
 
 
@@ -59,9 +61,9 @@ namespace ApiAlunos.Test
         [InlineData(2)]
         public async void ObterAlunoPorIdSucesso(int valor)
         {
-            var result = await _alunosController.ObterAlunoPorId(valor);
+            var result = await _service.ObterAlunoPorId(valor);
 
-            Assert.IsType<ActionResult<Aluno>>(result);
+            Assert.IsType<Aluno>(result);
         }
 
         [Theory]
@@ -69,9 +71,9 @@ namespace ApiAlunos.Test
         [InlineData(4)]
         public async void ObterAlunoPorIdErro(int valor)
         {
-            var result = await _alunosController.ObterAlunoPorId(valor);
+            var result = await _service.ObterAlunoPorId(valor);
 
-            Assert.Equal(result.Value, null);
+            Assert.Equal(result, null);
         }
 
         [Theory]
@@ -81,14 +83,14 @@ namespace ApiAlunos.Test
         {
             Aluno aluno = new Aluno()
             {
-                AlunoId = valor,
+                AlunoId = 1,
                 Nome = "César Miranda",
                 Email = "cesar.miranda@outlook.com"
             };
 
-            var result = await _alunosController.AtualizarAluno(aluno);
+            var result = await _service.AtualizarAluno(aluno);
 
-            Assert.Equal(result, aluno);
+            Assert.Equal(true, result);
         }
 
         //[Theory]
@@ -117,9 +119,27 @@ namespace ApiAlunos.Test
                 Email = "cesar.miranda@outlook.com"
             };
 
-            var result = _alunosController.InserirAluno(aluno).Result.Value;
+            var result = _service.CriarAluno(aluno).Result;
 
             Assert.Equal(result, aluno);
+        }
+
+        [Fact]
+        public void InserirAlunoErro()
+        {
+            try
+            {
+                Aluno aluno = new Aluno();
+                aluno.Nome = "";
+                aluno.Email = "cesar.miranda@outlook.com";
+
+                var result = _service.CriarAluno(aluno).Result;
+            }
+            catch (System.Exception ex)
+            {
+                Assert.Equal(ex.InnerException.Message, "Todos os campos são obrigatórios!");
+            }
+
         }
     }
 }

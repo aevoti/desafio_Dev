@@ -1,3 +1,19 @@
+# Mensagem Para o Avaliador
+Olá,
+Seguem algumas considerações diante da finalização do projeto proposto.
+Disponibilizei os projetos do desafio (API e CLIENTE) no Azure, incluindo a base de dados.
+
+## API -
+Adotei o padrão de projeto de repositórios e interfaces, adicionei uma compressão para diminuir o tamanho das respostas da API, implementei bibliotecas como:
+Serilog ~ Log's são lançados durante a execução da API;
+Swagger ~ Uma interface de teste/documentação para a API é criada automaticamente na url ~/api-docs;
+
+## CLIENTE WEB -
+Implementei bibliotecas Angular para paginação da lista, toastr (notificações amigaveis), componentizei o layout, arquiteturei os diretórios de forma simples e explicativa.
+Para as buscas eu optei por um unico input que faz a diferenciação de busca por Id/Nome, atualizando de acordo com o evento "KeyUp" a lista de alunos.
+Para confirmar a exclusão de alunos, implementei modal de confirmação.
+
+
 # Desafio Final para Analista Desenvolvedor da AEVO
 
 Olá candidato,

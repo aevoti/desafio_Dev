@@ -68,7 +68,14 @@ namespace ApiAlunos.Controllers
         [HttpPost]
         public async Task<ActionResult<Aluno>> InserirAluno([FromBody] Aluno aluno)
         {
-            return Ok(await _alunoAppService.CriarAluno(aluno));
+            try
+            {
+                return Ok(await _alunoAppService.CriarAluno(aluno));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
 
         /// <summary>

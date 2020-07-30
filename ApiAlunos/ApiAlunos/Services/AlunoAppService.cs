@@ -33,16 +33,28 @@ namespace ApiAlunos.Services
 
         public async Task<Aluno> CriarAluno(Aluno aluno)
         {
-            var alunoCriado = _alunoRepository.Create(aluno);
-            await _alunoRepository.SaveChangesAsync();
-            return alunoCriado;
+            try
+            {
+                if (string.IsNullOrEmpty(aluno.Email) || string.IsNullOrEmpty(aluno.Nome))
+                {
+                    throw new Exception("Todos os campos são obrigatórios!");
+                }
+
+                var alunoCriado = _alunoRepository.Create(aluno);
+                await _alunoRepository.SaveChangesAsync();
+                return alunoCriado;
+            }
+            catch(Exception ex)
+            {
+                throw  ex;
+            }
+            
         }
 
-        public async Task<Aluno> AtualizarAluno(Aluno aluno)
+        public async Task<bool> AtualizarAluno(Aluno aluno)
         {
-            var alunoAtualizado = _alunoRepository.Update(aluno);
-            await _alunoRepository.SaveChangesAsync();
-            return alunoAtualizado;
+            _alunoRepository.Update(aluno);
+            return await _alunoRepository.SaveChangesAsync() > 0;
         }
 
         public async Task<bool> DeletarAluno(int id)
