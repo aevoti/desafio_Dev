@@ -40,7 +40,8 @@ export class HttpService<T> {
 
   private getHeaders(): HttpHeaders {
     const headers = new HttpHeaders({
-      "Content-Type": "application/json; charset=utf-8"
+      "Content-Type": "application/json; charset=utf-8",
+      "Access-Control-Expose-Headers": "X-Pagination"
     });
 
     return headers;
