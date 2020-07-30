@@ -1,4 +1,5 @@
-﻿using Alunos.Domain;
+using Alunos.Domain;
+using Alunos.Application.UseCases.Update;
 using Alunos.Infra.Data;
 using MediatR;
 using System.Threading;
@@ -19,8 +20,11 @@ namespace Alunos.Application.UseCases
 
         public async Task<bool> Handle(UpdateAluno request, CancellationToken cancellationToken)
         {
-            if (request.AlunoId <= 0)
+            var validationResult = new UpdateAlunoValidator().Validate(request);
+
+            if (!validationResult.IsValid)
             {
+                // Todo: domain notification
                 return false;
             }
 
@@ -32,7 +36,6 @@ namespace Alunos.Application.UseCases
                 return false;
             }
 
-
             var alunoComMesmoEmail = await _alunoRepository.GetByEmail(request.Email);
 
             if (alunoComMesmoEmail != null && alunoComMesmoEmail != aluno)
@@ -40,7 +43,6 @@ namespace Alunos.Application.UseCases
                 // Todo: domain notification
                 return false;
             }
-
 
             aluno.UpdateNome(request.Nome);
             aluno.UpdateEmail(request.Email);

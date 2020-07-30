@@ -20,6 +20,11 @@ namespace Alunos.Application.UseCases
 
         public async Task<AlunoViewModel> Handle(GetAlunoById request, CancellationToken cancellationToken)
         {
+            if (request.AlunoId <= 0)
+            {
+                return null;
+            }
+
             var aluno = (await _alunoRepository.GetById(request.AlunoId));
             return _mapper.Map<AlunoViewModel>(aluno);
         }
