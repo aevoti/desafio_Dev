@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lucas\\Desktop\\projects\\desafio_Dev\\ApiAlunos\\ApiAlunos.Test\\ApiAlunos.Test.csproj": {}
+    "C:\\Users\\lucas.santos\\Desktop\\desafio_Dev\\ApiAlunos\\ApiAlunos.Test\\ApiAlunos.Test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lucas\\Desktop\\projects\\desafio_Dev\\ApiAlunos\\ApiAlunos.Test\\ApiAlunos.Test.csproj": {
+    "C:\\Users\\lucas.santos\\Desktop\\desafio_Dev\\ApiAlunos\\ApiAlunos.Test\\ApiAlunos.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lucas\\Desktop\\projects\\desafio_Dev\\ApiAlunos\\ApiAlunos.Test\\ApiAlunos.Test.csproj",
+        "projectUniqueName": "C:\\Users\\lucas.santos\\Desktop\\desafio_Dev\\ApiAlunos\\ApiAlunos.Test\\ApiAlunos.Test.csproj",
         "projectName": "ApiAlunos.Test",
-        "projectPath": "C:\\Users\\Lucas\\Desktop\\projects\\desafio_Dev\\ApiAlunos\\ApiAlunos.Test\\ApiAlunos.Test.csproj",
-        "packagesPath": "C:\\Users\\Lucas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lucas\\Desktop\\projects\\desafio_Dev\\ApiAlunos\\ApiAlunos.Test\\obj\\",
+        "projectPath": "C:\\Users\\lucas.santos\\Desktop\\desafio_Dev\\ApiAlunos\\ApiAlunos.Test\\ApiAlunos.Test.csproj",
+        "packagesPath": "C:\\Users\\lucas.santos\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lucas.santos\\Desktop\\desafio_Dev\\ApiAlunos\\ApiAlunos.Test\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lucas.santos\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -27,8 +30,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Lucas\\Desktop\\projects\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj": {
-                "projectPath": "C:\\Users\\Lucas\\Desktop\\projects\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj"
+              "C:\\Users\\lucas.santos\\Desktop\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj": {
+                "projectPath": "C:\\Users\\lucas.santos\\Desktop\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj"
               }
             }
           }
@@ -97,17 +100,20 @@
         }
       }
     },
-    "C:\\Users\\Lucas\\Desktop\\projects\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj": {
+    "C:\\Users\\lucas.santos\\Desktop\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lucas\\Desktop\\projects\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj",
+        "projectUniqueName": "C:\\Users\\lucas.santos\\Desktop\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj",
         "projectName": "ApiAlunos",
-        "projectPath": "C:\\Users\\Lucas\\Desktop\\projects\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj",
-        "packagesPath": "C:\\Users\\Lucas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lucas\\Desktop\\projects\\desafio_Dev\\ApiAlunos\\ApiAlunos\\obj\\",
+        "projectPath": "C:\\Users\\lucas.santos\\Desktop\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj",
+        "packagesPath": "C:\\Users\\lucas.santos\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lucas.santos\\Desktop\\desafio_Dev\\ApiAlunos\\ApiAlunos\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lucas.santos\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
