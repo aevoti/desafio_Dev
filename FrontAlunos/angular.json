@@ -28,7 +28,8 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "src/custom-bulma.scss",
+              "src/custom-material.scss",
               "src/styles.scss"
             ],
             "scripts": []
