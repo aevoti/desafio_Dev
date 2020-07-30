@@ -1,0 +1,36 @@
+:host {
+    flex-grow: 1;
+    max-width: 320px;
+}
+
+#search {
+    position: relative;
+    margin-right: 0.6rem;
+    margin-bottom: 0;
+    background: #f6f6f6;
+    padding: 0.8rem 1.4rem;
+    border-radius: .25rem;
+
+    .icon {
+        position: absolute;
+        top: 50%;
+        width: 18px;
+        height: 18px;
+        line-height: 1rem;
+        transform: translateY(-50%);
+        left: 1.2rem;
+    }
+
+    .form-control {
+        display: block;
+        width: 90%;
+
+        font-size: 1rem;
+
+        padding-left: 30px;
+        border: 0;
+        outline: 0;
+
+        background-color: inherit;
+    }
+}

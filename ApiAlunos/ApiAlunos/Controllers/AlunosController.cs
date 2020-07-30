@@ -2,6 +2,7 @@
 using Alunos.Application.ViewModels;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,17 +14,20 @@ namespace ApiAlunos.Controllers
     public class AlunosController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly ILogger<AlunosController> _logger;
 
-        public AlunosController(IMediator mediator)
+        public AlunosController(IMediator mediator, ILogger<AlunosController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
 
         // GET: api/Alunos
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AlunoViewModel>>> GetAlunos()
+        public async Task<ActionResult<IEnumerable<AlunoViewModel>>> GetAlunos([FromQuery] string filter)
         {
-            return Ok(await _mediator.Send(new GetAlunos()));
+            _logger.LogInformation(Request.Headers.ToString());
+            return Ok(await _mediator.Send(new GetAlunos { Filter = filter }));
         }
 
         // GET: api/Alunos/5

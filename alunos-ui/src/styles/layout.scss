@@ -17,15 +17,15 @@
     max-width: 990px;
   }
 
-  @include breakpoint-up(medium128) {
-    max-width: 1140px;
-  }
+  // @include breakpoint-up(medium128) {
+  //   max-width: 1140px;
+  // }
 
-  @include breakpoint-up(large) {
-    max-width: 1300px;
-  }
+  // @include breakpoint-up(large) {
+  //   max-width: 1300px;
+  // }
 
-  @include breakpoint-up(xlarge) {
-    max-width: 1440px;
-  }
+  // @include breakpoint-up(xlarge) {
+  //   max-width: 1440px;
+  // }
 }

@@ -8,5 +8,6 @@ namespace Alunos.Application.UseCases
 {
     public class GetAlunos : IRequest<IEnumerable<AlunoViewModel>>
     {
+        public string Filter { get; set; }
     }
 }

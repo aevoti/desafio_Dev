@@ -3,6 +3,7 @@ using Alunos.Domain;
 using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -23,7 +24,27 @@ namespace Alunos.Application.UseCases
 
         public async Task<IEnumerable<AlunoViewModel>> Handle(GetAlunos request, CancellationToken cancellationToken)
         {
-            return (await _alunoRepository.GetAlunos().ToListAsync())
+            var query = _alunoRepository.GetAlunos();
+
+            if (!string.IsNullOrEmpty(request.Filter))
+            {
+                var filter = request.Filter.Trim().ToLower();
+
+                var isNumeric = int.TryParse(request.Filter, out _);
+
+                if (isNumeric)
+                {
+                    query = query.Where(a => Convert.ToString(a.AlunoId).StartsWith(request.Filter));
+                }
+                else
+                {
+                    query = query.Where(a =>
+                        a.Nome.ToLower().Contains(filter)
+                    );
+                }
+            }
+
+            return (await query.ToListAsync())
                 .Select(a => _mapper.Map<AlunoViewModel>(a));
         }
     }

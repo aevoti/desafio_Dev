@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
@@ -10,9 +10,14 @@ export class AlunosService {
 
     constructor(private http: HttpClient) { }
 
-    getAll(): Observable<Aluno[]> {
+    getAll(filter: string = null): Observable<Aluno[]> {
+        let params = new HttpParams();
+        
+        if (filter)
+            params = params.set('filter', filter);
+
         return this.http
-            .get<Aluno[]>('alunos');
+            .get<Aluno[]>(`alunos`, { params: params });
     }
 
     getById(id: number): Observable<Aluno> {

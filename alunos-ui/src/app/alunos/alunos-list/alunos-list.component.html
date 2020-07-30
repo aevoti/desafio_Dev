@@ -4,7 +4,10 @@
 </a>
 
 <div class="list-header card">
-    <h2>Alunos</h2>
+    <div class="title-row">
+        <h2>Alunos</h2>
+        <aln-search-input (search)="onFilter($event)"></aln-search-input>
+    </div>
     <div class="fields list-field-display">
         <div>
             <button mat-button id="id-btn">

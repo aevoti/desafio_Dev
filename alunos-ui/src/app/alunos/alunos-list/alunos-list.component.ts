@@ -11,6 +11,7 @@ import { Aluno } from '../aluno';
 export class AlunosListComponent implements OnInit {
 
   alunos$ = this.alunosService.getAll();
+  currentFilter = '';
   
   constructor(private alunosService: AlunosService) { }
 
@@ -24,5 +25,10 @@ export class AlunosListComponent implements OnInit {
         res => this.alunos$ = this.alunosService.getAll(),
         err => {}
       )
+  }
+
+  onFilter(filterEvent: string) {
+    this.currentFilter = filterEvent
+    this.alunos$ = this.alunosService.getAll(filterEvent)
   }
 }

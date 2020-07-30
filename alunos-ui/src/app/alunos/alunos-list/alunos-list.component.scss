@@ -1,8 +1,16 @@
 .list-header {
   margin-top: 1rem;
 
-  h2 {
-    font-size: 1.2rem;
+  .title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: .6rem;
+
+    h2 {
+      font-size: 1.2rem;
+    }
   }
 
   .fields {
