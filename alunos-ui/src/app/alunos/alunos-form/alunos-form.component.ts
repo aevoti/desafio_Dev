@@ -18,6 +18,7 @@ export class AlunosFormComponent implements OnInit {
   pageTitle = "Novo Aluno"
   alunosForm: FormGroup;
   private currentAluno: Aluno;
+  private editing: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
     private alunosService: AlunosService,
@@ -29,16 +30,20 @@ export class AlunosFormComponent implements OnInit {
       .pipe(
         map(params => params['id']),
         tap(id => {
-          if (id)
+          if (!!id && id > 0) {
             this.pageTitle = "Editar Aluno"
+            this.editing = true;
+          }
         }),
         switchMap(id => {
-          if (id)
+          if (!!id && id > 0)
             return this.alunosService.getById(id);
 
           return of({ email: '', nome: '', id: 0 });
         }),
-        tap((aluno: Aluno) => this.currentAluno = aluno)
+        tap((aluno: Aluno) => {
+          this.currentAluno = aluno;
+        })
       )
       .subscribe(a => {
         this.buildForm(a.email, a.nome);
@@ -59,11 +64,13 @@ export class AlunosFormComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
+    this.currentAluno = undefined;
     this.routeSub.unsubscribe();
   }
 
   onSubmit() {
-    if (this.currentAluno) {
+    console.log(this.editing);
+    if (this.editing) {
       this.updateAluno();
     }
     else {
@@ -87,7 +94,7 @@ export class AlunosFormComponent implements OnInit {
       .update(this.currentAluno.alunoId, this.alunosForm.value)
       .subscribe(
         res => console.log("UPDATED"),
-        err => {console.log(err); this.alunosForm.reset()}
+        err => { console.log(err); this.alunosForm.reset() }
       )
   }
 }
