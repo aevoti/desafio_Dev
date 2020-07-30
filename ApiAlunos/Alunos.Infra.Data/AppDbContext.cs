@@ -1,8 +1,8 @@
-﻿using ApiAlunos.Context.Mappings;
-using ApiAlunos.Models;
+﻿using Alunos.Domain;
+using Alunos.Infra.Data.Alunos;
 using Microsoft.EntityFrameworkCore;
 
-namespace ApiAlunos.Context
+namespace Alunos.Infra.Data
 {
     public class AppDbContext : DbContext
     {
@@ -10,6 +10,7 @@ namespace ApiAlunos.Context
         {
         }
         public DbSet<Aluno> Alunos { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

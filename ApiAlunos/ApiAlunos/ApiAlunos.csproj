@@ -6,6 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.6" />
@@ -19,9 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="alunos.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <ProjectReference Include="..\Alunos.Application\Alunos.Application.csproj" />
+    <ProjectReference Include="..\Alunos.Infra.CrossCutting.IoC\Alunos.Infra.CrossCutting.IoC.csproj" />
   </ItemGroup>
 
 </Project>

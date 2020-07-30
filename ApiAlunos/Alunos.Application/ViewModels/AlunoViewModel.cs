@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace ApiAlunos.Models
+namespace Alunos.Application.ViewModels
 {
-    public class Aluno
+    public class AlunoViewModel
     {
         public int AlunoId { get; set; }
         public string Nome { get; set; }
-        public string  Email { get; set; }
-
+        public string Email { get; set; }
     }
 }

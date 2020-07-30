@@ -1,7 +1,7 @@
-﻿using ApiAlunos.Context;
-using ApiAlunos.Models;
+﻿using Alunos.Application.UseCases;
+using Alunos.Application.ViewModels;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,25 +12,25 @@ namespace ApiAlunos.Controllers
     [ApiController]
     public class AlunosController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly IMediator _mediator;
 
-        public AlunosController(AppDbContext context)
+        public AlunosController(IMediator mediator)
         {
-            _context = context;
+            _mediator = mediator;
         }
 
         // GET: api/Alunos
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Aluno>>> GetAlunos()
+        public async Task<ActionResult<IEnumerable<AlunoViewModel>>> GetAlunos()
         {
-            return await _context.Alunos.ToListAsync();
+            return Ok(await _mediator.Send(new GetAlunos()));
         }
 
         // GET: api/Alunos/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Aluno>> GetAluno(int id)
+        public async Task<ActionResult<AlunoViewModel>> GetAluno(int id)
         {
-            var aluno = await _context.Alunos.FindAsync(id);
+            var aluno = await _mediator.Send(new GetAlunoById(id));
 
             if (aluno == null)
             {
@@ -42,63 +42,34 @@ namespace ApiAlunos.Controllers
 
         // PUT: api/Alunos/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAluno(int id, Aluno aluno)
+        public async Task<IActionResult> PutAluno(int id, UpdateAluno request)
         {
-            if (id != aluno.AlunoId)
+            if (id != request.AlunoId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(aluno).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AlunoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _mediator.Send(request);
 
             return NoContent();
         }
 
         // POST: api/Alunos
         [HttpPost]
-        public async Task<ActionResult<Aluno>> PostAluno(Aluno aluno)
+        public async Task<ActionResult> PostAluno(RegisterAluno request)
         {
-            _context.Alunos.Add(aluno);
-            await _context.SaveChangesAsync();
+            await _mediator.Send(request);
 
-            return CreatedAtAction("GetAluno", new { id = aluno.AlunoId }, aluno);
+            return Ok();
         }
 
         // DELETE: api/Alunos/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Aluno>> DeleteAluno(int id)
+        public async Task<ActionResult> DeleteAluno(int id)
         {
-            var aluno = await _context.Alunos.FindAsync(id);
-            if (aluno == null)
-            {
-                return NotFound();
-            }
+            await _mediator.Send(new DeleteAluno(id));
 
-            _context.Alunos.Remove(aluno);
-            await _context.SaveChangesAsync();
-
-            return aluno;
-        }
-
-        private bool AlunoExists(int id)
-        {
-            return _context.Alunos.Any(e => e.AlunoId == id);
+            return Ok();
         }
     }
 }

@@ -1,12 +1,8 @@
-﻿using ApiAlunos.Models;
+﻿using Alunos.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace ApiAlunos.Context.Mappings
+namespace Alunos.Infra.Data.Alunos
 {
     public class AlunoMap : IEntityTypeConfiguration<Aluno>
     {
@@ -18,11 +14,11 @@ namespace ApiAlunos.Context.Mappings
 
             builder.Property(a => a.Email)
                 .HasMaxLength(256)
-                .IsRequired();
+                .HasColumnName("Email");
 
             builder.Property(a => a.Nome)
                 .HasMaxLength(100)
-                .IsRequired();
+                .HasColumnName("Nome");
         }
     }
 }

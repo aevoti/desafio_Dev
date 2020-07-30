@@ -1,7 +1,8 @@
-﻿using ApiAlunos.Context;
+﻿using Alunos.Infra.CrossCutting.IoC;
+using ApiAlunos.Configurations;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -21,12 +22,13 @@ namespace ApiAlunos
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDatabaseSetup(Configuration);
 
-            services.AddDbContext<AppDbContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
-                );
+            services.RegisterServices();
 
-            services.AddTransient<SeedDataService>();
+            services.AddAutoMapperSetup();
+
+            services.AddMediatR(typeof(Startup));
 
             services.AddControllers();
 
@@ -58,7 +60,7 @@ namespace ApiAlunos
                 endpoints.MapControllers();
             });
 
-            serviceProvider.GetService<SeedDataService>().FeedDb().Wait();
+            serviceProvider.GetService<AlunosSeedDataService>().FeedDb().Wait();
         }
     }
 }
