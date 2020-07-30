@@ -3,22 +3,22 @@ version: "3"
 services:
   api:
     build: ./ApiAlunos
-    container_name: alunofront
+    container_name: alunoapi
     networks:
       - aluno_network
       - proxy
     labels: 
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
-      - "traefik.http.routers.alunofront.entrypoint=http"
-      - "traefik.http.routers.alunofront.rule=Host(`desafioaevo.dodev.dev`) && (PathPrefix(`/api`)"
-      - "traefik.http.midlewares.alunofront-https-redirect.redirectscheme.scheme=https"
-      - "traefik.http.routers.alunofront-secure.entrypoints=https"
-      - "traefik.http.routers.alunofront-secure.rule=Host(`desafioaevo.dodev.dev`)"
-      - "traefik.http.routers.alunofront-secure.tls=true"
-      - "traefik.http.routers.alunofront-secure.tls.certresolver=http"
-      - "traefik.http.routers.alunofront-secure.service=alunofront"
-      - "traefik.http.services.alunofront.loadbalancer.server.port=80"
+      - "traefik.http.routers.alunoapi.entrypoint=http"
+      - "traefik.http.routers.alunoapi.rule=Host(`desafioaevo.dodev.dev`) && (PathPrefix(`/api`)"
+      - "traefik.http.midlewares.alunoapi-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.alunoapi-secure.entrypoints=https"
+      - "traefik.http.routers.alunoapi-secure.rule=Host(`desafioaevo.dodev.dev`)"
+      - "traefik.http.routers.alunoapi-secure.tls=true"
+      - "traefik.http.routers.alunoapi-secure.tls.certresolver=http"
+      - "traefik.http.routers.alunoapi-secure.service=alunoapi"
+      - "traefik.http.services.alunoapi.loadbalancer.server.port=80"
       - "traefik.docker.network=proxy"
     depends_on:
       - db
@@ -38,22 +38,22 @@ services:
 
   front:
     build: ./FrontAlunos
-    container_name: alunofront
+    container_name: alunoapi
     networks: 
       - aluno_network
       - proxy
     labels: 
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
-      - "traefik.http.routers.alunofront.entrypoint=http"
-      - "traefik.http.routers.alunofront.rule=Host(`desafioaevo.dodev.dev`)"
-      - "traefik.http.midlewares.alunofront-https-redirect.redirectscheme.scheme=https"
-      - "traefik.http.routers.alunofront-secure.entrypoints=https"
-      - "traefik.http.routers.alunofront-secure.rule=Host(`desafioaevo.dodev.dev`)"
-      - "traefik.http.routers.alunofront-secure.tls=true"
-      - "traefik.http.routers.alunofront-secure.tls.certresolver=http"
-      - "traefik.http.routers.alunofront-secure.service=alunofront"
-      - "traefik.http.services.alunofront.loadbalancer.server.port=80"
+      - "traefik.http.routers.alunoapi.entrypoint=http"
+      - "traefik.http.routers.alunoapi.rule=Host(`desafioaevo.dodev.dev`)"
+      - "traefik.http.midlewares.alunoapi-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.alunoapi-secure.entrypoints=https"
+      - "traefik.http.routers.alunoapi-secure.rule=Host(`desafioaevo.dodev.dev`)"
+      - "traefik.http.routers.alunoapi-secure.tls=true"
+      - "traefik.http.routers.alunoapi-secure.tls.certresolver=http"
+      - "traefik.http.routers.alunoapi-secure.service=alunoapi"
+      - "traefik.http.services.alunoapi.loadbalancer.server.port=80"
       - "traefik.docker.network=proxy"
     
     
