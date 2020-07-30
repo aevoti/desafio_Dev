@@ -54,7 +54,9 @@ namespace ApiAlunos
                     options.UseSqlServer(Configuration.GetConnectionString("ProdConnection"))
                 );
             }
-            
+
+            var context = services.BuildServiceProvider().GetService<AppDbContext>();
+            context.Database.Migrate();
 
             services.AddScoped<AppDbContext>();
             services.AddScoped<IAlunoRepository, AlunoRepository>();
