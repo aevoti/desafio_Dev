@@ -248,7 +248,6 @@ C:\Users\jonat\Source\Repos\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp
 C:\Users\jonat\Source\Repos\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.dll
 C:\Users\jonat\Source\Repos\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.pdb
 C:\Users\jonat\Source\Repos\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.genruntimeconfig.cache
-C:\Users\jonat\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.csprojAssemblyReference.cache
 C:\Users\jonat\Source\Repos\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
 C:\Users\jonat\Source\Repos\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\jonat\Source\Repos\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
@@ -258,6 +257,9 @@ C:\Users\jonat\Source\Repos\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp
 C:\Users\jonat\Source\Repos\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
 C:\Users\jonat\Source\Repos\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\System.Web.Http.dll
 C:\Users\jonat\Source\Repos\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Swashbuckle.Core.dll
-C:\Users\jonat\Source\Repos\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.csproj.CoreCompileInputs.cache
-C:\Users\jonat\Source\Repos\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\jonat\Source\Repos\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\jonat\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.csproj.CoreCompileInputs.cache
+C:\Users\jonat\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\jonat\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\jonat\source\repos\desafio_Dev\ApiAlunos\ApiAlunos\obj\Debug\netcoreapp3.1\ApiAlunos.csprojAssemblyReference.cache
+C:\Users\jonat\Source\Repos\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
+C:\Users\jonat\Source\Repos\desafio_Dev\ApiAlunos\ApiAlunos\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.local.json

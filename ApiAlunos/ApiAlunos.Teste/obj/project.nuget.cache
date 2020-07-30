@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "x3plRmmNYA+uV1bhXXoy+PS5nVLK3IMiEdrYJWfP7/Mw7z+9ocqfSpwPdXFEmfF/gOZMy1CYtZv+OZvFfUSMgQ==",
+  "dgSpecHash": "ryKuXW5f9auGyhw0IUN9Am6Nn5iZ4N4VfOG4ttRi+mAhADh6o5R2qXDLCmfn8ksRx6R5wOPOtE7BdtWpowUUOw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jonat\\source\\repos\\desafio_Dev\\ApiAlunos\\ApiAlunos.Teste\\ApiAlunos.Test.csproj",
+  "projectFilePath": "C:\\Users\\jonat\\Source\\Repos\\desafio_Dev\\ApiAlunos\\ApiAlunos.Teste\\ApiAlunos.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jonat\\.nuget\\packages\\coverlet.collector\\1.2.0\\coverlet.collector.1.2.0.nupkg.sha512",
     "C:\\Users\\jonat\\.nuget\\packages\\fluentassertions\\5.10.3\\fluentassertions.5.10.3.nupkg.sha512",
@@ -50,6 +50,7 @@
     "C:\\Users\\jonat\\.nuget\\packages\\microsoft.openapi\\1.1.4\\microsoft.openapi.1.1.4.nupkg.sha512",
     "C:\\Users\\jonat\\.nuget\\packages\\microsoft.testplatform.objectmodel\\16.5.0\\microsoft.testplatform.objectmodel.16.5.0.nupkg.sha512",
     "C:\\Users\\jonat\\.nuget\\packages\\microsoft.testplatform.testhost\\16.5.0\\microsoft.testplatform.testhost.16.5.0.nupkg.sha512",
+    "C:\\Users\\jonat\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512",
     "C:\\Users\\jonat\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration\\3.1.3\\microsoft.visualstudio.web.codegeneration.3.1.3.nupkg.sha512",
     "C:\\Users\\jonat\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.contracts\\3.1.3\\microsoft.visualstudio.web.codegeneration.contracts.3.1.3.nupkg.sha512",
     "C:\\Users\\jonat\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.core\\3.1.3\\microsoft.visualstudio.web.codegeneration.core.3.1.3.nupkg.sha512",

@@ -85,6 +85,7 @@ namespace ApiAlunos.Repository
         {
             try
             {
+                dbContext.Entry(entity).State = EntityState.Detached;
                 dbSet.Update(entity);
                 await SaveChanges();
             }

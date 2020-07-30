@@ -213,3 +213,5 @@ C:\Users\jonat\Source\Repos\desafio_Dev\ApiAlunos\ApiAlunos.Teste\bin\Debug\netc
 C:\Users\jonat\Source\Repos\desafio_Dev\ApiAlunos\ApiAlunos.Teste\obj\Debug\netcoreapp3.1\ApiAlunos.Test.csproj.CoreCompileInputs.cache
 C:\Users\jonat\Source\Repos\desafio_Dev\ApiAlunos\ApiAlunos.Teste\obj\Debug\netcoreapp3.1\ApiAlunos.Test.dll
 C:\Users\jonat\Source\Repos\desafio_Dev\ApiAlunos\ApiAlunos.Teste\obj\Debug\netcoreapp3.1\ApiAlunos.Test.pdb
+C:\Users\jonat\Source\Repos\desafio_Dev\ApiAlunos\ApiAlunos.Teste\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
+C:\Users\jonat\Source\Repos\desafio_Dev\ApiAlunos\ApiAlunos.Teste\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.local.json
