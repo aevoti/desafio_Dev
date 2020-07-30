@@ -9,14 +9,14 @@
                 <label for="inputnome">Nome</label>
                 <input formControlName="nome" type="text" class="form-control" id="inputnome" placeholder="Nome"
                     required>
-                <small *ngIf="!alunoForm.get('nome').value && alunoForm.get('nome').touched"
+                <small *ngIf="!alunoForm.get('nome').valid && alunoForm.get('nome').touched"
                     class="form-text text-danger">É obrigatório inserir um Nome</small>
             </div>
             <div class="form-group col-md-6">
                 <label for="inputemail">Email</label>
                 <input formControlName="email" type="email" class="form-control" id="inputemail"
                     aria-describedby="emailHelp" placeholder="Email" required>
-                <small *ngIf="!alunoForm.get('email').value && alunoForm.get('email').touched"
+                <small *ngIf="!alunoForm.get('email').valid && alunoForm.get('email').touched"
                     class="form-text text-danger">Insira um email válido</small>
             </div>
             <div class="row col-md-12 d-flex justify-content-end float-right">

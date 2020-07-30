@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, destroyPlatform } from '@angular/core';
 import { Aluno } from 'src/app/models/alunoModel';
 import { AlunoService } from '../../services/aluno.service';
 import { Observable } from 'rxjs';
@@ -21,19 +21,17 @@ export class GerenciarAlunoComponent implements OnInit {
 
   ngOnInit(): void {
     this.alunoForm = this._formBuilder.group({
-      alunoId: [0],
-      nome: ['', [Validators.required]],
-      email: ['', [Validators.required]],
+      alunoId: [this.entidadeAluno.alunoId],
+      nome: [this.entidadeAluno.nome, [Validators.required]],
+      email: [this.entidadeAluno.nome, [Validators.required]],
     });
   }
 
-  ngDoCheck(): void {
-    console.log('docheck')
-    if (this.entidadeAluno.alunoId) {
-      this.alunoForm.controls['alunoId'].setValue(this.entidadeAluno.alunoId);
-      this.alunoForm.controls['nome'].setValue(this.entidadeAluno.nome);
-      this.alunoForm.controls['email'].setValue(this.entidadeAluno.email);
-    }
+  ngOnChanges(): void {
+    console.log(this.entidadeAluno);
+    this.alunoForm.controls['alunoId'].setValue(this.entidadeAluno.alunoId);
+    this.alunoForm.controls['nome'].setValue(this.entidadeAluno.nome);
+    this.alunoForm.controls['email'].setValue(this.entidadeAluno.email);
   }
 
   public async submitFormulario(aluno: Aluno): Promise<void> {
