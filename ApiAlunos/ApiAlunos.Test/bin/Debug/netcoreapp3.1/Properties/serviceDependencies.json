@@ -3,6 +3,9 @@
     "mssql1": {
       "type": "mssql",
       "connectionId": "AzureConnection"
+    },
+    "secrets1": {
+      "type": "secrets"
     }
   }
 }

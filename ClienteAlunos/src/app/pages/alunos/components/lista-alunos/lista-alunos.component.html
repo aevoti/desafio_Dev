@@ -50,13 +50,7 @@
                 </td>
             </tr>
         </tbody>
-    </table>
-
-    <div *ngIf="!listaAlunos || listaAlunos.length == 0" class="col-md-12">
-        <span class="text-center">
-            <h3>Nenhum Aluno Cadastrado!</h3>
-        </span>
-    </div>
+    </table>   
 </div>
 
 <app-modal-exclusao *ngIf="idAlunoExcluir" [idAlunoExclusao]="idAlunoExcluir" (emitirAtualizarLista)="emitirAtualizarLista()">

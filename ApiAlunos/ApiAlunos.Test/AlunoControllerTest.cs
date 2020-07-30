@@ -64,6 +64,7 @@ namespace ApiAlunos.Test
             var result = await _service.ObterAlunoPorId(valor);
 
             Assert.IsType<Aluno>(result);
+            //diferente de nullo tbm, sua anta
         }
 
         [Theory]
@@ -79,36 +80,52 @@ namespace ApiAlunos.Test
         [Theory]
         [InlineData(1)]
         [InlineData(2)]
-        public async void AtualizarAlunoSucesso(int valor)
+        public async void AtualizarAlunoSucesso(int idAluno)
         {
-            Aluno aluno = new Aluno()
+            switch (idAluno)
             {
-                AlunoId = 1,
-                Nome = "César Miranda",
-                Email = "cesar.miranda@outlook.com"
-            };
-
-            var result = await _service.AtualizarAluno(aluno);
-
-            Assert.Equal(true, result);
+                case 1:
+                    var aluno01 = await _service.ObterAlunoPorId(idAluno);
+                    aluno01.Nome = "Teste01";
+                    await _service.AtualizarAluno(aluno01);
+                    var alunoPosAtualizacao01 = await _service.ObterAlunoPorId(idAluno);
+                    Assert.Equal(alunoPosAtualizacao01, aluno01);
+                    break;
+                case 2:
+                    var aluno02 = await _service.ObterAlunoPorId(idAluno);
+                    aluno02.Nome = "Teste02";
+                    await _service.AtualizarAluno(aluno02);
+                    var alunoPosAtualizacao02 = await _service.ObterAlunoPorId(idAluno);
+                    Assert.Equal(alunoPosAtualizacao02, aluno02);
+                    break;
+            }
         }
 
-        //[Theory]
-        //[InlineData(3)]
-        //[InlineData(4)]
-        //public async void AtualizarAlunoErro(int valor)
-        //{
-        //    Aluno aluno = new Aluno()
-        //    {
-        //        AlunoId = valor,
-        //        Nome = "César Miranda",
-        //        Email = "cesar.miranda@outlook.com"
-        //    };
-
-        //    var result = await _alunosController.AtualizarAluno(aluno);
-
-        //    Assert.Equal(result.Value, aluno);
-        //}
+        [Theory]
+        [InlineData(2)]
+        [InlineData(3)]
+        public async void AtualizarAlunoErro(int idAluno)
+        {
+            switch (idAluno)
+            {
+                case 2:
+                    try
+                    {
+                        var aluno01 = await _service.ObterAlunoPorId(idAluno);
+                        aluno01.Nome = "";
+                        await _service.AtualizarAluno(aluno01);
+                    }
+                    catch (System.Exception ex)
+                    {
+                        Assert.Equal(ex.Message, "Todos os campos são obrigatórios!");
+                    }
+                    break;
+                case 3:
+                    var aluno02 = await _service.ObterAlunoPorId(idAluno);
+                    Assert.Equal(null, aluno02);
+                    break;
+            }
+        }
 
         [Fact]
         public void InserirAlunoSucesso()
@@ -139,7 +156,30 @@ namespace ApiAlunos.Test
             {
                 Assert.Equal(ex.InnerException.Message, "Todos os campos são obrigatórios!");
             }
+        }
 
+        [Theory]
+        [InlineData(1)]
+        [InlineData(2)]
+        public void DeletarAlunoSucesso(int alunoId)
+        {
+            var alunoExcluido = _service.DeletarAluno(alunoId).Result;
+            Assert.Equal(true, alunoExcluido);
+        }
+
+        [Theory]
+        [InlineData(-1)]
+        [InlineData(-2)]
+        public void DeletarAlunoErro(int alunoId)
+        {
+            try
+            {
+                var alunoExcluido = _service.DeletarAluno(alunoId).Result;
+            }
+            catch (System.Exception ex)
+            {
+                Assert.Equal(ex.InnerException.Message, "IdAluno para exclusão inválido!");
+            }
         }
     }
 }

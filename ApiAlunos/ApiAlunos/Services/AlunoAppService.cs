@@ -44,23 +44,52 @@ namespace ApiAlunos.Services
                 await _alunoRepository.SaveChangesAsync();
                 return alunoCriado;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                throw  ex;
+                throw ex;
             }
-            
+
         }
 
         public async Task<bool> AtualizarAluno(Aluno aluno)
         {
-            _alunoRepository.Update(aluno);
-            return await _alunoRepository.SaveChangesAsync() > 0;
+            try
+            {
+                var alunoExiste = await ObterAlunoPorId(aluno.AlunoId);
+                if (alunoExiste != null)
+                {
+                    if (string.IsNullOrEmpty(alunoExiste.Email) || string.IsNullOrEmpty(alunoExiste.Nome))
+                    {
+                        throw new Exception("Todos os campos são obrigatórios!");
+                    }
+                    _alunoRepository.Update(aluno);
+                    return await _alunoRepository.SaveChangesAsync() > 0;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
 
         public async Task<bool> DeletarAluno(int id)
         {
-            await _alunoRepository.Delete(id);
-            return await _alunoRepository.SaveChangesAsync() > 0;
+            try
+            {
+                await _alunoRepository.Delete(id);
+                return await _alunoRepository.SaveChangesAsync() > 0;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("IdAluno para exclusão inválido!");
+            }
+            
         }
         public void Dispose()
         {

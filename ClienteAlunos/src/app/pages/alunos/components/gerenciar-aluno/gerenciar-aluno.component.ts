@@ -20,15 +20,15 @@ export class GerenciarAlunoComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder, private _alunoService: AlunoService) { }
 
   ngOnInit(): void {
-  }
-
-  ngDoCheck(): void {
     this.alunoForm = this._formBuilder.group({
       alunoId: [0],
       nome: ['', [Validators.required]],
       email: ['', [Validators.required]],
     });
+  }
 
+  ngDoCheck(): void {
+    console.log('docheck')
     if (this.entidadeAluno.alunoId) {
       this.alunoForm.controls['alunoId'].setValue(this.entidadeAluno.alunoId);
       this.alunoForm.controls['nome'].setValue(this.entidadeAluno.nome);

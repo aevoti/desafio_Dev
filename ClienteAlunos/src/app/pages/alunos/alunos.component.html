@@ -46,5 +46,12 @@
         <app-lista-alunos [listaAlunos]="listaAlunosFiltrada" (emitirEditarClique)="eventoEditarAluno($event)"
             (emitirAtualizarListaParent)="carregarAlunos()">
         </app-lista-alunos>
+
+        <div *ngIf="!listaAlunosFiltrada || listaAlunosFiltrada.length == 0" class="col-md-12">
+            <span class="text-center">
+                <h3 *ngIf="!entradaBusca" style="min-height: 100px;">Nenhum Aluno Cadastrado!</h3>
+                <h3 *ngIf="entradaBusca" style="min-height: 100px;">Nenhum Aluno Para o Filtro Informado!</h3>
+            </span>
+        </div>
     </div>
 </div>

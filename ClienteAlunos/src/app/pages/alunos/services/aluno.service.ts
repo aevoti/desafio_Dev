@@ -33,7 +33,7 @@ export class AlunoService {
       await this._http.post<Aluno>(this.urlPathApi, aluno, httpOptions).toPromise().then();
       this._toastr.success('Aluno cadastrado.', 'Sucesso!');
     } catch (error) {
-      this._toastr.error('Houve um erro ao excluir.', 'Erro!');
+      this._toastr.error('Houve um erro ao cadastrar.', 'Erro!');
       console.log(error);
     }
   }
@@ -44,7 +44,7 @@ export class AlunoService {
       await this._http.put<Aluno>(apiurl, aluno, httpOptions).toPromise().then();
       this._toastr.success('Aluno atualizado.', 'Sucesso!');
     } catch (error) {
-      this._toastr.error('Houve um erro ao excluir.', 'Erro!');
+      this._toastr.error('Houve um erro ao atualizar.', 'Erro!');
       console.log(error);
     }
   }
