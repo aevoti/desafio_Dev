@@ -2,30 +2,22 @@ version: "3"
 
 services:
   api:
-    build: ./ApiAlunos
-    container_name: alunofront
+    image: alunosapi:latest
     networks:
-      - aluno_network
       - proxy
+      - aluno_network
     labels: 
       - "traefik.enable=true"
-      - "traefik.docker.network=proxy"
-      - "traefik.http.routers.alunofront.entrypoint=http"
-      - "traefik.http.routers.alunofront.rule=Host(`desafioaevo.dodev.dev`) && (PathPrefix(`/api`)"
-      - "traefik.http.midlewares.alunofront-https-redirect.redirectscheme.scheme=https"
-      - "traefik.http.routers.alunofront-secure.entrypoints=https"
-      - "traefik.http.routers.alunofront-secure.rule=Host(`desafioaevo.dodev.dev`)"
-      - "traefik.http.routers.alunofront-secure.tls=true"
-      - "traefik.http.routers.alunofront-secure.tls.certresolver=http"
-      - "traefik.http.routers.alunofront-secure.service=alunofront"
-      - "traefik.http.services.alunofront.loadbalancer.server.port=80"
+      - "traefik.http.routers.alunoapi.entrypoints=https"
+      - "traefik.http.routers.alunoapi.rule=Host(`desafioaevoapi.dodev.dev`)"
+      - "traefik.http.routers.alunoapi.tls.certresolver=http"
+      - "traefik.http.routers.alunoapi.tls=true"
       - "traefik.docker.network=proxy"
     depends_on:
       - db
 
   db:
-    build: ./Database
-    container_name: alunodb
+    image: alunosdb:latest
     user: root
     networks:
       - aluno_network
@@ -37,26 +29,16 @@ services:
       - aluno_data:/var/opt/mssql/
 
   front:
-    build: ./FrontAlunos
-    container_name: alunofront
+    image: alunosfront:latest
     networks: 
-      - aluno_network
       - proxy
     labels: 
       - "traefik.enable=true"
-      - "traefik.docker.network=proxy"
-      - "traefik.http.routers.alunofront.entrypoint=http"
+      - "traefik.http.routers.alunofront.entrypoints=https"
       - "traefik.http.routers.alunofront.rule=Host(`desafioaevo.dodev.dev`)"
-      - "traefik.http.midlewares.alunofront-https-redirect.redirectscheme.scheme=https"
-      - "traefik.http.routers.alunofront-secure.entrypoints=https"
-      - "traefik.http.routers.alunofront-secure.rule=Host(`desafioaevo.dodev.dev`)"
-      - "traefik.http.routers.alunofront-secure.tls=true"
-      - "traefik.http.routers.alunofront-secure.tls.certresolver=http"
-      - "traefik.http.routers.alunofront-secure.service=alunofront"
-      - "traefik.http.services.alunofront.loadbalancer.server.port=80"
+      - "traefik.http.routers.alunofront.tls.certresolver=http"
+      - "traefik.http.routers.alunofront.tls=true"
       - "traefik.docker.network=proxy"
-    
-    
 
 volumes:
   aluno_data:
@@ -66,3 +48,4 @@ networks:
   proxy:
     external: 
       name: proxy
+
