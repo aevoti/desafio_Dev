@@ -8,9 +8,13 @@ import { MatInputModule } from '@angular/material/input';
 import { IconsModule } from './components/icons/icons.module';
 import { MAT_FORM_FIELD_OUTLINE_APPEARANCE } from './util/material-design.config';
 import { SearchInputComponent } from './components/search-input/search-input.component';
+import { SortBtnComponent } from './components/sort-btn/sort-btn.component';
 
 @NgModule({
-  declarations: [SearchInputComponent],
+  declarations: [
+    SearchInputComponent, 
+    SortBtnComponent
+  ],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -24,7 +28,8 @@ import { SearchInputComponent } from './components/search-input/search-input.com
     MatInputModule,
     IconsModule,
 
-    SearchInputComponent
+    SearchInputComponent,
+    SortBtnComponent
   ],
   providers: [
     {

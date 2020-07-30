@@ -10,11 +10,14 @@ export class AlunosService {
 
     constructor(private http: HttpClient) { }
 
-    getAll(filter: string = null): Observable<Aluno[]> {
+    getAll(filter: string = null, sortType: string = null): Observable<Aluno[]> {
         let params = new HttpParams();
         
         if (filter)
             params = params.set('filter', filter);
+
+        if (sortType)
+            params = params.set('sortType', sortType);
 
         return this.http
             .get<Aluno[]>(`alunos`, { params: params });

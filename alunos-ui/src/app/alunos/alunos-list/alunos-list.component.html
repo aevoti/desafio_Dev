@@ -10,16 +10,19 @@
     </div>
     <div class="fields list-field-display">
         <div>
-            <button mat-button id="id-btn">
-                <span>Id</span>
-                <i-feather class="icon" name="chevron-down"></i-feather>
-            </button>
+            <aln-sort-btn 
+                property="Id" 
+                [sortType]="idSorting$ | async" 
+                [allowIdle]="false" 
+                (sort)="onIdSort($event)">
+            </aln-sort-btn>
         </div>
         <div>
-            <button mat-button>
-                Nome
-                <i-feather class="icon" name="chevron-down"></i-feather>
-            </button>
+            <aln-sort-btn 
+                property="Nome" 
+                [sortType]="nameSorting$ | async" 
+                (sort)="onNameSort($event)">
+            </aln-sort-btn>
         </div>
         <div>
             Ações

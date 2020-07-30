@@ -24,10 +24,10 @@ namespace ApiAlunos.Controllers
 
         // GET: api/Alunos
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AlunoViewModel>>> GetAlunos([FromQuery] string filter)
+        public async Task<ActionResult<IEnumerable<AlunoViewModel>>> GetAlunos([FromQuery] string filter, [FromQuery] string sortType)
         {
             _logger.LogInformation(Request.Headers.ToString());
-            return Ok(await _mediator.Send(new GetAlunos { Filter = filter }));
+            return Ok(await _mediator.Send(new GetAlunos { Filter = filter, SortType = SortTypeUtil.FromString(sortType) }));
         }
 
         // GET: api/Alunos/5

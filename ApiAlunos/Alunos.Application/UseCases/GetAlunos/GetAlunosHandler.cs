@@ -44,6 +44,19 @@ namespace Alunos.Application.UseCases
                 }
             }
 
+            switch (request.SortType)
+            {
+                case SortType.ORDER_BY_ID_DEC:
+                    query = query.OrderByDescending(a => a.AlunoId);
+                    break;
+                case SortType.ORDER_BY_NOME_ASC:
+                    query = query.OrderBy(a => a.Nome);
+                    break;
+                case SortType.ORDER_BY_NOME_DEC:
+                    query = query.OrderByDescending(a => a.Nome);
+                    break;
+            }
+
             return (await query.ToListAsync())
                 .Select(a => _mapper.Map<AlunoViewModel>(a));
         }
