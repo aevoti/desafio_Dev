@@ -44,7 +44,7 @@ namespace ApiAlunos.Controllers
         }
 
         // GET: api/Aluno/5
-        [HttpGet("~/api/aluno/{id}", Name = "AlunoById")]
+        [HttpGet("{id}", Name = "AlunoById")]
         public IActionResult GetAluno(int id)
         {
             var aluno = _repo.Aluno.GetAlunoById(id);
@@ -53,7 +53,7 @@ namespace ApiAlunos.Controllers
         }
 
         // POST: api/Alunos
-        [HttpPost("~/api/aluno")]
+        [HttpPost]
         public IActionResult PostAluno(Aluno aluno)
         {
             if (aluno == null)
@@ -73,7 +73,7 @@ namespace ApiAlunos.Controllers
         }
 
         // PUT: api/Alunos/5
-        [HttpPut("~/api/aluno/{id}")]
+        [HttpPut("{id}")]
         public IActionResult PutAluno(int id, Aluno aluno)
         {
             if (aluno == null)
@@ -99,7 +99,7 @@ namespace ApiAlunos.Controllers
         }
 
         // DELETE: api/Alunos/5
-        [HttpDelete("~/api/aluno/{id}")]
+        [HttpDelete("{id}")]
         public IActionResult DeleteAluno(int id)
         {
             var aluno = _repo.Aluno.GetAlunoById(id);
