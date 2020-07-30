@@ -1,0 +1,34 @@
+<table mat-table [dataSource]="data" matSort>
+  <ng-container matColumnDef="alunoId">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header class="col-pad-horizontal">ID</th>
+    <td mat-cell *matCellDef="let element" class="col-pad-horizontal">{{ element.alunoId }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="nome">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header class="col-pad-horizontal">Nome</th>
+    <td mat-cell *matCellDef="let element" class="col-pad-horizontal">{{ element.nome }}</td>
+  </ng-container>
+
+   <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header class="col-pad-horizontal">Email</th>
+    <td mat-cell *matCellDef="let element" class="col-pad-horizontal">{{ element.email }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="acoes">
+    <th class="text-center" mat-header-cell *matHeaderCellDef>Ações</th>
+    <td class="text-center" mat-cell *matCellDef="let element">
+      <button class="btn btn-outline-primary btn-acoes"
+        matTooltip="Editar">
+        <span class="la la-edit"></span>
+      </button>
+      <button type="button" class="btn btn-outline-danger btn-acoes" matTooltip="Excluir"
+        (click)="openDeleteModal(element)">
+        <span class="la la-trash"></span>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columns"></tr>
+  <tr mat-row *matRowDef="let row; columns: columns"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons [pageIndex]="paginationData?.CurrentPage" [pageSize]="pageSize" [length]="paginationData?.TotalCount" (page)="handlePage($event)"></mat-paginator>
