@@ -10,14 +10,21 @@ namespace Alunos.Application.UseCases.Update
         public UpdateAlunoValidator()
         {
             RuleFor(e => e.Email)
-                .NotEmpty()
                 .NotNull()
+                .NotEmpty()
                 .EmailAddress();
 
             RuleFor(e => e.Nome)
-                .NotEmpty()
                 .NotNull()
-                .Must(nome => nome.Split(' ').Length >= 2);
+                .NotEmpty()
+                .Length(5, 100);
+
+            When(e => !string.IsNullOrEmpty(e.Nome), () =>
+            {
+                RuleFor(e => e.Nome)
+                    .Must(nome => nome.Split(' ').Length >= 2);
+
+            });
 
             RuleFor(e => e.AlunoId)
                 .NotNull()

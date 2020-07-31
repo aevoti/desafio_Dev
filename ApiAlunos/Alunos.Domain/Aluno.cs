@@ -6,6 +6,12 @@ namespace Alunos.Domain
     {
         public Aluno(string email, string nome)
         {
+            if (string.IsNullOrEmpty(email))
+                throw new ArgumentNullException();
+
+            if (string.IsNullOrEmpty(nome))
+                throw new ArgumentNullException();
+
             Email = email;
             Nome = nome;
         }
@@ -18,7 +24,7 @@ namespace Alunos.Domain
 
         public void UpdateNome(string novoNome)
         {
-            if (novoNome is null)
+            if (string.IsNullOrEmpty(novoNome))
                 throw new ArgumentNullException(nameof(novoNome));
 
             Nome = novoNome;
@@ -26,7 +32,7 @@ namespace Alunos.Domain
 
         public void UpdateEmail(string email)
         {
-            if (email is null)
+            if (string.IsNullOrEmpty(email))
                 throw new ArgumentNullException(nameof(email));
 
             Email = email;

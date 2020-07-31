@@ -61,6 +61,9 @@ namespace ApiAlunos.Controllers
                 return BadRequest();
             }
 
+            if (!(await AlunoExist(id)))
+                return NotFound();
+
             await _mediator.Send(request);
 
             return Response();
@@ -79,9 +82,18 @@ namespace ApiAlunos.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAluno(int id)
         {
+            if (!(await AlunoExist(id)))
+                return NotFound();
+
             await _mediator.Send(new DeleteAluno(id));
 
             return Response();
+        }
+
+        private async Task<bool> AlunoExist(int alunoId)
+        {
+            var aluno = await _mediator.Send(new GetAlunoById(alunoId));
+            return aluno != null;
         }
     }
 }

@@ -11,7 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alunos.Domain", "Alunos.Dom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alunos.Application", "Alunos.Application\Alunos.Application.csproj", "{C66805C5-86B8-4A89-A2A7-3623993A669B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alunos.Infra.CrossCutting.IoC", "Alunos.Infra.CrossCutting.IoC\Alunos.Infra.CrossCutting.IoC.csproj", "{8B040CC2-C1D0-4139-9FFE-B7418F85AF08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alunos.Infra.CrossCutting.IoC", "Alunos.Infra.CrossCutting.IoC\Alunos.Infra.CrossCutting.IoC.csproj", "{8B040CC2-C1D0-4139-9FFE-B7418F85AF08}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D7B21C4B-7310-485E-9B63-0C0AE0455C33}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alunos.UnitTests", "tests\Alunos.UnitTests\Alunos.UnitTests.csproj", "{69F125C2-30E7-4A54-B3B4-3AD71F98F541}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alunos.IntegrationTests", "tests\Alunos.IntegrationTests\Alunos.IntegrationTests.csproj", "{CE119B45-4499-4B87-BE3B-DC9DBC3B8A04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,9 +45,21 @@ Global
 		{8B040CC2-C1D0-4139-9FFE-B7418F85AF08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B040CC2-C1D0-4139-9FFE-B7418F85AF08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B040CC2-C1D0-4139-9FFE-B7418F85AF08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69F125C2-30E7-4A54-B3B4-3AD71F98F541}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69F125C2-30E7-4A54-B3B4-3AD71F98F541}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69F125C2-30E7-4A54-B3B4-3AD71F98F541}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69F125C2-30E7-4A54-B3B4-3AD71F98F541}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE119B45-4499-4B87-BE3B-DC9DBC3B8A04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE119B45-4499-4B87-BE3B-DC9DBC3B8A04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE119B45-4499-4B87-BE3B-DC9DBC3B8A04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE119B45-4499-4B87-BE3B-DC9DBC3B8A04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{69F125C2-30E7-4A54-B3B4-3AD71F98F541} = {D7B21C4B-7310-485E-9B63-0C0AE0455C33}
+		{CE119B45-4499-4B87-BE3B-DC9DBC3B8A04} = {D7B21C4B-7310-485E-9B63-0C0AE0455C33}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9D295823-2EAE-4907-8623-7BDAC65ADD73}
