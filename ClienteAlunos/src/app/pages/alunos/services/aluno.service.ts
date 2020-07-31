@@ -40,7 +40,7 @@ export class AlunoService {
 
   async atualizarAluno(aluno: Aluno): Promise<void> {
     try {
-      const apiurl = `${this.urlPathApi}/${aluno.alunoId}`;
+      const apiurl = `${this.urlPathApi}`;
       await this._http.put<Aluno>(apiurl, aluno, httpOptions).toPromise().then();
       this._toastr.success('Aluno atualizado.', 'Sucesso!');
     } catch (error) {

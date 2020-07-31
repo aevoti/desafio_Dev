@@ -39,18 +39,46 @@
             </div>
         </div>
 
-        <app-gerenciar-aluno [entidadeAluno]="alunoEditar" (emitirEsconderGerenciarAluno)="exibirGerenciarAluno = false"
-            (emitirAtualizarListaParent)="carregarAlunos()" *ngIf="exibirGerenciarAluno">
-        </app-gerenciar-aluno>
+        <div class="border rounded mb-2" style="padding: 5px;" *ngIf="exibirGerenciarAluno">
+            <form [formGroup]="alunoForm" (ngSubmit)="submitFormulario(alunoForm.value)">
+                <div class="row">
+                    <div class="form-group col-md-2">
+                        <label for="inputId">Id Aluno</label>
+                        <input formControlName="alunoId" type="text" class="form-control" id="inputId" readonly />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputnome">Nome</label>
+                        <input formControlName="nome" type="text" class="form-control" id="inputnome" placeholder="Nome"
+                            required>
+                        <small *ngIf="!alunoForm.get('nome').valid && alunoForm.get('nome').touched"
+                            class="form-text text-danger">É obrigatório inserir um Nome</small>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputemail">Email</label>
+                        <input formControlName="email" type="email" class="form-control" id="inputemail"
+                            aria-describedby="emailHelp" placeholder="Email" required>
+                        <small *ngIf="!alunoForm.get('email').valid && alunoForm.get('email').touched"
+                            class="form-text text-danger">Insira um email válido</small>
+                    </div>
+                    <div class="row col-md-12 d-flex justify-content-end float-right">
+                        <button type="submit" class="btn btn-primary float-right" title="Salvar"
+                            [disabled]="!alunoForm.valid">Salvar</button>
+                        <button class="btn btn-danger float-right ml-3" (click)="exibirGerenciarAluno = false"
+                            title="Cancelar">Cancelar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
 
         <app-lista-alunos [listaAlunos]="listaAlunosFiltrada" (emitirEditarClique)="eventoEditarAluno($event)"
             (emitirAtualizarListaParent)="carregarAlunos()">
         </app-lista-alunos>
 
-        <div *ngIf="!listaAlunosFiltrada || listaAlunosFiltrada.length == 0" class="col-md-12 d-flex justify-content-center">
+        <div *ngIf="!listaAlunosFiltrada || listaAlunosFiltrada.length == 0"
+            class="col-md-12 d-flex justify-content-center">
             <div class="text-center " style="min-height: 100px !important">
-                <h3 *ngIf="!entradaBusca" >Nenhum Aluno Cadastrado!</h3>
-                <h3 *ngIf="entradaBusca" >Nenhum Aluno Para o Filtro Informado!</h3>
+                <h3 *ngIf="!entradaBusca">Nenhum Aluno Cadastrado!</h3>
+                <h3 *ngIf="entradaBusca">Nenhum Aluno Para o Filtro Informado!</h3>
             </div>
         </div>
     </div>

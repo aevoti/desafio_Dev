@@ -3,6 +3,7 @@ import { Aluno } from 'src/app/models/alunoModel';
 import { AlunoService } from './services/aluno.service';
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-alunos',
@@ -11,38 +12,58 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AlunosComponent implements OnInit {
   public entradaBusca: string;
-  public alunoEditar: Aluno = new Aluno();
+  public entidadeAluno: Aluno = new Aluno();
   public listaAlunos: Aluno[] = [];
   public listaAlunosFiltrada: Aluno[] = [];
   public exibirGerenciarAluno: boolean = false;
+  alunoForm: any;
 
-  constructor(private _alunoService: AlunoService, private _toastr: ToastrService) { }
+  constructor(private _alunoService: AlunoService, private _toastr: ToastrService, private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.preencherForm();
     this.carregarAlunos();
   }
 
-  public async carregarAlunos() {
+  public preencherForm(): void {
+    this.alunoForm = this._formBuilder.group({
+      alunoId: [this.entidadeAluno.alunoId || 0],
+      nome: [this.entidadeAluno.nome, [Validators.required]],
+      email: [this.entidadeAluno.email, [Validators.required, Validators.email]],
+    });
+    this.exibirGerenciarAluno = true;
+  }
+
+  public async carregarAlunos(): Promise<void> {
     this.listaAlunosFiltrada = this.listaAlunos = await this._alunoService.obterAlunos();
     this.exibirGerenciarAluno = this.listaAlunos.length > 0 ? false : true;
   }
 
-  public cliqueAdicionar() {
-    this.exibirGerenciarAluno = false;
-    this.alunoEditar = new Aluno();
-    this.exibirGerenciarAluno = true;
+  public cliqueAdicionar(): void {
+    this.entidadeAluno = new Aluno();
+    this.preencherForm();
   }
 
-  public eventoEditarAluno(param: any) {
-    console.log('editar aluno');
-    this.exibirGerenciarAluno = false;
-    this.alunoEditar.alunoId = param.alunoId;
-    this.alunoEditar.nome = param.nome;
-    this.alunoEditar.email = param.email;
-    this.exibirGerenciarAluno = true;
+  public eventoEditarAluno(param: any): void {
+    this.entidadeAluno.alunoId = param.alunoId;
+    this.entidadeAluno.nome = param.nome;
+    this.entidadeAluno.email = param.email;
+    this.preencherForm();
   }
 
-  public gerenciaBusca(param: any) {
+  public async submitFormulario(aluno: Aluno): Promise<void> {
+    debugger;
+    if (!this.entidadeAluno.alunoId || this.entidadeAluno.alunoId == 0) {
+      await this._alunoService.criarAluno(aluno);
+    } else {
+      await this._alunoService.atualizarAluno(aluno);
+    }
+    this.alunoForm.reset();
+    this.exibirGerenciarAluno = false;
+    this.carregarAlunos();
+  }
+
+  public gerenciaBusca(param: any): void {
     if (this.entradaBusca.length == 0) {
       this.listaAlunosFiltrada = this.listaAlunos;
       return;
