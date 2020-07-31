@@ -9,11 +9,13 @@ import { IconsModule } from './components/icons/icons.module';
 import { MAT_FORM_FIELD_OUTLINE_APPEARANCE } from './util/material-design.config';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { SortBtnComponent } from './components/sort-btn/sort-btn.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 @NgModule({
   declarations: [
     SearchInputComponent, 
-    SortBtnComponent
+    SortBtnComponent, 
+    PaginatorComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { SortBtnComponent } from './components/sort-btn/sort-btn.component';
     IconsModule,
 
     SearchInputComponent,
-    SortBtnComponent
+    SortBtnComponent,
+    PaginatorComponent
   ],
   providers: [
     {

@@ -6,10 +6,12 @@ using System.Text;
 
 namespace Alunos.Application.UseCases
 {
-    public class GetAlunos : IRequest<IEnumerable<AlunoViewModel>>
+    public class GetAlunos : IRequest<PaginatedList<AlunoViewModel>>
     {
         public string Filter { get; set; }
         public SortType SortType { get; set; }
+        public int Page { get; set; }
+        public int PageSize { get; set; } = 10;
     }
 
     public enum SortType

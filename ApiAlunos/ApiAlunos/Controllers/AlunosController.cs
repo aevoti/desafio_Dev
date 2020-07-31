@@ -14,20 +14,26 @@ namespace ApiAlunos.Controllers
     public class AlunosController : ControllerBase
     {
         private readonly IMediator _mediator;
-        private readonly ILogger<AlunosController> _logger;
 
-        public AlunosController(IMediator mediator, ILogger<AlunosController> logger)
+        public AlunosController(IMediator mediator)
         {
             _mediator = mediator;
-            _logger = logger;
         }
 
         // GET: api/Alunos
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AlunoViewModel>>> GetAlunos([FromQuery] string filter, [FromQuery] string sortType)
+        public async Task<ActionResult<IEnumerable<AlunoViewModel>>> GetAlunos([FromQuery] string filter, 
+            [FromQuery] string sortType, [FromQuery] int pageSize = 10, [FromQuery] int page = 0)
         {
-            _logger.LogInformation(Request.Headers.ToString());
-            return Ok(await _mediator.Send(new GetAlunos { Filter = filter, SortType = SortTypeUtil.FromString(sortType) }));
+            var request = new GetAlunos
+            {
+                Filter = filter,
+                SortType = SortTypeUtil.FromString(sortType),
+                Page = page,
+                PageSize = pageSize
+            };
+
+            return Ok(await _mediator.Send(request));
         }
 
         // GET: api/Alunos/5

@@ -30,7 +30,7 @@
     </div>
 </div>
 <ul class="list">
-    <li *ngFor="let aluno of alunos$ | async" class="card list-field-display list-item">
+    <li *ngFor="let aluno of (paginatedAlunos$ | async)?.items" class="card list-field-display list-item">
         <span id="item-id">{{ aluno.alunoId }}</span>
         <div>
             <p>{{ aluno.nome }}</p>
@@ -46,3 +46,9 @@
         </div>
     </li>
 </ul>
+<aln-paginator 
+    [currentPage]="page$ | async" 
+    [total]="(paginatedAlunos$ | async)?.totalCount" 
+    [pageSize]="pageSize" 
+    (pageChange)="onPageChange($event)">
+</aln-paginator>

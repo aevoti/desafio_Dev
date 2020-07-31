@@ -14,16 +14,21 @@ import { SortType } from 'src/app/shared/components/sort-btn/sort-btn.component'
 })
 export class AlunosListComponent implements OnInit {
 
-  alunos$ = this.alunosService.getAll();
+  paginatedAlunos$ = this.alunosService.getAll();
 
   currentFilter$ = new BehaviorSubject<string>('');
   nameSorting$ = new BehaviorSubject<SortType>(SortType.IDLE);
   idSorting$ = new BehaviorSubject<SortType>(SortType.ASC);
+  page$ = new BehaviorSubject<number>(0);
   deleteEvent$ = new Subject<void>();
 
-  searchOpts$ = combineLatest(this.currentFilter$.asObservable(),
+  readonly pageSize = 10;
+
+  searchOpts$ = combineLatest(
+    this.currentFilter$.asObservable(),
     this.nameSorting$.asObservable(),
     this.idSorting$.asObservable(),
+    this.page$.asObservable(),
     this.deleteEvent$.asObservable().pipe(startWith(null))
   )
 
@@ -35,11 +40,13 @@ export class AlunosListComponent implements OnInit {
         map(values => {
           const sortType = this.getSortStr(values[2], values[1]);
           const filter = values[0];
+          const page = values[3];
 
-          return { sortType, filter }
+          return { sortType, filter, page }
         }))
       .subscribe(searchOpts => {
-        this.alunos$ = this.alunosService.getAll(searchOpts.filter, searchOpts.sortType);
+        this.paginatedAlunos$ = this.alunosService
+          .getAll(searchOpts.filter, searchOpts.sortType, searchOpts.page, this.pageSize);
       })
   }
 
@@ -54,6 +61,7 @@ export class AlunosListComponent implements OnInit {
 
   onFilter(filterEvent: string) {
     this.currentFilter$.next(filterEvent);
+    this.page$.next(0);
   }
 
   onNameSort(sortType: SortType) {
@@ -69,6 +77,10 @@ export class AlunosListComponent implements OnInit {
   onIdSort(sortType: SortType) {
     this.idSorting$.next(sortType);
     this.nameSorting$.next(SortType.IDLE);
+  }
+
+  onPageChange(newPage: number) {
+    this.page$.next(newPage);
   }
 
   private getSortStr(idSorting: SortType, nameSorting: SortType) {

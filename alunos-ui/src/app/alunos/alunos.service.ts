@@ -4,15 +4,18 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Aluno } from './aluno';
+import { PaginatedList } from './paginated-list';
 
 @Injectable({ providedIn: 'root' })
 export class AlunosService {
 
     constructor(private http: HttpClient) { }
 
-    getAll(filter: string = null, sortType: string = null): Observable<Aluno[]> {
+    getAll(filter: string = null, sortType: string = null, page = 0, pageSize = 10): Observable<PaginatedList<Aluno>> {
         let params = new HttpParams();
-        
+        params = params.set('page', page.toString());
+        params = params.set('pageSize', pageSize.toString());
+
         if (filter)
             params = params.set('filter', filter);
 
@@ -20,7 +23,7 @@ export class AlunosService {
             params = params.set('sortType', sortType);
 
         return this.http
-            .get<Aluno[]>(`alunos`, { params: params });
+            .get<PaginatedList<Aluno>>(`alunos`, { params: params });
     }
 
     getById(id: number): Observable<Aluno> {

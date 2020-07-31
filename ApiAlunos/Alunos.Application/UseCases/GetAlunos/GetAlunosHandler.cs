@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Alunos.Application.UseCases
 {
-    public class GetAlunosHandler : IRequestHandler<GetAlunos, IEnumerable<AlunoViewModel>>
+    public class GetAlunosHandler : IRequestHandler<GetAlunos, PaginatedList<AlunoViewModel>>
     {
         private readonly IAlunoRepository _alunoRepository;
         private readonly IMapper _mapper;
@@ -22,7 +22,7 @@ namespace Alunos.Application.UseCases
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<AlunoViewModel>> Handle(GetAlunos request, CancellationToken cancellationToken)
+        public async Task<PaginatedList<AlunoViewModel>> Handle(GetAlunos request, CancellationToken cancellationToken)
         {
             var query = _alunoRepository.GetAlunos();
 
@@ -57,8 +57,19 @@ namespace Alunos.Application.UseCases
                     break;
             }
 
-            return (await query.ToListAsync())
-                .Select(a => _mapper.Map<AlunoViewModel>(a));
+            var count = await query.CountAsync();
+
+            query = query.Skip(request.PageSize * request.Page)
+                .Take(request.PageSize);
+
+           
+            return new PaginatedList<AlunoViewModel>() {
+                Items = (await query.ToListAsync())
+                    .Select(a => _mapper.Map<AlunoViewModel>(a)),
+                TotalCount = count,
+                Page = request.Page,
+                PageSize = request.PageSize
+            };
         }
     }
 }

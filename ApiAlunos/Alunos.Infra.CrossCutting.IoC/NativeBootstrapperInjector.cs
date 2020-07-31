@@ -19,7 +19,7 @@ namespace Alunos.Infra.CrossCutting.IoC
             services.AddScoped<IRequestHandler<RegisterAluno, bool>, RegisterAlunoHandler>();
             services.AddScoped<IRequestHandler<DeleteAluno, bool>, DeleteAlunoHandler>();
             services.AddScoped<IRequestHandler<UpdateAluno, bool>, UpdateAlunoHandler>();
-            services.AddScoped<IRequestHandler<GetAlunos, IEnumerable<AlunoViewModel>>, GetAlunosHandler>();
+            services.AddScoped<IRequestHandler<GetAlunos, PaginatedList<AlunoViewModel>>, GetAlunosHandler>();
             services.AddScoped<IRequestHandler<GetAlunoById, AlunoViewModel>, GetAlunoByIdHandler>();
 
 
