@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Subscription, of } from 'rxjs';
@@ -7,6 +7,8 @@ import { switchMap, map, tap } from 'rxjs/operators';
 
 import { AlunosService } from '../alunos.service';
 import { Aluno } from '../aluno';
+import { AlertType, AlertDialogData } from 'src/app/shared/components/alert-dialog/alert-dialog-data';
+import { AlertDialogService } from 'src/app/shared/components/alert-dialog/alert-dialog.service';
 
 @Component({
   selector: 'aln-alunos-form',
@@ -22,7 +24,9 @@ export class AlunosFormComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private alunosService: AlunosService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private dialogService: AlertDialogService,
+    private router: Router) { }
 
   private routeSub: Subscription;
   ngOnInit(): void {
@@ -82,10 +86,8 @@ export class AlunosFormComponent implements OnInit {
     this.alunosService
       .register(this.alunosForm.value)
       .subscribe(
-        res => {
-          console.log('REGISTERED');
-        },
-        err => { this.alunosForm.reset() }
+        res => this.openSuccessDialog("Usuário criado com sucesso"),
+        err => { this.openFailureDialog("Não foi possível criar usuário") }
       );
   }
 
@@ -93,8 +95,42 @@ export class AlunosFormComponent implements OnInit {
     this.alunosService
       .update(this.currentAluno.alunoId, this.alunosForm.value)
       .subscribe(
-        res => console.log("UPDATED"),
-        err => { console.log(err); this.alunosForm.reset() }
+        res => this.openSuccessDialog("Usuário editado com sucesso"),
+        err => { this.openFailureDialog("Não foi possível editar usuário") }
       )
+  }
+
+  openSuccessDialog(successMsg: string) {
+    const dialogData: AlertDialogData = {
+      title: 'Sucesso!',
+      message: successMsg,
+      showOKBtn: true,
+      showCancelBtn: false,
+      alertType: AlertType.SUCCESS
+    };
+
+    const dialogRef = this.dialogService.openDialog(
+      dialogData, { disableClose: false });
+
+    dialogRef.afterClosed().subscribe(ok => {
+      this.router.navigate(['alunos'])
+    });
+  }
+
+  openFailureDialog(failureMsg: string) {
+    const dialogData: AlertDialogData = {
+      title: 'Erro!',
+      message: failureMsg,
+      showOKBtn: true,
+      showCancelBtn: false,
+      alertType: AlertType.DANGER
+    };
+
+    const dialogRef = this.dialogService.openDialog(
+      dialogData, { disableClose: true });
+
+    dialogRef.afterClosed().subscribe(ok => {
+      this.alunosForm.reset();
+    });
   }
 }

@@ -6,6 +6,9 @@ import { map, tap, startWith } from 'rxjs/operators';
 import { Aluno } from '../aluno';
 import { AlunosService } from '../alunos.service';
 import { SortType } from 'src/app/shared/components/sort-btn/sort-btn.component';
+import { AlertDialogService } from 'src/app/shared/components/alert-dialog/alert-dialog.service';
+import { AlertDialogData, AlertType } from 'src/app/shared/components/alert-dialog/alert-dialog-data';
+
 
 @Component({
   selector: 'aln-alunos-list',
@@ -32,7 +35,8 @@ export class AlunosListComponent implements OnInit {
     this.deleteEvent$.asObservable().pipe(startWith(null))
   )
 
-  constructor(private alunosService: AlunosService) { }
+  constructor(private alunosService: AlunosService,
+    private dialogService: AlertDialogService) { }
 
   ngOnInit(): void {
     this.searchOpts$
@@ -57,6 +61,25 @@ export class AlunosListComponent implements OnInit {
         res => this.deleteEvent$.next(),
         err => { }
       )
+  }
+
+  openDeleteDialog(aluno: Aluno) {
+    const dialogData: AlertDialogData = {
+      title: 'Deseja prosseguir?',
+      message: `Você realmente quer excluir o aluno ${aluno.nome}?`,
+      showOKBtn: true,
+      showCancelBtn: true,
+      alertType: AlertType.WARNING
+    };
+
+    const dialogRef = this.dialogService.openDialog(
+      dialogData, { disableClose: true });
+
+    dialogRef.afterClosed().subscribe(ok => {
+      if (ok) {
+        this.delete(aluno);
+      }
+    });
   }
 
   onFilter(filterEvent: string) {

@@ -40,7 +40,7 @@
             <a [routerLink]="['/', 'alunos', aluno.alunoId, 'edit']" mat-icon-button>
                 <i-feather class="icon" name="edit"></i-feather>
             </a>
-            <button mat-icon-button (click)="delete(aluno)">
+            <button mat-icon-button (click)="openDeleteDialog(aluno)">
                 <i-feather class="icon" name="trash"></i-feather>
             </button>
         </div>
