@@ -1,4 +1,5 @@
-﻿using Alunos.Application.UseCases;
+﻿using Alunos.Application.Errors;
+using Alunos.Application.UseCases;
 using Alunos.Application.ViewModels;
 using Alunos.Domain;
 using Alunos.Infra.Data;
@@ -21,6 +22,9 @@ namespace Alunos.Infra.CrossCutting.IoC
             services.AddScoped<IRequestHandler<UpdateAluno, bool>, UpdateAlunoHandler>();
             services.AddScoped<IRequestHandler<GetAlunos, PaginatedList<AlunoViewModel>>, GetAlunosHandler>();
             services.AddScoped<IRequestHandler<GetAlunoById, AlunoViewModel>, GetAlunoByIdHandler>();
+
+            // Error handling
+            services.AddScoped<INotificationHandler<Error>, ErrorHandler>();
 
 
             // Infra Data

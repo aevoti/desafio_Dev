@@ -1,4 +1,6 @@
-﻿using Alunos.Domain;
+﻿using Alunos.Application.Errors;
+using Alunos.Application.Util;
+using Alunos.Domain;
 using Alunos.Infra.Data;
 using MediatR;
 using System.Threading;
@@ -10,11 +12,13 @@ namespace Alunos.Application.UseCases
     {
         private readonly AppDbContext _context;
         private readonly IAlunoRepository _alunoRepository;
+        private readonly IMediator _mediator;
 
-        public RegisterAlunoHandler(AppDbContext context, IAlunoRepository alunoRepository)
+        public RegisterAlunoHandler(AppDbContext context, IAlunoRepository alunoRepository, IMediator mediator)
         {
             _context = context;
             _alunoRepository = alunoRepository;
+            _mediator = mediator;
         }
 
         public async Task<bool> Handle(RegisterAluno request, CancellationToken cancellationToken)
@@ -23,7 +27,7 @@ namespace Alunos.Application.UseCases
 
             if (!validationResult.IsValid)
             {
-                // Todo: domain notification
+                validationResult.PublishErrors(_mediator);
                 return false;
             }
 
@@ -33,7 +37,7 @@ namespace Alunos.Application.UseCases
 
             if (alunoComMesmoEmail != null && alunoComMesmoEmail != aluno)
             {
-                // Todo: domain notification
+                await _mediator.Publish(new Error($"Já existe um aluno com o e-mail {request.Email}"));
                 return false;
             }
 

@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 
 import { Aluno } from './aluno';
 import { PaginatedList } from './paginated-list';
+import { ApiResponse } from '../core/api-util/api-response';
+import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class AlunosService {
@@ -23,12 +25,14 @@ export class AlunosService {
             params = params.set('sortType', sortType);
 
         return this.http
-            .get<PaginatedList<Aluno>>(`alunos`, { params: params });
+            .get<ApiResponse>(`alunos`, { params: params })
+            .pipe(map(res => res.data));
     }
 
     getById(id: number): Observable<Aluno> {
         return this.http
-            .get<Aluno>(`alunos/${id}`);
+            .get<ApiResponse>(`alunos/${id}`)
+            .pipe(map(res => res.data));
     }
 
     register(aluno: { email: string; none: string } | Aluno) {

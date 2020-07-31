@@ -1,4 +1,5 @@
-﻿using Alunos.Application.UseCases;
+﻿using Alunos.Application.Errors;
+using Alunos.Application.UseCases;
 using Alunos.Application.ViewModels;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -11,18 +12,19 @@ namespace ApiAlunos.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AlunosController : ControllerBase
+    public class AlunosController : ApiController
     {
         private readonly IMediator _mediator;
 
-        public AlunosController(IMediator mediator)
+        public AlunosController(INotificationHandler<Error> errors, IMediator mediator)
+            : base(errors)
         {
             _mediator = mediator;
         }
 
         // GET: api/Alunos
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AlunoViewModel>>> GetAlunos([FromQuery] string filter, 
+        public async Task<IActionResult> GetAlunos([FromQuery] string filter,
             [FromQuery] string sortType, [FromQuery] int pageSize = 10, [FromQuery] int page = 0)
         {
             var request = new GetAlunos
@@ -33,12 +35,12 @@ namespace ApiAlunos.Controllers
                 PageSize = pageSize
             };
 
-            return Ok(await _mediator.Send(request));
+            return Response(await _mediator.Send(request));
         }
 
         // GET: api/Alunos/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<AlunoViewModel>> GetAluno(int id)
+        public async Task<IActionResult> GetAluno(int id)
         {
             var aluno = await _mediator.Send(new GetAlunoById(id));
 
@@ -47,7 +49,7 @@ namespace ApiAlunos.Controllers
                 return NotFound();
             }
 
-            return aluno;
+            return Response(aluno);
         }
 
         // PUT: api/Alunos/5
@@ -61,25 +63,25 @@ namespace ApiAlunos.Controllers
 
             await _mediator.Send(request);
 
-            return NoContent();
+            return Response();
         }
 
         // POST: api/Alunos
         [HttpPost]
-        public async Task<ActionResult> PostAluno(RegisterAluno request)
+        public async Task<IActionResult> PostAluno(RegisterAluno request)
         {
             await _mediator.Send(request);
 
-            return Ok();
+            return Response();
         }
 
         // DELETE: api/Alunos/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteAluno(int id)
+        public async Task<IActionResult> DeleteAluno(int id)
         {
             await _mediator.Send(new DeleteAluno(id));
 
-            return Ok();
+            return Response();
         }
     }
 }
