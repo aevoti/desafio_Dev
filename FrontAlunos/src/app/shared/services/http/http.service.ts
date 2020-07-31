@@ -19,7 +19,9 @@ export class HttpService<T> {
 
     if (queryParams) { params = this.buildParams(queryParams); }
 
-    return this.http.get<T[]>(`${this.endpoint}${params}`, { observe: 'response'});
+      return this.http.get<T[]>(`${this.endpoint}${params}`, { observe: 'response', headers: new HttpHeaders({
+        "Access-Control-Expose-Headers": "X-Pagination"
+      }) });
   }
 
   get(id: number): Observable<T> {
@@ -41,7 +43,6 @@ export class HttpService<T> {
   private getHeaders(): HttpHeaders {
     const headers = new HttpHeaders({
       "Content-Type": "application/json; charset=utf-8",
-      "Access-Control-Expose-Headers": "X-Pagination"
     });
 
     return headers;

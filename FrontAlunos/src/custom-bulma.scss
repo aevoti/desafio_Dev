@@ -5,19 +5,23 @@
 // 2. Set your own initial variables
 // Update blue
 $blue: #72d0eb;
-// Add pink and its invert
-$pink: #ffb3b3;
-$pink-invert: #fff;
-$pink-chocado: #ff0abf;
+$verde-aevo: #008671;
+$verde-aevo-invert: findColorInvert($verde-aevo);
+$amarelo-aevo: #CAC035;
+$amarelo-aevo-invert: findColorInvert($amarelo-aevo);
+$laranja-aevo: #C49152;
+$laranja-aevo-invert: findColorInvert($laranja-aevo);
+$white: #ffffff;
 // Add a serif family
 $family-serif: "Roboto", "Helvetica Neue", sans-serif;
 
 // 3. Set the derived variables
 // Use the new pink as the primary color
-$primary: $pink-chocado;
-$primary-invert: $pink-invert;
+$primary: $verde-aevo;
+$primary-invert: $verde-aevo-invert;
+$secondary:$amarelo-aevo;
+$secondary-invert: $amarelo-aevo-invert;
 // Use the existing orange as the danger color
-$danger: $orange;
 // Use the new serif family
 $family-primary: $family-serif;
 
@@ -37,7 +41,10 @@ $addColors: (
   "twitter":($twitter, $twitter-invert),
   "linkedin": ($linkedin, $linkedin-invert),
   "github": ($github, $github-invert),
-  "love": ($love, $love-invert)
+  "love": ($love, $love-invert),
+  "amarelo-aevo": ($amarelo-aevo, $amarelo-aevo-invert),
+  "verde-aevo": ($verde-aevo, $verde-aevo-invert),
+  "laranja-aevo": ($laranja-aevo, $laranja-aevo-invert)
 );
 $colors: map-merge($colors, $addColors);
 
