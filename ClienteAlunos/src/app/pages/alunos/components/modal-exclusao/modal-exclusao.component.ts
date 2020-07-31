@@ -18,13 +18,11 @@ export class ModalExclusaoComponent implements OnInit {
   }
 
   ngOnChanges(): void {
-    console.log(this.idAlunoExclusao);
     this._buscarAluno();
   }
 
   private async _buscarAluno(): Promise<void> {
     this.alunoExcluir = await this._alunoService.obterAlunoPorId(this.idAlunoExclusao);
-    console.log(this.alunoExcluir);
   }
 
   public async excluirAluno(): Promise<void> {

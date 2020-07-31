@@ -34,7 +34,6 @@ export class AlunoService {
       this._toastr.success('Aluno cadastrado.', 'Sucesso!');
     } catch (error) {
       this._toastr.error('Houve um erro ao cadastrar.', 'Erro!');
-      console.log(error);
     }
   }
 
@@ -45,7 +44,6 @@ export class AlunoService {
       this._toastr.success('Aluno atualizado.', 'Sucesso!');
     } catch (error) {
       this._toastr.error('Houve um erro ao atualizar.', 'Erro!');
-      console.log(error);
     }
   }
 
@@ -56,7 +54,6 @@ export class AlunoService {
       this._toastr.success('Aluno excluído.', 'Sucesso!');
     } catch (error) {
       this._toastr.error('Houve um erro ao excluir.', 'Erro!');
-      console.log(error);
     }
   }
 }

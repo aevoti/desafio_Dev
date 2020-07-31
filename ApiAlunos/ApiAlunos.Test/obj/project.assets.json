@@ -10192,23 +10192,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lucas.santos\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Lucas\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lucas.santos\\Desktop\\desafio_Dev\\ApiAlunos\\ApiAlunos.Test\\ApiAlunos.Test.csproj",
+      "projectUniqueName": "C:\\Users\\Lucas\\Desktop\\projects\\desafio_Dev\\ApiAlunos\\ApiAlunos.Test\\ApiAlunos.Test.csproj",
       "projectName": "ApiAlunos.Test",
-      "projectPath": "C:\\Users\\lucas.santos\\Desktop\\desafio_Dev\\ApiAlunos\\ApiAlunos.Test\\ApiAlunos.Test.csproj",
-      "packagesPath": "C:\\Users\\lucas.santos\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lucas.santos\\Desktop\\desafio_Dev\\ApiAlunos\\ApiAlunos.Test\\obj\\",
+      "projectPath": "C:\\Users\\Lucas\\Desktop\\projects\\desafio_Dev\\ApiAlunos\\ApiAlunos.Test\\ApiAlunos.Test.csproj",
+      "packagesPath": "C:\\Users\\Lucas\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Lucas\\Desktop\\projects\\desafio_Dev\\ApiAlunos\\ApiAlunos.Test\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\lucas.santos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10221,8 +10217,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\lucas.santos\\Desktop\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj": {
-              "projectPath": "C:\\Users\\lucas.santos\\Desktop\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj"
+            "C:\\Users\\Lucas\\Desktop\\projects\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj": {
+              "projectPath": "C:\\Users\\Lucas\\Desktop\\projects\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj"
             }
           }
         }

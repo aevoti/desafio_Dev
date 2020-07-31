@@ -1,8 +1,6 @@
 C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos.Test\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos.Test\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos.Test\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
-C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos.Test\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.ApiAlunosCrud - Web Deploy.json
-C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos.Test\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
 C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos.Test\bin\Debug\netcoreapp3.1\ApiAlunos.exe
 C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos.Test\bin\Debug\netcoreapp3.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
 C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos.Test\bin\Debug\netcoreapp3.1\xunit.runner.reporters.netcoreapp10.dll
@@ -493,7 +491,6 @@ C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos.Test\bin\Debug\n
 C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos.Test\bin\Debug\netcoreapp3.1\System.Text.Json.dll
 C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos.Test\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.InMemory.dll
 C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos.Test\obj\Debug\netcoreapp3.1\ApiAlunos.Test.csproj.CoreCompileInputs.cache
-C:\Users\Lucas\Desktop\projects\desafio_Dev\ApiAlunos\ApiAlunos.Test\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.local.json
 C:\Users\lucas.santos\Desktop\desafio_Dev\ApiAlunos\ApiAlunos.Test\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\lucas.santos\Desktop\desafio_Dev\ApiAlunos\ApiAlunos.Test\bin\Debug\netcoreapp3.1\testhost.exe
 C:\Users\lucas.santos\Desktop\desafio_Dev\ApiAlunos\ApiAlunos.Test\bin\Debug\netcoreapp3.1\testhost.dll

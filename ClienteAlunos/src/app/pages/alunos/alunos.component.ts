@@ -52,7 +52,6 @@ export class AlunosComponent implements OnInit {
   }
 
   public async submitFormulario(aluno: Aluno): Promise<void> {
-    debugger;
     if (!this.entidadeAluno.alunoId || this.entidadeAluno.alunoId == 0) {
       await this._alunoService.criarAluno(aluno);
     } else {
@@ -63,13 +62,13 @@ export class AlunosComponent implements OnInit {
     this.carregarAlunos();
   }
 
-  public gerenciaBusca(param: any): void {
-    if (this.entradaBusca.length == 0) {
+  public gerenciaBusca(param?: any): void {
+    if (this.entradaBusca && this.entradaBusca.length == 0) {
       this.listaAlunosFiltrada = this.listaAlunos;
       return;
     }
 
-    if (isNaN(Number(this.entradaBusca))) { //BuscaNome
+    if (isNaN(Number(this.entradaBusca)) && this.entradaBusca) { //BuscaNome
       this.listaAlunosFiltrada = this.listaAlunos.filter(x => x.nome.toUpperCase().match(this.entradaBusca.toUpperCase()));
     } else { //BuscaId
       this.listaAlunosFiltrada = this.listaAlunos.filter(x => x.alunoId == Number(this.entradaBusca));

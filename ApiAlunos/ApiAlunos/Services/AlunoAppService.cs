@@ -58,11 +58,13 @@ namespace ApiAlunos.Services
                 var alunoExiste = await ObterAlunoPorId(aluno.AlunoId);
                 if (alunoExiste != null)
                 {
-                    if (string.IsNullOrEmpty(alunoExiste.Email) || string.IsNullOrEmpty(alunoExiste.Nome))
+                    if (string.IsNullOrEmpty(aluno.Email) || string.IsNullOrEmpty(aluno.Nome))
                     {
                         throw new Exception("Todos os campos são obrigatórios!");
                     }
-                    _alunoRepository.Update(aluno);
+                    alunoExiste.Email = aluno.Email;
+                    alunoExiste.Nome = aluno.Nome;
+                    _alunoRepository.Update(alunoExiste);
                     return await _alunoRepository.SaveChangesAsync() > 0;
                 }
                 else
