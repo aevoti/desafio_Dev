@@ -1,7 +1,10 @@
 # Mensagem Para o Avaliador
 Olá,<br>
 Seguem algumas considerações diante da finalização do projeto proposto.<br>
-Disponibilizei os projetos do desafio (API e CLIENTE) no Azure, incluindo a base de dados.<br>
+Disponibilizei os projetos do desafio (API e CLIENTE) no Azure, utilizando a inscrição gratuíta,incluindo a base de dados.<br>
+
+API - https://apialuno.azurewebsites.net/api-docs/index.html
+CLIENTE - https://clientecrudalunosdev.azurewebsites.net/
 
 ## API -
 Adotei o padrão de projeto de repositórios e interfaces, adicionei uma compressão para diminuir o tamanho das respostas da API, implementei bibliotecas como:<br>
