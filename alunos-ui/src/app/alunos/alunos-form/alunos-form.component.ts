@@ -86,8 +86,8 @@ export class AlunosFormComponent implements OnInit {
     this.alunosService
       .register(this.alunosForm.value)
       .subscribe(
-        res => this.openSuccessDialog("Usuário criado com sucesso"),
-        err => { this.openFailureDialog("Não foi possível criar usuário") }
+        res => this.openSuccessDialog("Aluno criado com sucesso."),
+        err => { this.buildErrorMessage("Não foi possível criar aluno.", err?.error?.errors); }
       );
   }
 
@@ -95,8 +95,8 @@ export class AlunosFormComponent implements OnInit {
     this.alunosService
       .update(this.currentAluno.alunoId, this.alunosForm.value)
       .subscribe(
-        res => this.openSuccessDialog("Usuário editado com sucesso"),
-        err => { this.openFailureDialog("Não foi possível editar usuário") }
+        res => this.openSuccessDialog("Aluno editado com sucesso."),
+        err => { console.log(err); this.openFailureDialog(this.buildErrorMessage("Não foi possível editar aluno.", err?.error?.errors)) }
       )
   }
 
@@ -132,5 +132,12 @@ export class AlunosFormComponent implements OnInit {
     dialogRef.afterClosed().subscribe(ok => {
       this.alunosForm.reset();
     });
+  }
+
+  buildErrorMessage(mainMessage: string, errors: string[]){
+    if (errors)
+      return mainMessage + '\n' + errors.join(". \n");
+    
+      return mainMessage;
   }
 }
