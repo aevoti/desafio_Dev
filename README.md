@@ -1,5 +1,5 @@
 ## Link para demo
-url: https://aevo-desafio.rj.r.appspot.com/alunos
+url: https://aevo-desafio.rj.r.appspot.com
 
 # Desafio Final para Analista Desenvolvedor da AEVO
 
