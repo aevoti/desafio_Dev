@@ -36,9 +36,6 @@ Para a segunda etapa do teste, você deverá desenvolver uma SPA (Single Page Ap
 - Ver a lista de alunos cadastrados
 - Criar um novo aluno
 - Editar um aluno existente
-- Pesquisar um aluno pelo nome
-- Pesquisar um aluno pelo ID
-- Reordenar a lista de Alunos por ordem alfabética
 
 
 ### Observações importantes:
@@ -46,7 +43,7 @@ A base para o projeto Front-End não está neste repositório. Você deverá cri
 Você não deve se prender somente aos arquivos do repositório. Fique à vontade para criar outros.<br>
 Você pode usar ferramentas de automação, mas deverá informar o uso completo para funcionamento do desafio.<br><br>
 
-Serão considerados pontos positivos: 
+Serão considerados pontos positivos, porém não são obrigatórios: 
 - utilização de testes de unidade
 - boas práticas de orientação a objetos
 - design patterns e rotinas para testes
