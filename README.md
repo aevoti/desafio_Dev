@@ -36,6 +36,7 @@ Para a segunda etapa do teste, você deverá desenvolver uma SPA (Single Page Ap
 - Ver a lista de alunos cadastrados
 - Criar um novo aluno
 - Editar um aluno existente
+- PEsquisar um aluno pelo nome
 
 
 ### Observações importantes:
