@@ -1,3 +1,23 @@
+# Mensagem Para o Avaliador
+Olá,<br>
+Seguem algumas considerações diante da finalização do projeto proposto.<br>
+Disponibilizei os projetos do desafio (API e CLIENTE) no Azure, utilizando a inscrição gratuíta,incluindo a base de dados.<br>
+
+API - https://apialuno.azurewebsites.net/api-docs/index.html
+CLIENTE - https://clientecrudalunosdev.azurewebsites.net/
+
+## API -
+Adotei o padrão de projeto de repositórios e interfaces, adicionei uma compressão para diminuir o tamanho das respostas da API, implementei bibliotecas como:<br>
+Serilog ~ Log's são lançados durante a execução da API;<br>
+Swagger ~ Uma interface de teste/documentação para a API é criada automaticamente na url ~/api-docs;<br>
+Tests ~ Implementei testes com o xUnit dentro da solutin da API, na pasta de tests
+
+## CLIENTE WEB -
+Implementei bibliotecas Angular para paginação da lista, toastr (notificações amigaveis), componentizei o layout, arquiteturei os diretórios de forma simples e explicativa.<br>
+Para as buscas eu optei por um unico input que faz a diferenciação de busca por Id/Nome, atualizando de acordo com o evento "KeyUp" a lista de alunos.<br>
+Para confirmar a exclusão de alunos, implementei modal de confirmação.<br>
+
+
 # Desafio Final para Analista Desenvolvedor da AEVO
 
 Olá candidato,

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ApiAlunos.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
+    [DbContext(typeof(AlunoDbContext))]
     [Migration("20190820212128_inicial")]
     partial class inicial
     {

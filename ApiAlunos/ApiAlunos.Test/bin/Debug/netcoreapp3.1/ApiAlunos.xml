@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ApiAlunos</name>
+    </assembly>
+    <members>
+        <member name="M:ApiAlunos.Controllers.AlunosController.ObterAlunos">
+            <summary>
+            Retorna todos os Alunos do banco de dados
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ApiAlunos.Controllers.AlunosController.ObterAlunoPorId(System.Int32)">
+            <summary>
+            Retorna um Aluno, através do ID
+            </summary>
+            <param name="AlunoId">AlunoId</param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiAlunos.Controllers.AlunosController.AtualizarAluno(ApiAlunos.Models.Aluno)">
+            <summary>
+            Atualiza um Aluno existente no banco de dados
+            </summary>
+            <param name="Aluno">Aluno</param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiAlunos.Controllers.AlunosController.InserirAluno(ApiAlunos.Models.Aluno)">
+            <summary>
+            Insere aluno no banco de dados
+            </summary>
+            <param name="Aluno">Aluno</param>
+            <returns></returns>
+        </member>
+        <member name="M:ApiAlunos.Controllers.AlunosController.DeletarAluno(System.Int32)">
+            <summary>
+            Remove do banco de dados um aluno, através do AlunoId
+            </summary>
+            <param name="AlunoId">AlunoId</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

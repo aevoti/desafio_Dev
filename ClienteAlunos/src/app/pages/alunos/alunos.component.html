@@ -1,0 +1,85 @@
+<div class="container mt-3 mb-3">
+    <div class="card col-md-12">
+        <h1 class="card-title d-flex mb-0 p-2" style="place-items: center;"> <svg width="1em" height="1em"
+                viewBox="0 0 16 16" class="bi bi-person-bounding-box mr-3" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z" />
+                <path fill-rule="evenodd"
+                    d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+            </svg>Alunos</h1>
+        <hr class="my-2" style="margin-top: 0 !important;">
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="inputBusca">
+                    <h3>Busca</h3>
+                </label>
+                <input type="text" class="form-control" id="inputBusca" placeholder="Nome ou Id"
+                    [(ngModel)]="entradaBusca" (keyup)="gerenciaBusca($event)">
+            </div>
+            <div class="form-group col-md-1">
+                <label class="invisible">
+                    <h3>~</h3>
+                </label>
+                <button type="button" style="place-items: center;"
+                    class="btn btn-primary form-control d-flex justify-content-around center" title="Buscar"
+                    (click)="gerenciaBusca()"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                        class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+                        <path fill-rule="evenodd"
+                            d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+                    </svg></button>
+            </div>
+            <div class="form-group col-md-5 barraVertical">
+                <label class="invisible">.</label>
+                <button type="button" style="place-items: center;"
+                    class="btn btn-info form-control d-flex justify-content-around center" title="Adicionar"
+                    (click)="cliqueAdicionar()">ADICONAR NOVO ALUNO</button>
+            </div>
+        </div>
+
+        <div class="border rounded mb-2" style="padding: 5px;" *ngIf="exibirGerenciarAluno">
+            <form [formGroup]="alunoForm" (ngSubmit)="submitFormulario(alunoForm.value)">
+                <div class="row">
+                    <div class="form-group col-md-2">
+                        <label for="inputId">Id Aluno</label>
+                        <input formControlName="alunoId" type="text" class="form-control" id="inputId" readonly />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputnome">Nome</label>
+                        <input formControlName="nome" type="text" class="form-control" id="inputnome" placeholder="Nome"
+                            required>
+                        <small *ngIf="!alunoForm.get('nome').valid && alunoForm.get('nome').touched"
+                            class="form-text text-danger">É obrigatório inserir um Nome</small>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputemail">Email</label>
+                        <input formControlName="email" type="email" class="form-control" id="inputemail"
+                            aria-describedby="emailHelp" placeholder="Email" required>
+                        <small *ngIf="!alunoForm.get('email').valid && alunoForm.get('email').touched"
+                            class="form-text text-danger">Insira um email válido</small>
+                    </div>
+                    <div class="row col-md-12 d-flex justify-content-end float-right">
+                        <button type="submit" class="btn btn-primary float-right" title="Salvar"
+                            [disabled]="!alunoForm.valid">Salvar</button>
+                        <button class="btn btn-danger float-right ml-3" (click)="exibirGerenciarAluno = false"
+                            title="Cancelar">Cancelar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <app-lista-alunos [listaAlunos]="listaAlunosFiltrada" (emitirEditarClique)="eventoEditarAluno($event)"
+            (emitirAtualizarListaParent)="carregarAlunos()">
+        </app-lista-alunos>
+
+        <div *ngIf="!listaAlunosFiltrada || listaAlunosFiltrada.length == 0"
+            class="col-md-12 d-flex justify-content-center">
+            <div class="text-center " style="min-height: 100px !important">
+                <h3 *ngIf="!entradaBusca">Nenhum Aluno Cadastrado!</h3>
+                <h3 *ngIf="entradaBusca">Nenhum Aluno Para o Filtro Informado!</h3>
+            </div>
+        </div>
+    </div>
+</div>
