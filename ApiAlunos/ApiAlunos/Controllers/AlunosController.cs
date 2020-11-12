@@ -1,7 +1,9 @@
 ﻿using ApiAlunos.Context;
+using ApiAlunos.Interfaces;
 using ApiAlunos.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,32 +14,71 @@ namespace ApiAlunos.Controllers
     [ApiController]
     public class AlunosController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly IAlunoRepository _alunoRepo;
 
-        public AlunosController(AppDbContext context)
+        public AlunosController(IAlunoRepository alunoRepo)
         {
-            _context = context;
+            this._alunoRepo = alunoRepo;
         }
 
         // GET: api/Alunos
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Aluno>>> GetAlunos()
         {
-            return await _context.Alunos.ToListAsync();
+            try
+            {
+                return await _alunoRepo.ObterTodos();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+
         }
 
         // GET: api/Alunos/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Aluno>> GetAluno(int id)
+        public async Task<ActionResult<Aluno>> GetAluno(int? id)
         {
-            var aluno = await _context.Alunos.FindAsync(id);
-
-            if (aluno == null)
+            if(id == null)
             {
-                return NotFound();
+                return BadRequest();
+            }
+            try
+            {
+                var aluno = await _alunoRepo.ObterPorId(id.Value);
+
+                if (aluno == null)
+                {
+                    return NotFound();
+                }
+
+                return aluno;
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
             }
 
-            return aluno;
+        }
+        [HttpGet("aluno/{nome}")]
+        public async Task<ActionResult<Aluno>> GetAlunoByName(string nome)
+        {
+            try
+            {
+                var aluno = (await _alunoRepo.Buscar(x => x.Nome == nome)).First();
+
+                if (aluno == null)
+                {
+                    return NotFound();
+                }
+
+                return aluno;
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
 
         // PUT: api/Alunos/5
@@ -49,15 +90,14 @@ namespace ApiAlunos.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(aluno).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _alunoRepo.Atualizar(aluno);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AlunoExists(id))
+                if (!await AlunoExistsAsync(id))
                 {
                     return NotFound();
                 }
@@ -72,33 +112,50 @@ namespace ApiAlunos.Controllers
 
         // POST: api/Alunos
         [HttpPost]
-        public async Task<ActionResult<Aluno>> PostAluno(Aluno aluno)
+        public async Task<ActionResult> PostAluno(Aluno aluno)
         {
-            _context.Alunos.Add(aluno);
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _alunoRepo.Adicionar(aluno);
+                return CreatedAtAction("GetAluno", new { id = aluno.AlunoId }, aluno);
+            }
 
-            return CreatedAtAction("GetAluno", new { id = aluno.AlunoId }, aluno);
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
 
         // DELETE: api/Alunos/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Aluno>> DeleteAluno(int id)
+        public async Task<ActionResult<Aluno>> DeleteAluno(int? id)
         {
-            var aluno = await _context.Alunos.FindAsync(id);
-            if (aluno == null)
+            if(id == null)
             {
-                return NotFound();
+                return BadRequest();
             }
+            try
+            {
+                var aluno = await _alunoRepo.ObterPorId(id.Value);
+                if (aluno == null)
+                {
+                    return NotFound();
+                }
 
-            _context.Alunos.Remove(aluno);
-            await _context.SaveChangesAsync();
-
-            return aluno;
+                await _alunoRepo.Remover(aluno);
+                return aluno;
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+            
         }
 
-        private bool AlunoExists(int id)
+        private async Task<bool> AlunoExistsAsync(int id)
         {
-            return _context.Alunos.Any(e => e.AlunoId == id);
+            var aluno = await _alunoRepo.ObterPorId(id);
+            return aluno != null;
         }
     }
 }

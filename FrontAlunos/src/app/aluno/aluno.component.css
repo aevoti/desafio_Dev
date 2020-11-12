@@ -1,0 +1,10 @@
+th,td{
+    text-align: center;
+}
+th{
+    background-color:#422956;
+    color: white;
+}
+tr>th:nth-child(-n + 2):hover {
+    cursor:pointer !important;
+}
