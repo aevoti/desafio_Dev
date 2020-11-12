@@ -1,0 +1,6 @@
+<button mat-button (click)="onButtonClick()">
+    {{ property }}
+
+    <i-feather *ngIf="isAscSort(sortType)" class="icon" name="arrow-down"></i-feather>
+    <i-feather *ngIf="isDecSort(sortType)" class="icon" name="arrow-up"></i-feather>
+</button>

@@ -1,0 +1,34 @@
+@mixin breakpoint-up($point) {
+  @if $point==xlarge {
+    @media (min-width: 1920px) {
+      @content;
+    }
+  } @else if $point==large {
+    @media (min-width: 1440px) {
+      @content;
+    }
+  } @else if $point== medium128 {
+    @media (min-width: 1280px) {
+      @content;
+    }
+  } @else if $point== medium {
+    @media (min-width: 1024px) {
+      @content;
+    }
+  } @else if $point== small12 {
+    @media (min-width: 840px) {
+      @content;
+    }
+  } @else if $point==small {
+    @media (min-width: 600px) {
+      @content;
+    }
+  } @else if $point==xsmall {
+    @media (min-width: 360px) {
+      @content;
+    }
+  }
+}
+@function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
+  @return if(breakpoint-min($name, $breakpoints) == null, "", "#{$name}");
+}

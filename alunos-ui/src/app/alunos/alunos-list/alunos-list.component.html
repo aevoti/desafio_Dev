@@ -1,0 +1,54 @@
+<a routerLink="/alunos/new" mat-button class="icon-text-btn semi-bold">
+    <i-feather class="icon" name="plus"></i-feather>
+    Adicionar aluno
+</a>
+
+<div class="list-header card">
+    <div class="title-row">
+        <h2>Alunos</h2>
+        <aln-search-input (search)="onFilter($event)"></aln-search-input>
+    </div>
+    <div class="fields list-field-display">
+        <div>
+            <aln-sort-btn 
+                property="Id" 
+                [sortType]="idSorting$ | async" 
+                [allowIdle]="false" 
+                (sort)="onIdSort($event)">
+            </aln-sort-btn>
+        </div>
+        <div>
+            <aln-sort-btn 
+                property="Nome" 
+                [sortType]="nameSorting$ | async" 
+                (sort)="onNameSort($event)">
+            </aln-sort-btn>
+        </div>
+        <div>
+            Ações
+        </div>
+    </div>
+</div>
+<ul class="list">
+    <li *ngFor="let aluno of (paginatedAlunos$ | async)?.items" class="card list-field-display list-item">
+        <span id="item-id">{{ aluno.alunoId }}</span>
+        <div>
+            <p>{{ aluno.nome }}</p>
+            <small>{{ aluno.email }}</small>
+        </div>
+        <div class="actions">
+            <a [routerLink]="['/', 'alunos', aluno.alunoId, 'edit']" mat-icon-button>
+                <i-feather class="icon" name="edit"></i-feather>
+            </a>
+            <button mat-icon-button (click)="openDeleteDialog(aluno)">
+                <i-feather class="icon" name="trash"></i-feather>
+            </button>
+        </div>
+    </li>
+</ul>
+<aln-paginator 
+    [currentPage]="page$ | async" 
+    [total]="(paginatedAlunos$ | async)?.totalCount" 
+    [pageSize]="pageSize" 
+    (pageChange)="onPageChange($event)">
+</aln-paginator>

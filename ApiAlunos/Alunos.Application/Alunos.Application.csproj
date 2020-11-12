@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.0.0" />
+    <PackageReference Include="FluentValidation" Version="9.0.1" />
+    <PackageReference Include="MediatR" Version="8.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Alunos.Domain\Alunos.Domain.csproj" />
+    <ProjectReference Include="..\Alunos.Infra.Data\Alunos.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>

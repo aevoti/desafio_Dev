@@ -1,0 +1,36 @@
+<a routerLink="/alunos" mat-button class="icon-text-btn semi-bold">
+    <i-feather class="icon" name="arrow-left"></i-feather>
+    Voltar
+</a>
+
+<div *ngIf="alunosForm" class="form-wrapper card">
+    <h2>{{ pageTitle }}</h2>
+    <form [formGroup]="alunosForm" (submit)="onSubmit()">
+        <mat-form-field class="form-group">
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="nome" required>
+            <mat-error *ngIf="alunosForm.get('nome').errors?.required">
+                Campo obrigatório.
+            </mat-error>
+            <mat-error *ngIf="alunosForm.get('nome').errors?.minlength">
+                Campo deve ter no mínimo 3 caracteres.
+            </mat-error>
+            <mat-error *ngIf="alunosForm.get('nome').errors?.maxlength">
+                Campo deve ter no máximo 100 caracteres.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-group">
+            <mat-label>E-mail</mat-label>
+            <input matInput formControlName="email" required>
+            <mat-error *ngIf="alunosForm.get('email').errors?.required">
+                Campo obrigatório.
+            </mat-error>
+            <mat-error *ngIf="alunosForm.get('email').errors?.email">
+                E-mail inválido.
+            </mat-error>
+        </mat-form-field>
+        <button [disabled]="alunosForm.invalid" mat-raised-button color="primary">
+            Salvar
+        </button>
+    </form>
+</div>

@@ -1,0 +1,25 @@
+.form-wrapper {
+    margin-top: 1rem;
+    padding: 3rem;
+
+    h2 {
+        margin-bottom: 2rem;
+        margin-top: 0;
+
+        font-size: 1.4rem;
+        font-weight: 600;
+    }
+
+    form {
+        max-width: 340px;
+
+        .form-group {
+            display: block;
+            margin-bottom: .6rem;
+        }
+
+        button {
+            margin-top: 1.4rem;
+        }
+    }
+}

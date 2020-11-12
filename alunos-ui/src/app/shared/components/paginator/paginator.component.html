@@ -1,0 +1,23 @@
+<div class="paginator">
+    <div *ngIf="canGoBack" class="page-item" (click)="goToFirstPage()">
+        <i-feather class="icon" name="chevrons-left"></i-feather>
+    </div>
+    <div *ngIf="canGoBack" class="page-item" (click)="goToPrevPage()">
+        <i-feather class="icon" name="chevron-left"></i-feather>
+    </div>
+    <div *ngFor="let page of prevPages" class="page-item" (click)="goToPage(page)">
+        {{ page + 1}}
+    </div>
+    <div class="page-item current">
+        {{ currentPage + 1 }}
+    </div>
+    <div *ngFor="let page of nextPages" class="page-item" (click)="goToPage(page)">
+        {{ page + 1}}
+    </div>
+    <div *ngIf="canGoFurther" class="page-item" (click)="goToNextPage()">
+        <i-feather class="icon" name="chevron-right"></i-feather>
+    </div>
+    <div *ngIf="canGoFurther" class="page-item" (click)="goToLastPage()">
+        <i-feather class="icon" name="chevrons-right"></i-feather>
+    </div>
+</div>
