@@ -7,7 +7,7 @@ namespace ApiAlunos.DTOs
 {
     public class GetAlunoDTO
     {
-        public int AlunoId { get; set; }
+        public int Id { get; set; }
         public string Nome { get; set; }
         public string  Email { get; set; }
     }

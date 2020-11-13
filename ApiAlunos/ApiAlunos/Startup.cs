@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
 using ApiAlunos.Context;
 using ApiAlunos.Extensions;
+using ApiAlunos.Repositories;
+using ApiAlunos.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Hosting;
 
 namespace ApiAlunos
 {
@@ -30,6 +25,10 @@ namespace ApiAlunos
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddScoped<IAlunoRepository, AlunoRepository>();
+            services.AddScoped<IAlunoService, AlunoService>();
+
             services.AddCors(options =>
             {
                 options.AddPolicy("EnableCORS", builder =>
@@ -38,7 +37,7 @@ namespace ApiAlunos
                 });
             });
 
-            services.AddDbContext<AppDbContext>(options =>
+            services.AddDbContext<AlunoDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
                 );
 
@@ -63,7 +62,7 @@ namespace ApiAlunos
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -87,6 +86,7 @@ namespace ApiAlunos
             var option = new RewriteOptions();
             option.AddRedirect("^$", "api-docs");
             app.UseRewriter(option);
+
 
             app.UseEndpoints(endpoints =>
             {

@@ -1,12 +1,15 @@
-﻿using ApiAlunos.Context;
-using ApiAlunos.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ApiAlunos.Context;
 using ApiAlunos.DTOs;
+using ApiAlunos.Filters;
+using ApiAlunos.Models;
+using ApiAlunos.Services;
 using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApiAlunos.Controllers
 {
@@ -14,111 +17,93 @@ namespace ApiAlunos.Controllers
     [ApiController]
     public class AlunosController : ControllerBase
     {
-        private readonly AppDbContext _context;
-        private readonly IMapper _mapper;
+        private readonly IAlunoService _alunoService;
 
-        public AlunosController(AppDbContext context, IMapper mapper)
+        public AlunosController(IAlunoService alunoService)
         {
-            _context = context;
-            _mapper = mapper;
+            _alunoService = alunoService;
         }
 
-        // GET: api/Alunos
+        /// <summary>
+        /// Retorna todos os alunos cadastrados.
+        /// </summary>
+        /// <param name="filter">Filtro opcional a ser aplicado à busca.</param>
+        /// <returns>A lista de alunos cadastrados de acordo com o filtro informado.</returns>
+        [HttpGet]
         [Consumes("application/json")]
         [Produces("application/json")]
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<GetAlunoDTO>>> GetAlunos()
+        public async Task<ActionResult<IEnumerable<GetAlunoDTO>>> GetAlunos([FromQuery] GetAlunosFilter filter)
         {
-            var alunos = await _context.Alunos.ToListAsync();
-            return Ok(_mapper.Map<IEnumerable<GetAlunoDTO>>(alunos));
+            return Ok(await _alunoService.GetAlunos(filter));
         }
 
-        // GET: api/Alunos/5
+        /// <summary>
+        /// Retorna o aluno com o id informado.
+        /// </summary>
+        /// <param name="id">Id do aluno.</param>
+        /// <returns>O aluno com id informado.</returns>
         [HttpGet("{id}")]
         [Consumes("application/json")]
         [Produces("application/json")]
         public async Task<ActionResult<GetAlunoDTO>> GetAluno(int id)
         {
-            var aluno = await _context.Alunos.FindAsync(id);
+            var aluno = await _alunoService.GetAlunoById(id);
 
-            if (aluno == null)
-            {
-                return NotFound();
-            }
+            if (aluno == null) return NotFound();
 
-            return _mapper.Map<GetAlunoDTO>(aluno);
+            return Ok(aluno);
         }
 
-        // PUT: api/Alunos/5
+        /// <summary>
+        /// Atualiza o aluno que tem o id informado.
+        /// </summary>
+        /// <param name="id">Id do aluno</param>
+        /// <param name="aluno">Dados do aluno</param>
+        /// <response code="204">Retorna sucesso na atualização.</response>
+        /// <response code="400">Retorna os erros de validação.</response>   
         [HttpPut("{id}")]
         [Consumes("application/json")]
         [Produces("application/json")]
-        public async Task<IActionResult> PutAluno(int id, Aluno aluno)
+        public async Task<IActionResult> PutAluno(int id, [FromBody] UpdateAlunoDTO aluno)
         {
-            if (id != aluno.AlunoId)
-            {
-                return BadRequest();
-            }
 
-            _context.Entry(aluno).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AlunoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _alunoService.UpdateAluno(id, aluno);
 
             return NoContent();
         }
 
-        // POST: api/Alunos
+        /// <summary>
+        /// Insere um novo aluno.
+        /// </summary>
+        /// <param name="aluno">Dados do aluno.</param>
+        /// <response code="201">Retorna o aluno criado</response>
+        /// <response code="400">Retorna os erros de validação</response>   
         [HttpPost]
         [Consumes("application/json")]
         [Produces("application/json")]
-        public async Task<ActionResult<GetAlunoDTO>> PostAluno(InserirAlunoDTO aluno)
+        public async Task<ActionResult<GetAlunoDTO>> PostAluno(InsertAlunoDTO aluno)
         {
-            var novoAluno = _mapper.Map<Aluno>(aluno);
-            _context.Alunos.Add(novoAluno);
-            await _context.SaveChangesAsync();
+            var novoAluno = await _alunoService.CreateAluno(aluno);
 
-            var alunoRetorno = _mapper.Map<GetAlunoDTO>(novoAluno);
-
-            return CreatedAtAction("GetAluno", new { id = novoAluno.AlunoId }, alunoRetorno);
+            return CreatedAtAction("GetAluno", new {id = novoAluno.Id}, novoAluno);
         }
 
-        // DELETE: api/Alunos/5
+        /// <summary>
+        /// Deleta o aluno que tem o id informado.
+        /// </summary>
+        /// <param name="id">Id do aluno.</param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         [Consumes("application/json")]
         [Produces("application/json")]
-        public async Task<ActionResult<Aluno>> DeleteAluno(int id)
+        public async Task<IActionResult> DeleteAluno(int id)
         {
-            var aluno = await _context.Alunos.FindAsync(id);
-            if (aluno == null)
+            var deletado = await _alunoService.DeleteAluno(id);
+            if (deletado)
             {
-                return NotFound();
+                return NoContent();
             }
-
-            _context.Alunos.Remove(aluno);
-            await _context.SaveChangesAsync();
-
-            var alunoRetorno = _mapper.Map<GetAlunoDTO>(aluno);
-
-            return aluno;
-        }
-
-        private bool AlunoExists(int id)
-        {
-            return _context.Alunos.Any(e => e.AlunoId == id);
+            return NotFound();
         }
     }
 }

@@ -8,9 +8,9 @@ namespace ApiAlunos.MappingProfiles
     {
         public MappingProfile()
         {
-            CreateMap<Aluno, GetAlunoDTO>().ReverseMap();
-            CreateMap<InserirAlunoDTO, Aluno>();
-            CreateMap<AtualizarAlunoDTO, Aluno>();
+            CreateMap<Aluno, GetAlunoDTO>();
+            CreateMap<InsertAlunoDTO, Aluno>();
+            CreateMap<UpdateAlunoDTO, Aluno>();
         }
     }
 }
