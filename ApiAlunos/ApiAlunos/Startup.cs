@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using ApiAlunos.Context;
+using ApiAlunos.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -39,8 +42,24 @@ namespace ApiAlunos
                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
                 );
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
-            services.AddMvc(option => option.EnableEndpointRouting = false);
+            // WebApi Configuration
+            services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.IgnoreNullValues = true;
+                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()); // for enum as strings
+            });
+
+            // AutoMapper settings
+            services.AddAutoMapperSetup();
+
+            // HttpContext for log enrichment 
+            services.AddHttpContextAccessor();
+
+            // Adiciona o swagger
+            services.AddApiDoc();
+
+            // Adiciona GZIP
+            services.AddCompression();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,10 +75,33 @@ namespace ApiAlunos
                 app.UseHsts();
             }
 
+            // Usar o middleware para logs do serilog
+            app.UseCustomSerilogRequestLogging();
+
+            app.UseRouting();
+
+            // Usar o swagger
+            app.UseApiDoc();
+            
+            // Redirecionar raiz da aplicação para swagger
+            var option = new RewriteOptions();
+            option.AddRedirect("^$", "api-docs");
+            app.UseRewriter(option);
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+
+
             app.UseCors("EnableCORS");
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+
+
+            // Usar o middleware de compressão gzip
+            app.UseResponseCompression();
+
         }
     }
 }

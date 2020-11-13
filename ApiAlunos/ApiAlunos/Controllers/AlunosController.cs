@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ApiAlunos.DTOs;
+using AutoMapper;
 
 namespace ApiAlunos.Controllers
 {
@@ -13,22 +15,29 @@ namespace ApiAlunos.Controllers
     public class AlunosController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly IMapper _mapper;
 
-        public AlunosController(AppDbContext context)
+        public AlunosController(AppDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/Alunos
+        [Consumes("application/json")]
+        [Produces("application/json")]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Aluno>>> GetAlunos()
+        public async Task<ActionResult<IEnumerable<GetAlunoDTO>>> GetAlunos()
         {
-            return await _context.Alunos.ToListAsync();
+            var alunos = await _context.Alunos.ToListAsync();
+            return Ok(_mapper.Map<IEnumerable<GetAlunoDTO>>(alunos));
         }
 
         // GET: api/Alunos/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Aluno>> GetAluno(int id)
+        [Consumes("application/json")]
+        [Produces("application/json")]
+        public async Task<ActionResult<GetAlunoDTO>> GetAluno(int id)
         {
             var aluno = await _context.Alunos.FindAsync(id);
 
@@ -37,11 +46,13 @@ namespace ApiAlunos.Controllers
                 return NotFound();
             }
 
-            return aluno;
+            return _mapper.Map<GetAlunoDTO>(aluno);
         }
 
         // PUT: api/Alunos/5
         [HttpPut("{id}")]
+        [Consumes("application/json")]
+        [Produces("application/json")]
         public async Task<IActionResult> PutAluno(int id, Aluno aluno)
         {
             if (id != aluno.AlunoId)
@@ -72,16 +83,23 @@ namespace ApiAlunos.Controllers
 
         // POST: api/Alunos
         [HttpPost]
-        public async Task<ActionResult<Aluno>> PostAluno(Aluno aluno)
+        [Consumes("application/json")]
+        [Produces("application/json")]
+        public async Task<ActionResult<GetAlunoDTO>> PostAluno(InserirAlunoDTO aluno)
         {
-            _context.Alunos.Add(aluno);
+            var novoAluno = _mapper.Map<Aluno>(aluno);
+            _context.Alunos.Add(novoAluno);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAluno", new { id = aluno.AlunoId }, aluno);
+            var alunoRetorno = _mapper.Map<GetAlunoDTO>(novoAluno);
+
+            return CreatedAtAction("GetAluno", new { id = novoAluno.AlunoId }, alunoRetorno);
         }
 
         // DELETE: api/Alunos/5
         [HttpDelete("{id}")]
+        [Consumes("application/json")]
+        [Produces("application/json")]
         public async Task<ActionResult<Aluno>> DeleteAluno(int id)
         {
             var aluno = await _context.Alunos.FindAsync(id);
@@ -92,6 +110,8 @@ namespace ApiAlunos.Controllers
 
             _context.Alunos.Remove(aluno);
             await _context.SaveChangesAsync();
+
+            var alunoRetorno = _mapper.Map<GetAlunoDTO>(aluno);
 
             return aluno;
         }
