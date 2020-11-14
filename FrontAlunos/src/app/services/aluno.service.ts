@@ -6,7 +6,6 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { ObterAlunosFilter } from '../filters/obter-alunos.filter';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -18,20 +17,16 @@ export class AlunoService {
   constructor(private http: HttpClient) {
     this.nomeController = 'Alunos';
     this.caminhoApi = `${this.removeTrailingSlashes(environment?.apiUrl)}/${this.nomeController}`;
-
   }
 
-  obterPorId(id: number) : Observable<AlunoViewModel> {
-    return this.http
-      .get<AlunoViewModel>(`${this.caminhoApi}/${id}`)
-      .pipe(catchError(this.handleError));
+  obterPorId(id: number): Observable<AlunoViewModel> {
+    return this.http.get<AlunoViewModel>(`${this.caminhoApi}/${id}`).pipe(catchError(this.handleError));
   }
 
-  obterTodos(filtro: ObterAlunosFilter) : Observable<AlunoViewModel[]> {
+  obterTodos(filtro: ObterAlunosFilter): Observable<AlunoViewModel[]> {
     let params = new HttpParams();
     if (filtro?.nome) {
-      params = params
-      .set('nome', `${filtro?.nome}`);
+      params = params.set('nome', `${filtro?.nome}`);
     }
 
     return this.http
@@ -39,32 +34,26 @@ export class AlunoService {
       .pipe(catchError(this.handleError));
   }
 
-  deletar(id: number) : Observable<any> {
-    return this.http
-      .delete(`${this.caminhoApi}/${id}`)
-      .pipe(catchError(this.handleError));
+  deletar(id: number): Observable<any> {
+    return this.http.delete(`${this.caminhoApi}/${id}`).pipe(catchError(this.handleError));
   }
 
-  inserirOuAtualizar(id: number, entidade: AlunoViewModel) : Observable<any> {
+  inserirOuAtualizar(id: number, entidade: AlunoViewModel): Observable<any> {
     if (id) {
-      return this.http
-        .put(`${this.caminhoApi}/${id}`, entidade)
-        .pipe(catchError(this.handleError));
+      return this.http.put(`${this.caminhoApi}/${id}`, entidade).pipe(catchError(this.handleError));
     } else {
-      return this.http
-        .post(this.caminhoApi, entidade)
-        .pipe(catchError(this.handleError));
+      return this.http.post(this.caminhoApi, entidade).pipe(catchError(this.handleError));
     }
   }
 
-  private removeTrailingSlashes(url) {
+  private removeTrailingSlashes(url): string {
     return url.replace(/\/+$/, '');
   }
 
-    // Error handling
-  handleError(error) {
+  // Error handling
+  handleError(error): Observable<never> {
     let errorMessage = '';
-    if(error.error instanceof ErrorEvent) {
+    if (error.error instanceof ErrorEvent) {
       // Get client-side error
       errorMessage = error.error.message;
     } else {
@@ -73,5 +62,4 @@ export class AlunoService {
     }
     return throwError(errorMessage);
   }
-
 }
