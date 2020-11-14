@@ -16,7 +16,7 @@ namespace ApiAlunos
                 Log.Logger.Information("Application starting up...");
                 CreateWebHostBuilder(args).Build().Run();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Log.Logger.Fatal(ex, "Application startup failed.");
                 throw;
@@ -27,9 +27,11 @@ namespace ApiAlunos
             }
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+        {
+            return WebHost.CreateDefaultBuilder(args)
                 .UseSerilog()
                 .UseStartup<Startup>();
+        }
     }
 }

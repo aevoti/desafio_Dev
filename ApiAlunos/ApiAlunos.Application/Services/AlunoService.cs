@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using ApiAlunos.DTOs;
-using ApiAlunos.Extensions;
-using ApiAlunos.Filters;
-using ApiAlunos.Models;
-using ApiAlunos.Repositories;
+using ApiAlunos.Application.DTOs;
+using ApiAlunos.Application.Extensions;
+using ApiAlunos.Application.Filters;
+using ApiAlunos.Domain.Models;
+using ApiAlunos.Domain.Repositories;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
-namespace ApiAlunos.Services
+namespace ApiAlunos.Application.Services
 {
     public class AlunoService : IAlunoService
     {
@@ -49,10 +48,7 @@ namespace ApiAlunos.Services
         public async Task<GetAlunoDTO> UpdateAluno(int id, UpdateAlunoDTO alunoAtualizado)
         {
             var alunoOriginal = await _alunoRepository.GetById(id);
-            if (alunoOriginal == null)
-            {
-                return null;
-            }
+            if (alunoOriginal == null) return null;
 
             alunoOriginal.Nome = alunoAtualizado.Nome;
 
@@ -63,7 +59,6 @@ namespace ApiAlunos.Services
             await _alunoRepository.SaveChangesAsync();
 
             return _mapper.Map<GetAlunoDTO>(alunoOriginal);
-
         }
 
         public async Task<bool> DeleteAluno(int id)
@@ -80,10 +75,7 @@ namespace ApiAlunos.Services
 
         protected virtual void Dispose(bool disposing)
         {
-            if (disposing)
-            {
-                _alunoRepository.Dispose();
-            }
+            if (disposing) _alunoRepository.Dispose();
         }
     }
 }

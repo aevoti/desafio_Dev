@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using ApiAlunos.Context;
-using ApiAlunos.DTOs;
-using ApiAlunos.Filters;
-using ApiAlunos.Models;
-using ApiAlunos.Services;
-using AutoMapper;
+using ApiAlunos.Application.DTOs;
+using ApiAlunos.Application.Filters;
+using ApiAlunos.Application.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace ApiAlunos.Controllers
 {
@@ -25,7 +19,7 @@ namespace ApiAlunos.Controllers
         }
 
         /// <summary>
-        /// Retorna todos os alunos cadastrados.
+        ///     Retorna todos os alunos cadastrados.
         /// </summary>
         /// <param name="filter">Filtro opcional a ser aplicado à busca.</param>
         /// <returns>A lista de alunos cadastrados de acordo com o filtro informado.</returns>
@@ -38,7 +32,7 @@ namespace ApiAlunos.Controllers
         }
 
         /// <summary>
-        /// Retorna o aluno com o id informado.
+        ///     Retorna o aluno com o id informado.
         /// </summary>
         /// <param name="id">Id do aluno.</param>
         /// <returns>O aluno com id informado.</returns>
@@ -55,29 +49,28 @@ namespace ApiAlunos.Controllers
         }
 
         /// <summary>
-        /// Atualiza o aluno que tem o id informado.
+        ///     Atualiza o aluno que tem o id informado.
         /// </summary>
         /// <param name="id">Id do aluno</param>
         /// <param name="aluno">Dados do aluno</param>
         /// <response code="204">Retorna sucesso na atualização.</response>
-        /// <response code="400">Retorna os erros de validação.</response>   
+        /// <response code="400">Retorna os erros de validação.</response>
         [HttpPut("{id}")]
         [Consumes("application/json")]
         [Produces("application/json")]
         public async Task<IActionResult> PutAluno(int id, [FromBody] UpdateAlunoDTO aluno)
         {
-
             await _alunoService.UpdateAluno(id, aluno);
 
             return NoContent();
         }
 
         /// <summary>
-        /// Insere um novo aluno.
+        ///     Insere um novo aluno.
         /// </summary>
         /// <param name="aluno">Dados do aluno.</param>
         /// <response code="201">Retorna o aluno criado</response>
-        /// <response code="400">Retorna os erros de validação</response>   
+        /// <response code="400">Retorna os erros de validação</response>
         [HttpPost]
         [Consumes("application/json")]
         [Produces("application/json")]
@@ -89,7 +82,7 @@ namespace ApiAlunos.Controllers
         }
 
         /// <summary>
-        /// Deleta o aluno que tem o id informado.
+        ///     Deleta o aluno que tem o id informado.
         /// </summary>
         /// <param name="id">Id do aluno.</param>
         /// <returns></returns>
@@ -99,10 +92,7 @@ namespace ApiAlunos.Controllers
         public async Task<IActionResult> DeleteAluno(int id)
         {
             var deletado = await _alunoService.DeleteAluno(id);
-            if (deletado)
-            {
-                return NoContent();
-            }
+            if (deletado) return NoContent();
             return NotFound();
         }
     }

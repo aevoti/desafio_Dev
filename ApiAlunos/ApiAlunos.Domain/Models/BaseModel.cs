@@ -1,4 +1,4 @@
-﻿namespace ApiAlunos.Models
+﻿namespace ApiAlunos.Domain.Models
 {
     public class BaseModel
     {

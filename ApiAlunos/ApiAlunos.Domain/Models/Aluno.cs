@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ApiAlunos.Models
+namespace ApiAlunos.Domain.Models
 {
     public class Aluno : BaseModel
     {
@@ -26,6 +26,5 @@ namespace ApiAlunos.Models
         ///
         [Required]
         public string  Email { get; set; }
-
     }
 }

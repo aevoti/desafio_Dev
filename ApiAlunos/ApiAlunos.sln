@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29209.152
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiAlunos", "ApiAlunos\ApiAlunos.csproj", "{4866D448-F018-43D0-886D-C8C62310110A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiAlunos", "ApiAlunos\ApiAlunos.csproj", "{4866D448-F018-43D0-886D-C8C62310110A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiAlunos.Domain", "ApiAlunos.Domain\ApiAlunos.Domain.csproj", "{94805CC8-97EF-4B64-A98E-696E37FA2C19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiAlunos.Infrastructure", "ApiAlunos.Infrastructure\ApiAlunos.Infrastructure.csproj", "{2BD403E5-DE74-4F30-A5C2-71D58FE91479}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiAlunos.Application", "ApiAlunos.Application\ApiAlunos.Application.csproj", "{D83EB1CD-CF69-4B61-A945-7DBAAC1776E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{4866D448-F018-43D0-886D-C8C62310110A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4866D448-F018-43D0-886D-C8C62310110A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4866D448-F018-43D0-886D-C8C62310110A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94805CC8-97EF-4B64-A98E-696E37FA2C19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94805CC8-97EF-4B64-A98E-696E37FA2C19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94805CC8-97EF-4B64-A98E-696E37FA2C19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94805CC8-97EF-4B64-A98E-696E37FA2C19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BD403E5-DE74-4F30-A5C2-71D58FE91479}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BD403E5-DE74-4F30-A5C2-71D58FE91479}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BD403E5-DE74-4F30-A5C2-71D58FE91479}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BD403E5-DE74-4F30-A5C2-71D58FE91479}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D83EB1CD-CF69-4B61-A945-7DBAAC1776E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D83EB1CD-CF69-4B61-A945-7DBAAC1776E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D83EB1CD-CF69-4B61-A945-7DBAAC1776E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D83EB1CD-CF69-4B61-A945-7DBAAC1776E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

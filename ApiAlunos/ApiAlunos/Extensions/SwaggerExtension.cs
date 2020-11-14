@@ -3,6 +3,8 @@ using System.IO;
 using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace ApiAlunos.Extensions
 {
@@ -13,15 +15,15 @@ namespace ApiAlunos.Extensions
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1",
-                    new Microsoft.OpenApi.Models.OpenApiInfo
+                    new OpenApiInfo
                     {
                         Title = "Api Alunos",
                         Version = "v1",
                         Description = "Api para o desafio da AEVO",
-                        Contact = new Microsoft.OpenApi.Models.OpenApiContact
+                        Contact = new OpenApiContact
                         {
                             Name = "Yan Pitangui",
-                            Url = new System.Uri("https://github.com/yanpitangui")
+                            Url = new Uri("https://github.com/yanpitangui")
                         }
                     });
                 c.DescribeAllParametersInCamelCase();
@@ -30,7 +32,6 @@ namespace ApiAlunos.Extensions
                 var xmlfile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlfile);
                 c.IncludeXmlComments(xmlPath);
-
             });
             return services;
         }
@@ -38,12 +39,12 @@ namespace ApiAlunos.Extensions
         public static IApplicationBuilder UseApiDoc(this IApplicationBuilder app)
         {
             app.UseSwagger()
-               .UseSwaggerUI(c =>
-               {
-                   c.RoutePrefix = "api-docs";
-                   c.SwaggerEndpoint($"/swagger/v1/swagger.json", $"v1");
-                   c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.List);
-               });
+                .UseSwaggerUI(c =>
+                {
+                    c.RoutePrefix = "api-docs";
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+                    c.DocExpansion(DocExpansion.List);
+                });
             return app;
         }
     }

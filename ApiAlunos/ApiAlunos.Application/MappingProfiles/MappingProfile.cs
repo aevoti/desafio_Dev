@@ -1,8 +1,8 @@
-﻿using ApiAlunos.DTOs;
-using ApiAlunos.Models;
+﻿using ApiAlunos.Application.DTOs;
+using ApiAlunos.Domain.Models;
 using AutoMapper;
 
-namespace ApiAlunos.MappingProfiles
+namespace ApiAlunos.Application.MappingProfiles
 {
     public class MappingProfile : Profile
     {

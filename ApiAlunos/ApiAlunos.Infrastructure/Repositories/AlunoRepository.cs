@@ -1,7 +1,8 @@
-﻿using ApiAlunos.Context;
-using ApiAlunos.Models;
+﻿using ApiAlunos.Domain.Models;
+using ApiAlunos.Domain.Repositories;
+using ApiAlunos.Infrastructure.Context;
 
-namespace ApiAlunos.Repositories
+namespace ApiAlunos.Infrastructure.Repositories
 {
     public class AlunoRepository : Repository<Aluno>, IAlunoRepository
     {

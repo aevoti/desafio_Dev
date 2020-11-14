@@ -4,69 +4,43 @@
         <name>ApiAlunos</name>
     </assembly>
     <members>
-        <member name="M:ApiAlunos.Controllers.AlunosController.GetAlunos(ApiAlunos.Filters.GetAlunosFilter)">
+        <member name="M:ApiAlunos.Controllers.AlunosController.GetAlunos(ApiAlunos.Application.Filters.GetAlunosFilter)">
             <summary>
-            Retorna todos os alunos cadastrados.
+                Retorna todos os alunos cadastrados.
             </summary>
             <param name="filter">Filtro opcional a ser aplicado à busca.</param>
             <returns>A lista de alunos cadastrados de acordo com o filtro informado.</returns>
         </member>
         <member name="M:ApiAlunos.Controllers.AlunosController.GetAluno(System.Int32)">
             <summary>
-            Retorna o aluno com o id informado.
+                Retorna o aluno com o id informado.
             </summary>
             <param name="id">Id do aluno.</param>
             <returns>O aluno com id informado.</returns>
         </member>
-        <member name="M:ApiAlunos.Controllers.AlunosController.PutAluno(System.Int32,ApiAlunos.DTOs.UpdateAlunoDTO)">
+        <member name="M:ApiAlunos.Controllers.AlunosController.PutAluno(System.Int32,ApiAlunos.Application.DTOs.UpdateAlunoDTO)">
             <summary>
-            Atualiza o aluno que tem o id informado.
+                Atualiza o aluno que tem o id informado.
             </summary>
             <param name="id">Id do aluno</param>
             <param name="aluno">Dados do aluno</param>
             <response code="204">Retorna sucesso na atualização.</response>
-            <response code="400">Retorna os erros de validação.</response>   
+            <response code="400">Retorna os erros de validação.</response>
         </member>
-        <member name="M:ApiAlunos.Controllers.AlunosController.PostAluno(ApiAlunos.DTOs.InsertAlunoDTO)">
+        <member name="M:ApiAlunos.Controllers.AlunosController.PostAluno(ApiAlunos.Application.DTOs.InsertAlunoDTO)">
             <summary>
-            Insere um novo aluno.
+                Insere um novo aluno.
             </summary>
             <param name="aluno">Dados do aluno.</param>
             <response code="201">Retorna o aluno criado</response>
-            <response code="400">Retorna os erros de validação</response>   
+            <response code="400">Retorna os erros de validação</response>
         </member>
         <member name="M:ApiAlunos.Controllers.AlunosController.DeleteAluno(System.Int32)">
             <summary>
-            Deleta o aluno que tem o id informado.
+                Deleta o aluno que tem o id informado.
             </summary>
             <param name="id">Id do aluno.</param>
             <returns></returns>
-        </member>
-        <member name="T:ApiAlunos.Filters.GetAlunosFilter">
-            <summary>
-            Filtro para o GetAllAlunos
-            </summary>
-        </member>
-        <member name="P:ApiAlunos.Filters.GetAlunosFilter.Nome">
-            <summary>
-            Nome do aluno a ser filtrado
-            </summary>
-        </member>
-        <member name="P:ApiAlunos.Models.Aluno.Id">
-            <summary>
-            Id do aluno
-            </summary>
-        </member>
-        <member name="P:ApiAlunos.Models.Aluno.Nome">
-            <summary>
-            Nome do aluno
-            </summary>
-        </member>
-        <member name="P:ApiAlunos.Models.Aluno.Email">
-             <summary>
-             Email do aluno
-             </summary>
-            
         </member>
     </members>
 </doc>

@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using ApiAlunos.DTOs;
-using ApiAlunos.Filters;
+using ApiAlunos.Application.DTOs;
+using ApiAlunos.Application.Filters;
 
-namespace ApiAlunos.Services
+namespace ApiAlunos.Application.Services
 {
     public interface IAlunoService : IDisposable
     {
         #region Aluno Methods
+
         public Task<List<GetAlunoDTO>> GetAlunos(GetAlunosFilter filter);
 
         public Task<GetAlunoDTO> GetAlunoById(int id);

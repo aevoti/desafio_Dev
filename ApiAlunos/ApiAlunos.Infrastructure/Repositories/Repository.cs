@@ -1,23 +1,24 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using ApiAlunos.Context;
-using ApiAlunos.Models;
+using ApiAlunos.Domain.Models;
+using ApiAlunos.Domain.Repositories;
+using ApiAlunos.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace ApiAlunos.Repositories
+namespace ApiAlunos.Infrastructure.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseModel
     {
-        protected AlunoDbContext Db { get; }
-
-        protected DbSet<TEntity> DbSet { get; }
-
         public Repository(AlunoDbContext dbContext)
         {
             Db = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
             DbSet = Db.Set<TEntity>();
         }
+
+        protected AlunoDbContext Db { get; }
+
+        protected DbSet<TEntity> DbSet { get; }
 
         public virtual IQueryable<TEntity> GetAll()
         {
@@ -46,10 +47,12 @@ namespace ApiAlunos.Repositories
         public virtual async Task Delete(int id)
         {
             DbSet.Remove(await DbSet.FindAsync(id));
-
         }
 
-        public async Task<int> SaveChangesAsync() => await Db.SaveChangesAsync();
+        public async Task<int> SaveChangesAsync()
+        {
+            return await Db.SaveChangesAsync();
+        }
 
         public void Dispose()
         {
@@ -59,10 +62,7 @@ namespace ApiAlunos.Repositories
 
         protected virtual void Dispose(bool disposing)
         {
-            if (disposing)
-            {
-                Db.Dispose();
-            }
+            if (disposing) Db.Dispose();
         }
     }
 }

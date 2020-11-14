@@ -1,8 +1,9 @@
 ﻿using System.Text.Json.Serialization;
-using ApiAlunos.Context;
+using ApiAlunos.Application.Services;
+using ApiAlunos.Domain.Repositories;
 using ApiAlunos.Extensions;
-using ApiAlunos.Repositories;
-using ApiAlunos.Services;
+using ApiAlunos.Infrastructure.Context;
+using ApiAlunos.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Rewrite;
@@ -25,21 +26,18 @@ namespace ApiAlunos
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddScoped<IAlunoRepository, AlunoRepository>();
             services.AddScoped<IAlunoService, AlunoService>();
 
             services.AddCors(options =>
             {
-                options.AddPolicy("EnableCORS", builder =>
-                {
-                    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().Build();
-                });
+                options.AddPolicy("EnableCORS",
+                    builder => { builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().Build(); });
             });
 
             services.AddDbContext<AlunoDbContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
-                );
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+            );
 
             // WebApi Configuration
             services.AddControllers().AddJsonOptions(options =>
@@ -65,14 +63,10 @@ namespace ApiAlunos
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
             else
-            {
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
-            }
             app.UseCors("EnableCORS");
 
             // Usar o middleware para logs do serilog
@@ -82,18 +76,14 @@ namespace ApiAlunos
 
             // Usar o swagger
             app.UseApiDoc();
-            
+
             // Redirecionar raiz da aplicação para swagger
             var option = new RewriteOptions();
             option.AddRedirect("^$", "api-docs");
             app.UseRewriter(option);
 
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
-
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
 
 
             app.UseHttpsRedirection();
@@ -101,7 +91,6 @@ namespace ApiAlunos
 
             // Usar o middleware de compressão gzip
             app.UseResponseCompression();
-
         }
     }
 }

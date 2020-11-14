@@ -17,19 +17,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\**" />
-    <Content Remove="Migrations\**" />
-    <EmbeddedResource Remove="Migrations\**" />
-    <None Remove="Migrations\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="Migrations\20201113184328_initial.cs" />
-    <Compile Include="Migrations\20201113184328_initial.Designer.cs" />
-    <Compile Include="Migrations\AlunoDbContextModelSnapshot.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
@@ -51,6 +38,12 @@
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.6.3" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.6.3" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ApiAlunos.Application\ApiAlunos.Application.csproj" />
+    <ProjectReference Include="..\ApiAlunos.Domain\ApiAlunos.Domain.csproj" />
+    <ProjectReference Include="..\ApiAlunos.Infrastructure\ApiAlunos.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

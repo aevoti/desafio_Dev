@@ -1,5 +1,5 @@
 ﻿using System;
-using ApiAlunos.MappingProfiles;
+using ApiAlunos.Application.MappingProfiles;
 using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 
