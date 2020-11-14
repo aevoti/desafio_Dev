@@ -1,0 +1,85 @@
+<div class="basic-container container">
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
+  <mat-card>
+    <mat-card-title>
+      Cadastro de alunos
+    </mat-card-title>
+
+    <mat-card-content>
+      <form [formGroup]="form" class="form-aluno">
+        <mat-form-field appearance="outline" class="aluno-input">
+          <mat-label>Insira um nome</mat-label>
+          <input matInput placeholder="Joãozinho" [formControl]="form.controls['nome']" required>
+          <mat-error *ngIf="form.controls['nome'].invalid">{{getNomeErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="aluno-input">
+          <mat-label>Insira um email</mat-label>
+          <input matInput placeholder="aluno@example.com" [formControl]="form.controls['email']" required>
+          <mat-error *ngIf="form.controls['email'].invalid">{{getEmailErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <div>
+          <button (click)="submitForm($event)" [disabled]="form.invalid" mat-raised-button color="primary">{{ form.controls['id']?.value ? 'Editar' : 'Inserir' }}</button>
+          &nbsp;
+          <button (click)="limparForm()" type="reset" mat-raised-button color="secondary">Limpar</button>
+        </div>
+
+        <div>
+        </div>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+  <hr>
+  <mat-card>
+    <mat-form-field appearance="outline">
+        <mat-label>Buscar um aluno</mat-label>
+        <input matInput type="search" [(ngModel)]="alunoFilter.nome" (keydown.enter)="carregarAlunos();">
+        <button mat-button matSuffix mat-stroked-button aria-label="search" (click)="carregarAlunos();">
+          <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </mat-card>
+
+</div>
+<table mat-table [dataSource]="alunos" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> <b>Id</b> </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nome">
+    <th mat-header-cell *matHeaderCellDef> <b>Nome</b> </th>
+    <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> <b>Email</b> </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="editar">
+    <th mat-header-cell *matHeaderCellDef> <b>Editar</b> </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-mini-fab color="primary" aria-label="Editar elemento" (click)="editarAluno(element)" >
+        <mat-icon>edit</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="remover">
+    <th mat-header-cell *matHeaderCellDef> <b>Remover</b> </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-mini-fab color="primary" aria-label="Remover elemento" (click)="removerAluno(element)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+</table>

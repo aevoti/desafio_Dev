@@ -1,0 +1,33 @@
+
+.basic-container {
+  padding: 30px;
+}
+
+.mat-cell,
+.mat-header-cell {
+    word-wrap: initial;
+    display: table-cell;
+    padding: 0px 15px;
+    line-break: unset;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+
+.aluno-input {
+  padding-top: 10px;
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+.mat-column-id {
+  flex: 0 0 15px;
+}
+
+table {
+  width: 100%;
+}
+
+mat-form-field.mat-form-field {
+  width: 100%;
+}
