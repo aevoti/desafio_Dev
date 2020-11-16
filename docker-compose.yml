@@ -1,0 +1,51 @@
+version: "3"
+
+services:
+  api:
+    image: alunosapi:latest
+    networks:
+      - proxy
+      - aluno_network
+    labels: 
+      - "traefik.enable=true"
+      - "traefik.http.routers.alunoapi.entrypoints=https"
+      - "traefik.http.routers.alunoapi.rule=Host(`desafioaevoapi.dodev.dev`)"
+      - "traefik.http.routers.alunoapi.tls.certresolver=http"
+      - "traefik.http.routers.alunoapi.tls=true"
+      - "traefik.docker.network=proxy"
+    depends_on:
+      - db
+
+  db:
+    image: alunosdb:latest
+    user: root
+    networks:
+      - aluno_network
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_PID=Developer
+      - SA_PASSWORD=C0ns7tasDbp23
+    volumes:
+      - aluno_data:/var/opt/mssql/
+
+  front:
+    image: alunosfront:latest
+    networks: 
+      - proxy
+    labels: 
+      - "traefik.enable=true"
+      - "traefik.http.routers.alunofront.entrypoints=https"
+      - "traefik.http.routers.alunofront.rule=Host(`desafioaevo.dodev.dev`)"
+      - "traefik.http.routers.alunofront.tls.certresolver=http"
+      - "traefik.http.routers.alunofront.tls=true"
+      - "traefik.docker.network=proxy"
+
+volumes:
+  aluno_data:
+
+networks:
+  aluno_network:
+  proxy:
+    external: 
+      name: proxy
+

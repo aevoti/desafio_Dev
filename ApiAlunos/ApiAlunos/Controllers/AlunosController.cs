@@ -1,9 +1,9 @@
-﻿using ApiAlunos.Context;
-using ApiAlunos.Models;
+﻿using Contracts;
+using Entities.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ApiAlunos.Controllers
@@ -12,93 +12,107 @@ namespace ApiAlunos.Controllers
     [ApiController]
     public class AlunosController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly IRepositoryWrapper _repo;
 
-        public AlunosController(AppDbContext context)
+        public AlunosController(IRepositoryWrapper repo)
         {
-            _context = context;
+            _repo = repo;
         }
 
         // GET: api/Alunos
+        /// <summary>
+        /// Recupera todos alunos
+        /// </summary>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Aluno>>> GetAlunos()
+        public IActionResult GetAlunos([FromQuery] AlunoParameters parameters)
         {
-            return await _context.Alunos.ToListAsync();
+            var alunos = _repo.Aluno.GetAlunos(parameters);
+
+            var metadata = new
+            {
+                alunos.TotalCount,
+                alunos.PageSize,
+                alunos.CurrentPage,
+                alunos.TotalPages,
+                alunos.HasNext,
+                alunos.HasPrevious
+            };
+
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+
+            return Ok(alunos);
         }
 
-        // GET: api/Alunos/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Aluno>> GetAluno(int id)
+        // GET: api/Aluno/5
+        [HttpGet("{id}", Name = "AlunoById")]
+        public IActionResult GetAluno(int id)
         {
-            var aluno = await _context.Alunos.FindAsync(id);
+            var aluno = _repo.Aluno.GetAlunoById(id);
 
-            if (aluno == null)
-            {
-                return NotFound();
-            }
-
-            return aluno;
-        }
-
-        // PUT: api/Alunos/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutAluno(int id, Aluno aluno)
-        {
-            if (id != aluno.AlunoId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(aluno).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AlunoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return Ok(aluno);
         }
 
         // POST: api/Alunos
         [HttpPost]
-        public async Task<ActionResult<Aluno>> PostAluno(Aluno aluno)
+        public IActionResult PostAluno(Aluno aluno)
         {
-            _context.Alunos.Add(aluno);
-            await _context.SaveChangesAsync();
+            if (aluno == null)
+            {
+                return BadRequest("O Objeto aluno é nulo");
+            }
 
-            return CreatedAtAction("GetAluno", new { id = aluno.AlunoId }, aluno);
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _repo.Aluno.CreateAluno(aluno);
+            _repo.Save();
+
+            return CreatedAtRoute("AlunoById", new { id = aluno.AlunoId }, aluno);
         }
 
-        // DELETE: api/Alunos/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Aluno>> DeleteAluno(int id)
+        // PUT: api/Alunos/5
+        [HttpPut("{id}")]
+        public IActionResult PutAluno(int id, Aluno aluno)
         {
-            var aluno = await _context.Alunos.FindAsync(id);
             if (aluno == null)
+            {
+                return BadRequest("O Objeto aluno é nulo");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("");
+            }
+
+            var dbAluno = _repo.Aluno.GetAlunoById(id);
+            if(dbAluno ==  null)
             {
                 return NotFound();
             }
 
-            _context.Alunos.Remove(aluno);
-            await _context.SaveChangesAsync();
+            _repo.Aluno.UpdateAluno(dbAluno, aluno);
+            _repo.Save();
 
-            return aluno;
+            return Ok(dbAluno);
         }
 
-        private bool AlunoExists(int id)
+        // DELETE: api/Alunos/5
+        [HttpDelete("{id}")]
+        public IActionResult DeleteAluno(int id)
         {
-            return _context.Alunos.Any(e => e.AlunoId == id);
+            var aluno = _repo.Aluno.GetAlunoById(id);
+
+            if(aluno == null)
+            {
+                return NotFound();
+            }
+
+            _repo.Aluno.DeleteAluno(aluno);
+            _repo.Save();
+
+            return NoContent();
         }
     }
 }
