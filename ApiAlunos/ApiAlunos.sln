@@ -5,17 +5,19 @@ VisualStudioVersion = 16.0.29209.152
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiAlunos", "ApiAlunos\ApiAlunos.csproj", "{4866D448-F018-43D0-886D-C8C62310110A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiAlunos.Domain", "ApiAlunos.Domain\ApiAlunos.Domain.csproj", "{94805CC8-97EF-4B64-A98E-696E37FA2C19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiAlunos.Domain", "ApiAlunos.Domain\ApiAlunos.Domain.csproj", "{94805CC8-97EF-4B64-A98E-696E37FA2C19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiAlunos.Infrastructure", "ApiAlunos.Infrastructure\ApiAlunos.Infrastructure.csproj", "{2BD403E5-DE74-4F30-A5C2-71D58FE91479}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiAlunos.Infrastructure", "ApiAlunos.Infrastructure\ApiAlunos.Infrastructure.csproj", "{2BD403E5-DE74-4F30-A5C2-71D58FE91479}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiAlunos.Application", "ApiAlunos.Application\ApiAlunos.Application.csproj", "{D83EB1CD-CF69-4B61-A945-7DBAAC1776E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiAlunos.Application", "ApiAlunos.Application\ApiAlunos.Application.csproj", "{D83EB1CD-CF69-4B61-A945-7DBAAC1776E0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2AC9FD78-46F0-4C9A-BBBF-A971EC0C2FAA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2439862B-DFFC-4B32-8279-A66E7A17DCA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiAlunos.UnitTests", "ApiAlunos.UnitTests\ApiAlunos.UnitTests.csproj", "{5525AAD9-4A7D-4D5C-B3BB-11EE7F3AB300}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiAlunos.UnitTests", "ApiAlunos.UnitTests\ApiAlunos.UnitTests.csproj", "{5525AAD9-4A7D-4D5C-B3BB-11EE7F3AB300}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiAlunos.IntegrationTests", "ApiAlunos.IntegrationTests\ApiAlunos.IntegrationTests.csproj", "{4E16135C-7C45-462C-AF00-1DA0DCF221FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{5525AAD9-4A7D-4D5C-B3BB-11EE7F3AB300}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5525AAD9-4A7D-4D5C-B3BB-11EE7F3AB300}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5525AAD9-4A7D-4D5C-B3BB-11EE7F3AB300}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E16135C-7C45-462C-AF00-1DA0DCF221FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E16135C-7C45-462C-AF00-1DA0DCF221FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E16135C-7C45-462C-AF00-1DA0DCF221FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E16135C-7C45-462C-AF00-1DA0DCF221FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{2BD403E5-DE74-4F30-A5C2-71D58FE91479} = {2AC9FD78-46F0-4C9A-BBBF-A971EC0C2FAA}
 		{D83EB1CD-CF69-4B61-A945-7DBAAC1776E0} = {2AC9FD78-46F0-4C9A-BBBF-A971EC0C2FAA}
 		{5525AAD9-4A7D-4D5C-B3BB-11EE7F3AB300} = {2439862B-DFFC-4B32-8279-A66E7A17DCA7}
+		{4E16135C-7C45-462C-AF00-1DA0DCF221FD} = {2439862B-DFFC-4B32-8279-A66E7A17DCA7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9D295823-2EAE-4907-8623-7BDAC65ADD73}

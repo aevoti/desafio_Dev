@@ -4,12 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "build": "ng build",
+    "build": "ng build --aot --configuration=production",
     "debug": "ng serve --aot",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --aot --configuration=production",
     "publishheroku": "cd ../ && git subtree push --prefix FrontAlunos heroku-front master || true"
   },
   "private": true,
