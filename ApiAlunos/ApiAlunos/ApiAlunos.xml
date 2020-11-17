@@ -25,6 +25,7 @@
             <param name="id">Id do aluno</param>
             <param name="aluno">Dados do aluno</param>
             <response code="204">Retorna sucesso na atualização.</response>
+            <response code="404">Retorna que o aluno não foi encontrado.</response>
             <response code="400">Retorna os erros de validação.</response>
         </member>
         <member name="M:ApiAlunos.Controllers.AlunosController.PostAluno(ApiAlunos.Application.DTOs.InsertAlunoDTO)">

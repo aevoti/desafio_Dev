@@ -46,7 +46,11 @@ namespace ApiAlunos.Infrastructure.Repositories
 
         public virtual async Task Delete(int id)
         {
-            DbSet.Remove(await DbSet.FindAsync(id));
+            var entity = await DbSet.FindAsync(id);
+            if (entity != null)
+            {
+                DbSet.Remove(entity);
+            }
         }
 
         public async Task<int> SaveChangesAsync()

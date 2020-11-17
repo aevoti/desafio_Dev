@@ -54,13 +54,19 @@ namespace ApiAlunos.Controllers
         /// <param name="id">Id do aluno</param>
         /// <param name="aluno">Dados do aluno</param>
         /// <response code="204">Retorna sucesso na atualização.</response>
+        /// <response code="404">Retorna que o aluno não foi encontrado.</response>
         /// <response code="400">Retorna os erros de validação.</response>
         [HttpPut("{id}")]
         [Consumes("application/json")]
         [Produces("application/json")]
         public async Task<IActionResult> PutAluno(int id, [FromBody] UpdateAlunoDTO aluno)
         {
-            await _alunoService.UpdateAluno(id, aluno);
+            var alunoAtualizado = await _alunoService.UpdateAluno(id, aluno);
+
+            if (alunoAtualizado == null)
+            {
+                return NotFound();
+            }
 
             return NoContent();
         }
