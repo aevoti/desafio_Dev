@@ -10,6 +10,7 @@ using ApiAlunos.ViewModels;
 
 namespace ApiAlunos.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class AlunosController : Controller
@@ -24,6 +25,10 @@ namespace ApiAlunos.Controllers
         }
 
         // GET: api/Alunos
+        /// <summary>
+        /// Busca todos os alunos
+        /// </summary>
+        /// <response code="200">Buscou alunos com sucesso</response>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AlunoViewModel>>> GetAlunos()
         {
@@ -31,6 +36,11 @@ namespace ApiAlunos.Controllers
         }
 
         // GET: api/Alunos/5
+        /// <summary>
+        /// Busca um aluno pelo id
+        /// </summary>
+        /// <response code="200">Encontrou aluno com sucesso</response>
+        /// <response code="404">Não encontrou o aluno</response> 
         [HttpGet("{id}")]
         public async Task<ActionResult<AlunoViewModel>> GetAluno(int id)
         {
@@ -45,6 +55,12 @@ namespace ApiAlunos.Controllers
         }
 
         // PUT: api/Alunos/5
+        /// <summary>
+        /// Atualiza um aluno
+        /// </summary>
+        /// <response code="200">Atualizou aluno com sucesso</response>
+        /// <response code="400">Id da Url diferente do Id do objeto</response> 
+        /// <response code="404">Não achou o aluno que se deseja atualizar</response> 
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAluno(int id, AlunoViewModel alunoVM)
         {
@@ -73,6 +89,10 @@ namespace ApiAlunos.Controllers
         }
 
         // POST: api/Alunos
+        /// <summary>
+        /// Cria um aluno
+        /// </summary>
+        /// <response code="201">Criou aluno com sucesso</response>
         [HttpPost]
         public async Task<ActionResult<AlunoViewModel>> PostAluno(AlunoViewModel alunoVM)
         {
@@ -82,6 +102,11 @@ namespace ApiAlunos.Controllers
         }
 
         // DELETE: api/Alunos/5
+        /// <summary>
+        /// Deleta um aluno
+        /// </summary>
+        /// <response code="200">Deletou aluno com sucesso</response>
+        /// <response code="404">Não achou o aluno que se deseja deletar</response> 
         [HttpDelete("{id}")]
         public async Task<ActionResult<AlunoViewModel>> DeleteAluno(int id)
         {

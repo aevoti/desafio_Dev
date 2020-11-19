@@ -30,7 +30,10 @@ namespace ApiAlunos.Infra.Data.Repository
 
         public T Add(T entity)
         {
-            return DbSet.Add(entity).Entity;
+            DbSet.Add(entity);
+            DbContext.SaveChanges(); // Para gerar o Id
+
+            return entity;
         }
 
         public void Update(T entity)
