@@ -1,10 +1,8 @@
-image: gitpod/workspace-dotnet
+image: .gitpod.Dockerfile
 
 tasks:
   - init: 'echo "Iniciando"'
     command: 'echo "TODO: Replace with command to start project"'
-    command: npm install -g @angular/cli
-    command: dotnet tool install --global dotnet-ef
 
 vscode:
   extensions:
