@@ -1,8 +1,5 @@
-image: .gitpod.Dockerfile
-
-tasks:
-  - init: 'echo "Iniciando"'
-    command: 'echo "TODO: Replace with command to start project"'
+image: 
+  file: .gitpod.Dockerfile
 
 vscode:
   extensions:
