@@ -5,7 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+using AutoMapper;
+using ApiAlunos.ViewModels;
 
 namespace ApiAlunos.Controllers
 {
@@ -14,22 +15,24 @@ namespace ApiAlunos.Controllers
     public class AlunosController : Controller
     {
         private IAlunoService _alunoService;
+        private IMapper _mapper;
 
-        public AlunosController(IAlunoService alunoService)
+        public AlunosController(IAlunoService alunoService, IMapper mapper)
         {
             _alunoService = alunoService;
+            _mapper = mapper;
         }
 
         // GET: api/Alunos
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Aluno>>> GetAlunos()
+        public async Task<ActionResult<IEnumerable<AlunoViewModel>>> GetAlunos()
         {
-            return Json(_alunoService.GetAll());
+            return Json(_mapper.Map<IEnumerable<AlunoViewModel>>(_alunoService.GetAll()));
         }
 
         // GET: api/Alunos/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Aluno>> GetAluno(int id)
+        public async Task<ActionResult<AlunoViewModel>> GetAluno(int id)
         {
             var aluno = _alunoService.Get(id);
 
@@ -38,25 +41,25 @@ namespace ApiAlunos.Controllers
                 return NotFound();
             }
 
-            return Json(aluno);
+            return Json(_mapper.Map<AlunoViewModel>(aluno));
         }
 
         // PUT: api/Alunos/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAluno(int id, Aluno aluno)
+        public async Task<IActionResult> PutAluno(int id, AlunoViewModel alunoVM)
         {
-            if (id != aluno.AlunoId)
+            if (id != alunoVM.AlunoId)
             {
                 return BadRequest();
             }
 
             try
             {
-                _alunoService.Update(aluno);
+                _alunoService.Update(_mapper.Map<Aluno>(alunoVM));
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AlunoExists(id))
+                if (!_alunoService.AlunoExists(id))
                 {
                     return NotFound();
                 }
@@ -71,16 +74,16 @@ namespace ApiAlunos.Controllers
 
         // POST: api/Alunos
         [HttpPost]
-        public async Task<ActionResult<Aluno>> PostAluno(Aluno aluno)
+        public async Task<ActionResult<AlunoViewModel>> PostAluno(AlunoViewModel alunoVM)
         {
-            aluno = _alunoService.Add(aluno);
+            var aluno = _alunoService.Add(_mapper.Map<Aluno>(alunoVM));
 
-            return CreatedAtAction("GetAluno", new { id = aluno.AlunoId }, aluno);
+            return CreatedAtAction("GetAluno", new { id = aluno.AlunoId }, _mapper.Map<AlunoViewModel>(aluno));
         }
 
         // DELETE: api/Alunos/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Aluno>> DeleteAluno(int id)
+        public async Task<ActionResult<AlunoViewModel>> DeleteAluno(int id)
         {
             var aluno = _alunoService.Get(id);
             if (aluno == null)
@@ -88,12 +91,7 @@ namespace ApiAlunos.Controllers
                 return NotFound();
             }
 
-            return Json(_alunoService.Remove(aluno));
-        }
-
-        private bool AlunoExists(int id)
-        {
-            return true;//_context.Alunos.Any(e => e.AlunoId == id);
+            return Json(_mapper.Map<AlunoViewModel>(_alunoService.Remove(aluno)));
         }
     }
 }

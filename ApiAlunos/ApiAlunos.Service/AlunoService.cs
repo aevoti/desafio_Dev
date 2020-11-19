@@ -6,8 +6,16 @@ namespace ApiAlunos.Service
 {
     public class AlunoService : BaseService<Aluno>, IAlunoService
     {
+        private IAlunoRepository _alunoRepository;
+
         public AlunoService(IAlunoRepository alunoRepository) : base(alunoRepository) 
         {
+            _alunoRepository = alunoRepository;
+        }
+
+        public bool AlunoExists(int id)
+        {
+            return _alunoRepository.AlunoExists(id);
         }
     }
 }

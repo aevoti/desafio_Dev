@@ -4,6 +4,6 @@ namespace ApiAlunos.Domain.Interfaces.Repository
 {
     public interface IAlunoRepository : IBaseRepository<Aluno>
     {
-        
+        bool AlunoExists(int id);
     }
 }

@@ -12,6 +12,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using ApiAlunos.Infra.Crosscutting;
+using AutoMapper;
+using ApiAlunos.Domain.Models;
+using ApiAlunos.ViewModels;
 
 namespace ApiAlunos
 {
@@ -43,6 +46,14 @@ namespace ApiAlunos
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
             services.AddMvc(option => option.EnableEndpointRouting = false);
+
+            var config = new AutoMapper.MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<AlunoViewModel, Aluno>();
+                cfg.CreateMap<Aluno, AlunoViewModel>();
+            });
+            IMapper mapper = config.CreateMapper();
+            services.AddSingleton(mapper);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
