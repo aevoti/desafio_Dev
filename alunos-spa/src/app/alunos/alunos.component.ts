@@ -5,6 +5,7 @@ import { LoadingService } from '../services/loading.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AlunosDetailsComponent } from '../alunos-details/alunos-details.component';
 import { ConfirmarDialogComponent } from '../confirmar-dialog/confirmar-dialog.component';
+import { ToastService } from '../services/toast.service';
 
 @Component({
   selector: 'app-alunos',
@@ -16,7 +17,12 @@ export class AlunosComponent implements OnInit {
   dataSource: Aluno[];
   displayedColumns = ['nome', 'email', 'acoes'];
 
-  constructor(private alunoService: AlunoService, private loadingService: LoadingService, private dialog: MatDialog) { }
+  constructor(
+    private alunoService: AlunoService,
+    private loadingService: LoadingService,
+    private dialog: MatDialog,
+    private toastService: ToastService
+    ) { }
 
   ngOnInit(): void {
     this.load();
@@ -28,6 +34,7 @@ export class AlunosComponent implements OnInit {
 
     this.alunoService.get().subscribe({
       next: (data) => this.dataSource = data,
+      error: () => this.toastService.showErrorToast()
     })
     .add(() => this.loadingService.hideLoading());
   }
@@ -57,7 +64,11 @@ export class AlunosComponent implements OnInit {
         this.loadingService.showLoading();
 
         this.alunoService.delete(aluno).subscribe({
-          next: () => this.load(),
+          next: () => {
+            this.toastService.showSuccessToast('Aluno removido com sucesso!');
+            this.load();
+          },
+          error: () => this.toastService.showErrorToast()
         })
         .add(() => this.loadingService.hideLoading());
       }

@@ -18,6 +18,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ConfirmarDialogComponent } from './confirmar-dialog/confirmar-dialog.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { ConfirmarDialogComponent } from './confirmar-dialog/confirmar-dialog.co
     AlunosComponent,
     AlunosDetailsComponent,
     ConfirmarDialogComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import { ConfirmarDialogComponent } from './confirmar-dialog/confirmar-dialog.co
     MatProgressSpinnerModule,
     MatFormFieldModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

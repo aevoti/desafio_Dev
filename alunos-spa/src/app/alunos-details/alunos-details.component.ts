@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Aluno } from '../models/aluno.model';
 import { LoadingService } from '../services/loading.service';
 import { AlunoService } from '../services/aluno.service';
+import { ToastService } from '../services/toast.service';
 
 @Component({
   selector: 'app-alunos-details',
@@ -25,10 +26,13 @@ export class AlunosDetailsComponent implements OnInit {
     }
   };
 
-  constructor(private dialogRef: MatDialogRef<AlunosDetailsComponent>,
-              @Inject(MAT_DIALOG_DATA) private data: Aluno,
-              private loadingService: LoadingService,
-              private alunoService: AlunoService) { }
+  constructor(
+    private dialogRef: MatDialogRef<AlunosDetailsComponent>,
+    @Inject(MAT_DIALOG_DATA) private data: Aluno,
+    private loadingService: LoadingService,
+    private alunoService: AlunoService,
+    private toastService: ToastService
+    ) { }
 
   ngOnInit(): void {
     this.nome.setValue(this.data?.nome);
@@ -52,7 +56,11 @@ export class AlunosDetailsComponent implements OnInit {
       // Quer dizer que tem que criar um aluno
 
       this.alunoService.post(aluno).subscribe({
-        next: () => this.dialogRef.close(true),
+        next: () => {
+          this.toastService.showSuccessToast('Aluno criado com sucesso');
+          this.dialogRef.close(true);
+        },
+        error: () => this.toastService.showErrorToast()
       })
       .add(() => this.loadingService.hideLoading());
     } else {
@@ -60,7 +68,11 @@ export class AlunosDetailsComponent implements OnInit {
 
       aluno.alunoId = this.data.alunoId;
       this.alunoService.put(aluno).subscribe({
-        next: () => this.dialogRef.close(true),
+        next: () => {
+          this.toastService.showSuccessToast('Aluno editado com sucesso');
+          this.dialogRef.close(true);
+        },
+        error: () => this.toastService.showErrorToast()
       })
       .add(() => this.loadingService.hideLoading());
     }
