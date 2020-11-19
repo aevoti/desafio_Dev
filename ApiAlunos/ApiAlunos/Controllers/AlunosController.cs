@@ -1,43 +1,44 @@
-﻿using ApiAlunos.Context;
-using ApiAlunos.Models;
+using ApiAlunos.Domain.Models;
+using ApiAlunos.Domain.Interfaces.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ApiAlunos.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AlunosController : ControllerBase
+    public class AlunosController : Controller
     {
-        private readonly AppDbContext _context;
+        private IAlunoService _alunoService;
 
-        public AlunosController(AppDbContext context)
+        public AlunosController(IAlunoService alunoService)
         {
-            _context = context;
+            _alunoService = alunoService;
         }
 
         // GET: api/Alunos
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Aluno>>> GetAlunos()
         {
-            return await _context.Alunos.ToListAsync();
+            return Json(_alunoService.GetAll());
         }
 
         // GET: api/Alunos/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Aluno>> GetAluno(int id)
         {
-            var aluno = await _context.Alunos.FindAsync(id);
+            var aluno = _alunoService.Get(id);
 
             if (aluno == null)
             {
                 return NotFound();
             }
 
-            return aluno;
+            return Json(aluno);
         }
 
         // PUT: api/Alunos/5
@@ -49,11 +50,9 @@ namespace ApiAlunos.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(aluno).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                _alunoService.Update(aluno);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -74,8 +73,7 @@ namespace ApiAlunos.Controllers
         [HttpPost]
         public async Task<ActionResult<Aluno>> PostAluno(Aluno aluno)
         {
-            _context.Alunos.Add(aluno);
-            await _context.SaveChangesAsync();
+            aluno = _alunoService.Add(aluno);
 
             return CreatedAtAction("GetAluno", new { id = aluno.AlunoId }, aluno);
         }
@@ -84,21 +82,18 @@ namespace ApiAlunos.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Aluno>> DeleteAluno(int id)
         {
-            var aluno = await _context.Alunos.FindAsync(id);
+            var aluno = _alunoService.Get(id);
             if (aluno == null)
             {
                 return NotFound();
             }
 
-            _context.Alunos.Remove(aluno);
-            await _context.SaveChangesAsync();
-
-            return aluno;
+            return Json(_alunoService.Remove(aluno));
         }
 
         private bool AlunoExists(int id)
         {
-            return _context.Alunos.Any(e => e.AlunoId == id);
+            return true;//_context.Alunos.Any(e => e.AlunoId == id);
         }
     }
 }

@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ApiAlunos.Migrations
+namespace ApiAlunos.Infra.Data.Migrations
 {
     public partial class inicial : Migration
     {
