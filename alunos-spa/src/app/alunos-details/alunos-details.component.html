@@ -1,0 +1,18 @@
+<form (keyup.enter)="salvar()">
+  <mat-form-field appearance="fill">
+    <mat-label>Nome</mat-label>
+    <input matInput  [formControl]="nome" required>
+    <mat-error *ngIf="nome.invalid">{{getErrorMessage(nome, 'nome')}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="example@example.com" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage(email, 'email')}}</mat-error>
+  </mat-form-field>
+</form>
+
+<div class="footer-buttons">
+  <button mat-raised-button class="confirm-button" (click)="salvar()">Salvar</button>
+  <button mat-raised-button color="accent" (click)="cancelar()">Cancelar</button>
+</div>

@@ -1,0 +1,27 @@
+table {
+  width: 100%;
+}
+
+.fab-container {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.mat-column-acoes {
+  width: 10%;
+  text-align: center;
+}
+
+.mat-column-email {
+  width: 50%;
+  text-align: center;
+}
+
+.mat-column-nome {
+  text-align: center;
+}

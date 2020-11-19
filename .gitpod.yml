@@ -1,5 +1,12 @@
 image: gitpod/workspace-dotnet
 
 tasks:
-  - init: 'echo "TODO: Replace with init/build command"'
+  - init: 'echo "Iniciando"'
     command: 'echo "TODO: Replace with command to start project"'
+    command: npm install -g @angular/cli
+    command: dotnet tool install --global dotnet-ef
+
+vscode:
+  extensions:
+    - muhammad-sammy.csharp@1.23.5:P2IAAqkG33Qk7a8Z/Ip6eg==
+    - Angular.ng-template@0.1100.0:7oR3tO6ugyY+mWGZtMigtg==
