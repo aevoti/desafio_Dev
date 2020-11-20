@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { Aluno } from '../models/aluno.model';
 import { AlunoService } from '../services/aluno.service';
 import { LoadingService } from '../services/loading.service';
@@ -6,16 +6,20 @@ import { MatDialog } from '@angular/material/dialog';
 import { AlunosDetailsComponent } from '../alunos-details/alunos-details.component';
 import { ConfirmarDialogComponent } from '../confirmar-dialog/confirmar-dialog.component';
 import { ToastService } from '../services/toast.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-alunos',
   templateUrl: './alunos.component.html',
   styleUrls: ['./alunos.component.scss']
 })
-export class AlunosComponent implements OnInit {
+export class AlunosComponent implements AfterViewInit {
 
-  dataSource: Aluno[];
+  dataSource = new MatTableDataSource<Aluno>();
   displayedColumns = ['nome', 'email', 'acoes'];
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
     private alunoService: AlunoService,
@@ -24,20 +28,37 @@ export class AlunosComponent implements OnInit {
     private toastService: ToastService
     ) { }
 
-  ngOnInit(): void {
+
+  ngAfterViewInit(): void {
+    this.dataSource.filterPredicate = (data: Aluno, filter: string) => data.nome.indexOf(filter) != -1;
+    this.dataSource.paginator = this.paginator;
+
     this.load();
   }
 
+  ngOnInit(): void {
+  }
+
   load(): void {
-    this.dataSource = [];
+    this.dataSource.data = [];
     this.loadingService.showLoading();
 
     this.alunoService.get().subscribe({
-      next: (data) => this.dataSource = data,
+      next: (data) => this.dataSource.data = data,
       error: () => this.toastService.showErrorToast()
     })
     .add(() => this.loadingService.hideLoading());
   }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
 
   addOrUpdate(aluno: Aluno = null): void {
     const dialogRef = this.dialog.open(AlunosDetailsComponent, {

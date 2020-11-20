@@ -20,6 +20,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { ConfirmarDialogComponent } from './confirmar-dialog/confirmar-dialog.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatFormFieldModule,
     MatDialogModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
