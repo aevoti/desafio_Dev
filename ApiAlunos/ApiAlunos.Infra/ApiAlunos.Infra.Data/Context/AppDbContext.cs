@@ -11,7 +11,7 @@ namespace ApiAlunos.Infra.Data.Context
         {
             if (!dbContextOptionsBuilder.IsConfigured)
             {
-                var connectionString = DatabaseConnection.ConnectionConfiguration.GetConnectionString("POSTGRESQLCONNSTR_Default ") ?? DatabaseConnection.ConnectionConfiguration.GetConnectionString("Default");
+                var connectionString = DatabaseConnection.ConnectionConfiguration.GetConnectionString("POSTGRESQLCONNSTR_Default") ?? DatabaseConnection.ConnectionConfiguration.GetConnectionString("Default");
                 dbContextOptionsBuilder.UseNpgsql(connectionString); 
             }
         }
