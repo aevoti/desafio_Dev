@@ -12,7 +12,7 @@ namespace ApiAlunos.Infra.Data.Context
             if (!dbContextOptionsBuilder.IsConfigured)
             {
                 dbContextOptionsBuilder.UseNpgsql(DatabaseConnection.ConnectionConfiguration.
-                    GetConnectionString("Default"));
+                    GetConnectionString("Default")); 
             }
         }
 
