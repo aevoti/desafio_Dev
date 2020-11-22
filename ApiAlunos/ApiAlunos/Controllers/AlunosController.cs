@@ -1,63 +1,81 @@
-﻿using ApiAlunos.Context;
-using ApiAlunos.Models;
+using ApiAlunos.Domain.Models;
+using ApiAlunos.Domain.Interfaces.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using ApiAlunos.ViewModels;
 
 namespace ApiAlunos.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-    public class AlunosController : ControllerBase
+    public class AlunosController : Controller
     {
-        private readonly AppDbContext _context;
+        private IAlunoService _alunoService;
+        private IMapper _mapper;
 
-        public AlunosController(AppDbContext context)
+        public AlunosController(IAlunoService alunoService, IMapper mapper)
         {
-            _context = context;
+            _alunoService = alunoService;
+            _mapper = mapper;
         }
 
         // GET: api/Alunos
+        /// <summary>
+        /// Busca todos os alunos
+        /// </summary>
+        /// <response code="200">Buscou alunos com sucesso</response>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Aluno>>> GetAlunos()
+        public async Task<ActionResult<IEnumerable<AlunoViewModel>>> GetAlunos()
         {
-            return await _context.Alunos.ToListAsync();
+            return Json(_mapper.Map<IEnumerable<AlunoViewModel>>(_alunoService.GetAll()));
         }
 
         // GET: api/Alunos/5
+        /// <summary>
+        /// Busca um aluno pelo id
+        /// </summary>
+        /// <response code="200">Encontrou aluno com sucesso</response>
+        /// <response code="404">Não encontrou o aluno</response> 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Aluno>> GetAluno(int id)
+        public async Task<ActionResult<AlunoViewModel>> GetAluno(int id)
         {
-            var aluno = await _context.Alunos.FindAsync(id);
+            var aluno = _alunoService.Get(id);
 
             if (aluno == null)
             {
                 return NotFound();
             }
 
-            return aluno;
+            return Json(_mapper.Map<AlunoViewModel>(aluno));
         }
 
         // PUT: api/Alunos/5
+        /// <summary>
+        /// Atualiza um aluno
+        /// </summary>
+        /// <response code="200">Atualizou aluno com sucesso</response>
+        /// <response code="400">Id da Url diferente do Id do objeto</response> 
+        /// <response code="404">Não achou o aluno que se deseja atualizar</response> 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAluno(int id, Aluno aluno)
+        public async Task<IActionResult> PutAluno(int id, AlunoViewModel alunoVM)
         {
-            if (id != aluno.AlunoId)
+            if (id != alunoVM.AlunoId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(aluno).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                _alunoService.Update(_mapper.Map<Aluno>(alunoVM));
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AlunoExists(id))
+                if (!_alunoService.AlunoExists(id))
                 {
                     return NotFound();
                 }
@@ -71,34 +89,34 @@ namespace ApiAlunos.Controllers
         }
 
         // POST: api/Alunos
+        /// <summary>
+        /// Cria um aluno
+        /// </summary>
+        /// <response code="201">Criou aluno com sucesso</response>
         [HttpPost]
-        public async Task<ActionResult<Aluno>> PostAluno(Aluno aluno)
+        public async Task<ActionResult<AlunoViewModel>> PostAluno(AlunoViewModel alunoVM)
         {
-            _context.Alunos.Add(aluno);
-            await _context.SaveChangesAsync();
+            var aluno = _alunoService.Add(_mapper.Map<Aluno>(alunoVM));
 
-            return CreatedAtAction("GetAluno", new { id = aluno.AlunoId }, aluno);
+            return CreatedAtAction("GetAluno", new { id = aluno.AlunoId }, _mapper.Map<AlunoViewModel>(aluno));
         }
 
         // DELETE: api/Alunos/5
+        /// <summary>
+        /// Deleta um aluno
+        /// </summary>
+        /// <response code="200">Deletou aluno com sucesso</response>
+        /// <response code="404">Não achou o aluno que se deseja deletar</response> 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Aluno>> DeleteAluno(int id)
+        public async Task<ActionResult<AlunoViewModel>> DeleteAluno(int id)
         {
-            var aluno = await _context.Alunos.FindAsync(id);
+            var aluno = _alunoService.Get(id);
             if (aluno == null)
             {
                 return NotFound();
             }
 
-            _context.Alunos.Remove(aluno);
-            await _context.SaveChangesAsync();
-
-            return aluno;
-        }
-
-        private bool AlunoExists(int id)
-        {
-            return _context.Alunos.Any(e => e.AlunoId == id);
+            return Json(_mapper.Map<AlunoViewModel>(_alunoService.Remove(aluno)));
         }
     }
 }

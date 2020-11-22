@@ -1,0 +1,11 @@
+<div *ngIf="loadingService.isLoading | async" class="spinner_container">
+  <mat-spinner></mat-spinner>
+</div>
+
+<mat-toolbar>
+  <span>Alunos <a [href]="SWAGGER_URL">(Swagger)</a></span>
+</mat-toolbar>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

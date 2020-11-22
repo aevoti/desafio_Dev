@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "desafioaevo": {
+      "hosting": {
+        "alunos-spa": [
+          "desafioaevo"
+        ]
+      }
+    }
+  }
+}

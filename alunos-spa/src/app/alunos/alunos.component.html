@@ -1,0 +1,47 @@
+<mat-form-field>
+  <mat-label>Pesquisar</mat-label>
+  <input matInput (keyup)="applyFilter($event)" #input>
+</mat-form-field>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--Coluna Nome-->
+  <ng-container matColumnDef="nome">
+    <th mat-header-cell *matHeaderCellDef>Nome</th>
+    <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+  </ng-container>
+
+  <!--Coluna email-->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef>Email</th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+  <!--Coluna de Ações-->
+  <ng-container matColumnDef="acoes">
+    <th mat-header-cell *matHeaderCellDef>Ações</th>
+    <td mat-cell *matCellDef="let element" >
+
+      <div style="display: flex;">
+        <button mat-icon-button (click)="addOrUpdate(element)" >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="del(element)">
+          <mat-icon color="warn">delete</mat-icon>
+        </button>
+      </div>
+
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="[15, 25, 50, 100, 200]"></mat-paginator>
+
+<div class="fab-container">
+  <button (click)="addOrUpdate()" mat-fab color="primary">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

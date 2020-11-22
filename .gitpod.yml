@@ -1,0 +1,7 @@
+image: 
+  file: .gitpod.Dockerfile
+
+vscode:
+  extensions:
+    - muhammad-sammy.csharp@1.23.5:P2IAAqkG33Qk7a8Z/Ip6eg==
+    - Angular.ng-template@0.1100.0:7oR3tO6ugyY+mWGZtMigtg==

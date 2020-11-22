@@ -1,0 +1,25 @@
+.container {
+  margin: 16px 15%;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    margin: 8px;
+  }
+}
+
+.spinner_container {
+  background-color: rgba(0,0,0,0.7);
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  z-index: 5000;
+  display: flex;
+
+  mat-spinner {
+    margin: auto;
+    z-index: 5001;
+  }
+}
