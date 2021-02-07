@@ -1,4 +1,6 @@
-﻿using ApiAlunos.Context;
+﻿// Criado o método Filtro que realiza a busca dos alunos pelo nome
+
+using ApiAlunos.Context;
 using ApiAlunos.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -94,6 +96,17 @@ namespace ApiAlunos.Controllers
             await _context.SaveChangesAsync();
 
             return aluno;
+        }
+
+        // Método para filtrar pelo nome do aluno
+        // String como parâmetro
+        // Retorna uma lista que contenha a sting nome
+
+        // GET: api/Alunos/Filtro/Nome
+        [HttpGet("Filtro/{nome}")]
+        public async Task<ActionResult<IEnumerable<Aluno>>> FiltroAlunos(string nome)
+        {
+            return await _context.Alunos.Where(x => x.Nome.Contains(nome)).ToListAsync();
         }
 
         private bool AlunoExists(int id)

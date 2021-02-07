@@ -1,0 +1,117 @@
+<div class="d-flex">
+    <div class="form-inline mr-auto">
+        <div class="input-group mb-2">
+            <input type="text" class="form-control" placeholder="Buscar alunos"  [(ngModel)]="inputBuscarAluno" name="inputAluno">
+            <div class="input-group-append">
+                <button class="btn btn-outline-primary" (click)="buscarAluno()" tooltip="Buscar aluno"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </div>
+    <div>
+        <button class="btn btn-outline-primary" (click)="novoAluno(modal)" tooltip="Cadastrar novo aluno">
+            <i class="fa fa-plus-circle"></i>&nbsp;Novo aluno
+        </button>
+    </div>
+</div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody *ngIf="listaAlunos && listaAlunos.length">
+        <tr *ngFor="let aluno of listaAlunos">
+            <td>{{ aluno.alunoId }}</td>
+            <td>{{ aluno.nome }}</td>
+            <td>{{ aluno.email }}</td>
+            <td id="botoes" class="btn-group">
+                <button class="btn btn-outline-success btn-sm" (click)="editarAluno(aluno, modal)" tooltip="Editar">
+                    <i class="fa fa-edit"></i>
+                </button>
+                <button class="btn btn-outline-danger btn-sm" (click)="excluirAluno(aluno, confirm)" tooltip="Excluir">
+                    <i class="fa fa-eraser"></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot *ngIf="!listaAlunos.length">
+        <tr>
+            <td colspan="7" class="text-center">
+                <h3>Nenhum aluno encontrado</h3>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+<!-- Modal do formulário cadastrar/editar -->
+<ng-template #modal>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Cadastrar aluno</h4>
+        <h4 class="modal-title pull-left" *ngIf="origem == 'editar'">Editar aluno</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="registerForm">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label>Nome</label>
+                    <input type="text" class="form-control" 
+                        [ngClass]="{'is-invalid': registerForm.get('nome').errors && registerForm.get('nome').touched}" 
+                        formControlName="nome" />
+                    <div class="invalid-feedback">
+                        O nome é obrigatório.
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label>E-mail</label>
+                    <input type="text" class="form-control"
+                        [ngClass]="{'is-invalid': registerForm.get('email').errors && registerForm.get('email').touched}"
+                        formControlName="email"/>
+                    <div class="invalid-feedback" 
+                        *ngIf="registerForm.get('email').hasError('required') && registerForm.get('email').touched">
+                        O e-mail é obrigatório.
+                    </div>
+                    <div class="invalid-feedback"
+                        *ngIf="registerForm.get('email').hasError('email') && registerForm.get('email').touched">
+                        Deve ser um email válido.
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer btn-group d-flex">
+        <button class="btn btn-outline-danger" (click)="modalRef.hide()">Cancelar</button>
+        <button class="btn btn-outline-primary" (click)="salvarAluno(modal)" [disabled]="!registerForm.valid">Salvar</button>
+    </div>
+</ng-template>
+
+<!-- Modal de confirmação exclusão -->
+<ng-template #confirm>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">
+          Excluir aluno
+        </h4>
+        <button type="button" class="close pull-right" (click)="modalRef.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+  </div>
+  <div class="modal-body">
+        <p>{{bodyDeletarAluno}}</p>
+  </div>    
+  <div class="modal-footer btn-group d-flex">      
+        <button type="button" class="btn btn-outline-danger" (click)="modalRef.hide()">
+          Cancelar
+        </button>
+        <button type="button" class="btn btn-outline-primary" (click)="confirmarExclusao(confirm)">
+            Excluir
+      </button>
+  </div>
+</ng-template>
+    		
