@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Dowloads\\ApiAlunos\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj": {}
+    "C:\\Users\\Romulo\\Desktop\\projetos\\aevo\\desafio\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj": {}
   },
   "projects": {
-    "D:\\Dowloads\\ApiAlunos\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj": {
+    "C:\\Users\\Romulo\\Desktop\\projetos\\aevo\\desafio\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dowloads\\ApiAlunos\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj",
+        "projectUniqueName": "C:\\Users\\Romulo\\Desktop\\projetos\\aevo\\desafio\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj",
         "projectName": "ApiAlunos",
-        "projectPath": "D:\\Dowloads\\ApiAlunos\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj",
-        "packagesPath": "C:\\Users\\AEVO\\.nuget\\packages\\",
-        "outputPath": "D:\\Dowloads\\ApiAlunos\\ApiAlunos\\ApiAlunos\\obj\\",
+        "projectPath": "C:\\Users\\Romulo\\Desktop\\projetos\\aevo\\desafio\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj",
+        "packagesPath": "C:\\Users\\Romulo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Romulo\\Desktop\\projetos\\aevo\\desafio\\desafio_Dev\\ApiAlunos\\ApiAlunos\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\AEVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Romulo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -82,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
