@@ -1,0 +1,9 @@
+/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/DominioAlunos/bin/Debug/netstandard2.0/DominioAlunos.deps.json
+/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/DominioAlunos/bin/Debug/netstandard2.0/DominioAlunos.dll
+/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/DominioAlunos/bin/Debug/netstandard2.0/DominioAlunos.pdb
+/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/DominioAlunos/obj/Debug/netstandard2.0/DominioAlunos.AssemblyInfoInputs.cache
+/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/DominioAlunos/obj/Debug/netstandard2.0/DominioAlunos.AssemblyInfo.cs
+/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/DominioAlunos/obj/Debug/netstandard2.0/DominioAlunos.csproj.CoreCompileInputs.cache
+/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/DominioAlunos/obj/Debug/netstandard2.0/DominioAlunos.dll
+/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/DominioAlunos/obj/Debug/netstandard2.0/DominioAlunos.pdb
+/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/DominioAlunos/obj/Debug/netstandard2.0/DominioAlunos.csprojAssemblyReference.cache
