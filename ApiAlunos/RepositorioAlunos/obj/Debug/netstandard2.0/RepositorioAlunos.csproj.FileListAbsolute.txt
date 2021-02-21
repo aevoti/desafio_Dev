@@ -1,0 +1,12 @@
+/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/RepositorioAlunos/bin/Debug/netstandard2.0/RepositorioAlunos.deps.json
+/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/RepositorioAlunos/bin/Debug/netstandard2.0/RepositorioAlunos.dll
+/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/RepositorioAlunos/bin/Debug/netstandard2.0/RepositorioAlunos.pdb
+/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/RepositorioAlunos/bin/Debug/netstandard2.0/DominioAlunos.dll
+/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/RepositorioAlunos/bin/Debug/netstandard2.0/DominioAlunos.pdb
+/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/RepositorioAlunos/obj/Debug/netstandard2.0/RepositorioAlunos.csprojAssemblyReference.cache
+/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/RepositorioAlunos/obj/Debug/netstandard2.0/RepositorioAlunos.AssemblyInfoInputs.cache
+/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/RepositorioAlunos/obj/Debug/netstandard2.0/RepositorioAlunos.AssemblyInfo.cs
+/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/RepositorioAlunos/obj/Debug/netstandard2.0/RepositorioAlunos.csproj.CoreCompileInputs.cache
+/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/RepositorioAlunos/obj/Debug/netstandard2.0/RepositorioAlunos.csproj.CopyComplete
+/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/RepositorioAlunos/obj/Debug/netstandard2.0/RepositorioAlunos.dll
+/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/RepositorioAlunos/obj/Debug/netstandard2.0/RepositorioAlunos.pdb

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "etL1fBJHC+dwWjyD/jadYoavSKueJVTSuGeD9v1Fmxan/Dxfb19xLsWRAIqpPb5fBZ8SmGPChU/H9E6ROi9fvg==",
+  "success": true,
+  "projectFilePath": "/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/DominioAlunos/DominioAlunos.csproj",
+  "expectedPackageFiles": [
+    "/home/fabio/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "/home/fabio/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

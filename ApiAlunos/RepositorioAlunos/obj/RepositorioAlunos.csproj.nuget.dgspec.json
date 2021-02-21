@@ -1,0 +1,126 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/RepositorioAlunos/RepositorioAlunos.csproj": {}
+  },
+  "projects": {
+    "/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/DominioAlunos/DominioAlunos.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/DominioAlunos/DominioAlunos.csproj",
+        "projectName": "DominioAlunos",
+        "projectPath": "/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/DominioAlunos/DominioAlunos.csproj",
+        "packagesPath": "/home/fabio/.nuget/packages/",
+        "outputPath": "/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/DominioAlunos/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/fabio/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.406/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/RepositorioAlunos/RepositorioAlunos.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/RepositorioAlunos/RepositorioAlunos.csproj",
+        "projectName": "RepositorioAlunos",
+        "projectPath": "/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/RepositorioAlunos/RepositorioAlunos.csproj",
+        "packagesPath": "/home/fabio/.nuget/packages/",
+        "outputPath": "/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/RepositorioAlunos/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/fabio/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/DominioAlunos/DominioAlunos.csproj": {
+                "projectPath": "/home/fabio/Downloads/Aevo/desafio_Dev/ApiAlunos/DominioAlunos/DominioAlunos.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.6, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.406/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
