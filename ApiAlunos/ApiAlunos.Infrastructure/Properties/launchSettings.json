@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ApiAlunos.Infrastructure": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

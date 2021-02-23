@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ApiAlunos.Context;
+﻿using ApiAlunos.Core.Interfaces;
+using ApiAlunos.Infrastructure;
+using ApiAlunos.Infrastructure.Repositories;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,8 +11,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using System;
 
-namespace ApiAlunos
+namespace ApiAlunos.Web
 {
     public class Startup
     {
@@ -27,6 +27,9 @@ namespace ApiAlunos
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var assembly = AppDomain.CurrentDomain.Load("ApiAlunos.Core");
+            services.AddMediatR(assembly);
+
             services.AddCors(options =>
             {
                 options.AddPolicy("EnableCORS", builder =>
@@ -39,6 +42,7 @@ namespace ApiAlunos
                     options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
                 );
 
+            services.AddScoped<IAlunosRepository, AlunosRepository>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
             services.AddMvc(option => option.EnableEndpointRouting = false);
         }

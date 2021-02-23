@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29209.152
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiAlunos", "ApiAlunos\ApiAlunos.csproj", "{4866D448-F018-43D0-886D-C8C62310110A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiAlunos.Web", "ApiAlunos\ApiAlunos.Web.csproj", "{4866D448-F018-43D0-886D-C8C62310110A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiAlunos.Infrastructure", "ApiAlunos.Infrastructure\ApiAlunos.Infrastructure.csproj", "{D7186B1F-BC21-4F31-B5F3-AB806539A2D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiAlunos.Core", "ApiAlunos.Core\ApiAlunos.Core.csproj", "{58C8A185-DE45-49C8-B8DF-8837A1CBD03E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{4866D448-F018-43D0-886D-C8C62310110A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4866D448-F018-43D0-886D-C8C62310110A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4866D448-F018-43D0-886D-C8C62310110A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7186B1F-BC21-4F31-B5F3-AB806539A2D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7186B1F-BC21-4F31-B5F3-AB806539A2D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7186B1F-BC21-4F31-B5F3-AB806539A2D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7186B1F-BC21-4F31-B5F3-AB806539A2D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58C8A185-DE45-49C8-B8DF-8837A1CBD03E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58C8A185-DE45-49C8-B8DF-8837A1CBD03E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58C8A185-DE45-49C8-B8DF-8837A1CBD03E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58C8A185-DE45-49C8-B8DF-8837A1CBD03E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
