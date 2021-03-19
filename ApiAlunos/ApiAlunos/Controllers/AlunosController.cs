@@ -1,4 +1,5 @@
 ﻿using ApiAlunos.Context;
+using ApiAlunos.Contracts;
 using ApiAlunos.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,10 +14,12 @@ namespace ApiAlunos.Controllers
     public class AlunosController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly IAlunoContract _alunoContract;
 
-        public AlunosController(AppDbContext context)
+        public AlunosController(AppDbContext context, IAlunoContract alunoContract)
         {
             _context = context;
+            _alunoContract = alunoContract;
         }
 
         // GET: api/Alunos
@@ -94,6 +97,23 @@ namespace ApiAlunos.Controllers
             await _context.SaveChangesAsync();
 
             return aluno;
+        }
+
+        [HttpGet("getByIdAndName")]
+        public ActionResult<Aluno> GetAlunoByIdAndName([FromQuery]int? id, [FromQuery] string nome)
+        {
+            var aluno = _alunoContract.GetAlunoByIdAndName(id, nome);
+
+            if (aluno == null)
+                return NotFound();
+
+            return aluno;
+        }
+
+        [HttpGet("order")]
+        public ActionResult<IEnumerable<Aluno>> GetAlunosAscendingOrder()
+        {
+            return _alunoContract.GetAlunosByAscendingOrder();
         }
 
         private bool AlunoExists(int id)
