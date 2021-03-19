@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ApiAlunos.Business;
 using ApiAlunos.Context;
+using ApiAlunos.Contracts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -41,6 +43,8 @@ namespace ApiAlunos
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
             services.AddMvc(option => option.EnableEndpointRouting = false);
+
+            services.AddScoped<IAlunoContract, AlunoBusiness>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

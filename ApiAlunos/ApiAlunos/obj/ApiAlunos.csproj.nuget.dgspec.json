@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Dowloads\\ApiAlunos\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj": {}
+    "C:\\TestesPraticos\\AEVO\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj": {}
   },
   "projects": {
-    "D:\\Dowloads\\ApiAlunos\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj": {
+    "C:\\TestesPraticos\\AEVO\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dowloads\\ApiAlunos\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj",
+        "projectUniqueName": "C:\\TestesPraticos\\AEVO\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj",
         "projectName": "ApiAlunos",
-        "projectPath": "D:\\Dowloads\\ApiAlunos\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj",
-        "packagesPath": "C:\\Users\\AEVO\\.nuget\\packages\\",
-        "outputPath": "D:\\Dowloads\\ApiAlunos\\ApiAlunos\\ApiAlunos\\obj\\",
+        "projectPath": "C:\\TestesPraticos\\AEVO\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj",
+        "packagesPath": "C:\\Users\\Rafae\\.nuget\\packages\\",
+        "outputPath": "C:\\TestesPraticos\\AEVO\\ApiAlunos\\ApiAlunos\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\AEVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Rafae\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -29,6 +26,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -40,6 +38,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -82,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }
