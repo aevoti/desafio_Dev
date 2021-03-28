@@ -1,24 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Dowloads\\ApiAlunos\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj": {}
+    "C:\\Users\\anaca\\Documents\\Programming\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj": {}
   },
   "projects": {
-    "D:\\Dowloads\\ApiAlunos\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj": {
+    "C:\\Users\\anaca\\Documents\\Programming\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dowloads\\ApiAlunos\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj",
+        "projectUniqueName": "C:\\Users\\anaca\\Documents\\Programming\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj",
         "projectName": "ApiAlunos",
-        "projectPath": "D:\\Dowloads\\ApiAlunos\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj",
-        "packagesPath": "C:\\Users\\AEVO\\.nuget\\packages\\",
-        "outputPath": "D:\\Dowloads\\ApiAlunos\\ApiAlunos\\ApiAlunos\\obj\\",
+        "projectPath": "C:\\Users\\anaca\\Documents\\Programming\\desafio_Dev\\ApiAlunos\\ApiAlunos\\ApiAlunos.csproj",
+        "packagesPath": "C:\\Users\\anaca\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\anaca\\Documents\\Programming\\desafio_Dev\\ApiAlunos\\ApiAlunos\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\AEVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\anaca\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -29,6 +32,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -40,6 +44,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -82,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
