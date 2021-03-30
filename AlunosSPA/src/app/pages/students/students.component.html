@@ -1,0 +1,71 @@
+<app-title [title]="title"></app-title>
+<div class="new-btn">
+  <button class="btn btn-outline-warning" (click)="addStudent()">Adicionar novo aluno</button>
+</div>
+
+<div *ngIf="studentSelected">
+  <app-subtitle [subtitle]="studentSelected.alunoId === 0 ? 'Novo Aluno' : 'Editar: '+ studentSelected.nome"></app-subtitle>
+  <form class="form-students" [formGroup]="studentForm" (submit)="studentSubmit()">
+    <div class="form-group">
+      <label for="name">Nome</label>
+      <input type="text" class="form-control" formControlName="nome">
+    </div>
+    <div class="form-group">
+      <label for="email">E-mail</label>
+      <input type="email" class="form-control" formControlName="email">
+    </div>
+    <div class="form-group">
+      <label for="turma">Turma</label>
+      <input type="string" class="form-control" formControlName="turma">
+    </div>
+    <div class="mt-4">
+      <button class="btn btn-outline-danger mr-3" (click)="back()">Voltar</button>
+      <button [disabled]="!studentForm.valid" type="submit" class="btn btn-outline-success">Salvar</button>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="!studentSelected">
+  <div class="search mt-4">
+      <input type="search" class="form-control" (keyup)="onFilterStudent()" [(ngModel)] = filterName placeholder="Pesquisar por nome de aluno">
+  </div>
+  <section class="students">
+    <table class="table table-responsive-md mt-5">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nome</th>
+          <th scope="col">E-mail</th>
+          <th scope="col">Turma</th>
+          <th scope="col">Opções</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-light" *ngFor="let student of students | filter: searchStudent:'nome' ">
+          <th scope="row">{{ student.alunoId }}</th>
+          <td>{{ student.nome }}</td>
+          <td>{{ student.email }}</td>
+          <td>{{ student.turma }}</td>
+          <td>
+            <a (click)="studentSelect(student)" title="Editar"><img class="icon icon__edit" src="../../../assets/img/icons/edit.svg" alt="Ícone editar"></a>
+            <a (click)="modalDelete(deleteModal, student.alunoId, student.nome)" title="Excluir"><img class="icon icon__delete" src="../../../assets/img/icons/delete.svg" alt="Ícone excluir"></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <app-alert class="alert-student" [class]="paramsAlert['class']" [text]="paramsAlert['text']" *ngIf="alert"></app-alert>
+</div>
+
+<ng-template #deleteModal >
+  <div class="modal-body mt-4">
+    Deseja realmente excluir o aluno(a) {{ paramsModal['nome'] }}?
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-warning pull-right" aria-label="Cancelar" (click)="modalRef.hide()">Cancelar</button>
+    <button type="button" class="btn btn-danger pull-right" aria-label="Excluir" (click)="deleteStudent(paramsModal['alunoId'])">Excluir</button>
+  </div>
+</ng-template>
+
+
+

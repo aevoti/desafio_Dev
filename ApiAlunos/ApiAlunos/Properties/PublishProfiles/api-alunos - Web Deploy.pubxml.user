@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Esse arquivo é usado pelo processo de publicação/pacote do seu projeto Web. É possível personalizar o comportamento deste processo
+ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAOvuGOuhxfkuuMgtxIJkSjgAAAAACAAAAAAAQZgAAAAEAACAAAADVMHHo4tSq7htSFNvP73rgZ6PATEqLnieGk2X8zyrIZgAAAAAOgAAAAAIAACAAAADsrGVeKDm2GLNYf43ORTZS08EZ+QQ88nvUwyj3EJp8BYAAAAD8KEVHVhPh2uCqGtr4ryWwZlm9kBqIBq2+RiEru1MRe7PhwKHUy3N0z1RzZYQKZWMCFthJLdgyyXtYgb6Jm5OBgWWayardJ5Gphfn/6CiPuBMZO/WgCOCXSvL9ZEeYMgVUn/6bUV/XRDFa+lfrl4LEtDyoSj0KaCEpEjANXNK7dEAAAACSpDHYyynohPY7LmSOxh25tNBQxLcvNyXasQ3l2igKfwQmxX/fBPLfRjAQ6/K89I5KTgMecu/OzajDPYoEJjZE</EncryptedPassword>
+    <History>True|2021-03-30T02:20:14.5954511Z;True|2021-03-29T23:13:35.3736092-03:00;True|2021-03-29T20:46:48.3521262-03:00;False|2021-03-29T20:40:41.7189186-03:00;False|2021-03-29T20:37:38.1948012-03:00;True|2021-03-29T20:36:16.8275368-03:00;True|2021-03-29T20:31:19.7222627-03:00;False|2021-03-29T20:29:51.8707634-03:00;False|2021-03-29T20:27:50.7330265-03:00;True|2021-03-29T20:19:49.6528498-03:00;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=tcp:apialunosdbserver.database.windows.net,1433%3bInitial Catalog=ApiAlunos_db%3bUser Id=anacaroline%40apialunosdbserver%3bPassword=159263%40Ac</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="ApiAlunos.Context.AppDbContext">
+      <Value>Data Source=tcp:apialunosdbserver.database.windows.net,1433%3bInitial Catalog=ApiAlunos_db%3bUser Id=anacaroline%40apialunosdbserver%3bPassword=159263%40Ac</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>
