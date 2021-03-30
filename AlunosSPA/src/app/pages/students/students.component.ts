@@ -98,6 +98,7 @@ export class StudentsComponent implements OnInit {
 
   studentSubmit() {
     this.saveStudent(this.studentForm.value)
+    this.mode = 'post'
   }
 
   studentSelect(student: Student) {
