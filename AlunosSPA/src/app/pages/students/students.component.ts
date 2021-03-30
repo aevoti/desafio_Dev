@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Student } from 'src/app/models/Student';
 import { StudentsService } from './students.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-students',
@@ -62,7 +63,8 @@ export class StudentsComponent implements OnInit {
     this.studentForm = this.fb.group({
       alunoId: [''],
       nome:['', Validators.required],
-      email:['']
+      email:[''],
+      turma:['']
     })
   }
 

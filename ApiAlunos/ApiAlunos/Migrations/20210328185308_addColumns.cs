@@ -7,8 +7,8 @@ namespace ApiAlunos.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<DateTime>(
-                name: "DataNascimento",
+            migrationBuilder.AddColumn<string>(
+                name: "Turma",
                 table: "Alunos",
                 nullable: true
             );
@@ -17,7 +17,7 @@ namespace ApiAlunos.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "DataNascimento",
+                name: "Turma",
                 table: "Alunos"
             );
         }

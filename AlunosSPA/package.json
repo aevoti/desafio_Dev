@@ -40,6 +40,8 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "ng-mask": "^3.1.1",
+    "ngx-mask": "^8.1.7",
     "normalize.css": "^8.0.1",
     "protractor": "~7.0.0",
     "sass": "^1.32.8",

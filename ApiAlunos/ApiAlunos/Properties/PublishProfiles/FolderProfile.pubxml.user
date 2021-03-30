@@ -4,10 +4,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <_PublishTargetUrl>ftp://ftp.gear.host/site/wwwroot</_PublishTargetUrl>
-    <History>True|2021-03-28T20:37:13.5849361Z;True|2021-03-28T16:59:49.1078920-03:00;True|2021-03-28T16:44:48.2153913-03:00;</History>
+    <_PublishTargetUrl>ftps://waws-prod-bn1-095.ftp.azurewebsites.windows.net/site/wwwroot/site/wwwroot</_PublishTargetUrl>
+    <History>True|2021-03-29T22:30:04.8402199Z;True|2021-03-28T17:52:09.6755684-03:00;True|2021-03-28T17:37:13.5849361-03:00;True|2021-03-28T16:59:49.1078920-03:00;True|2021-03-28T16:44:48.2153913-03:00;</History>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAOvuGOuhxfkuuMgtxIJkSjgAAAAACAAAAAAAQZgAAAAEAACAAAABAeHduteaXQ3XUgkhh+fPOO+YUTI3wwMsif3CpkiUVDgAAAAAOgAAAAAIAACAAAACct1DPmXUSFfRZ7wPVyP75T5RfFeYEQU+O7bGBIm//XYAAAAAmCE9bqypLthKeZycoRfeDUmrupb2r2/eMWBySN//zOt06g9frSUQcRMgps5ozRLrrAOwO/0KR+8VrTUMAGVjMO4KR3IfjWQFfCM9jftFb3ljGjByDk1qlMkuTFEzbM0fW0/vf1XMwtza8dBS08Ot0Zlkg3+W4AlqWIl7Z+wLtmEAAAAAvjqAD+v6FBYib+24wcZfg3Esaa8yOA82+AAV7G8vECYxTcUBopfZJTuAEWGH7YgXipQ79E6x+2oZj8BDBEmAF</EncryptedPassword>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAOvuGOuhxfkuuMgtxIJkSjgAAAAACAAAAAAAQZgAAAAEAACAAAADQN3jXC0km7wd+7LZ/aXZx/HjtoA8TWTC/3LN8OcRGaAAAAAAOgAAAAAIAACAAAAD35TWmEB1Wn3daFGIEZqQ2bpKHbCXyTRR2CzBcTG5iw4AAAACTW4sOItj2tnObTsN68CgVGKqTFaJgPRmvPD4rhbwIR5h9rs3l3immQihvUk1RJX9lltRF14o/0R2oAuNKg5QY5Y2TCGG9F/1Z1XqQiOOdVTv33uuspvhqze3EHXpnMcpJ0+M/VmpIvG+I1Hx/lkwZMig9r8SAjvtJtq3UeD23u0AAAABWRss3B8wSnh6XDBs4Z7hqbcoFNmHS4M1exKdubHnU2U/Z6g0DB9M3AlRou4esQ9NKwiOhgaCNngajn64sAATw</EncryptedPassword>
   </PropertyGroup>
   <ItemGroup>
     <File Include="api-ms-win-core-console-l1-1-0.dll">
@@ -134,28 +134,28 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>04/19/2018 23:56:20</publishTime>
     </File>
     <File Include="ApiAlunos.deps.json">
-      <publishTime>03/28/2021 17:11:25</publishTime>
+      <publishTime>03/29/2021 19:24:10</publishTime>
     </File>
     <File Include="ApiAlunos.dll">
-      <publishTime>03/28/2021 17:11:18</publishTime>
+      <publishTime>03/29/2021 19:24:00</publishTime>
     </File>
     <File Include="ApiAlunos.exe">
-      <publishTime>03/28/2021 17:11:19</publishTime>
+      <publishTime>03/29/2021 19:24:00</publishTime>
     </File>
     <File Include="ApiAlunos.pdb">
-      <publishTime>03/28/2021 17:11:18</publishTime>
+      <publishTime>03/29/2021 19:24:00</publishTime>
     </File>
     <File Include="ApiAlunos.runtimeconfig.json">
-      <publishTime>03/28/2021 17:11:23</publishTime>
+      <publishTime>03/28/2021 16:44:39</publishTime>
     </File>
     <File Include="appsettings.Development.json">
       <publishTime>03/24/2021 19:46:32</publishTime>
     </File>
     <File Include="appsettings.json">
-      <publishTime>03/28/2021 16:40:30</publishTime>
+      <publishTime>03/29/2021 19:00:27</publishTime>
     </File>
     <File Include="appsettings.production.json">
-      <publishTime>03/28/2021 17:11:34</publishTime>
+      <publishTime>03/28/2021 17:44:20</publishTime>
     </File>
     <File Include="aspnetcorev2_inprocess.dll">
       <publishTime>02/17/2021 22:28:40</publishTime>
@@ -527,7 +527,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/16/2021 21:39:48</publishTime>
     </File>
     <File Include="Microsoft.Data.SqlClient.dll">
-      <publishTime>09/26/2019 20:43:26</publishTime>
+      <publishTime>09/26/2019 20:43:28</publishTime>
     </File>
     <File Include="Microsoft.DiaSymReader.Native.x86.dll">
       <publishTime>12/04/2017 17:36:44</publishTime>
@@ -545,22 +545,22 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>06/17/2020 07:46:46</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Caching.Abstractions.dll">
-      <publishTime>02/17/2021 22:27:00</publishTime>
+      <publishTime>06/17/2020 06:46:58</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Caching.Memory.dll">
-      <publishTime>02/17/2021 22:27:00</publishTime>
+      <publishTime>06/17/2020 06:47:14</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Configuration.Abstractions.dll">
-      <publishTime>02/17/2021 22:27:00</publishTime>
+      <publishTime>06/17/2020 06:47:16</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Configuration.Binder.dll">
-      <publishTime>02/17/2021 22:27:02</publishTime>
+      <publishTime>06/17/2020 06:47:34</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Configuration.CommandLine.dll">
       <publishTime>02/17/2021 22:27:02</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Configuration.dll">
-      <publishTime>02/17/2021 22:27:00</publishTime>
+      <publishTime>06/17/2020 06:47:24</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Configuration.EnvironmentVariables.dll">
       <publishTime>02/17/2021 22:27:02</publishTime>
@@ -584,10 +584,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/17/2021 22:27:02</publishTime>
     </File>
     <File Include="Microsoft.Extensions.DependencyInjection.Abstractions.dll">
-      <publishTime>02/17/2021 22:27:02</publishTime>
+      <publishTime>06/17/2020 06:47:30</publishTime>
     </File>
     <File Include="Microsoft.Extensions.DependencyInjection.dll">
-      <publishTime>02/17/2021 22:27:02</publishTime>
+      <publishTime>06/17/2020 06:47:24</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll">
       <publishTime>02/17/2021 22:27:02</publishTime>
@@ -632,7 +632,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/17/2021 22:27:04</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Logging.Abstractions.dll">
-      <publishTime>02/17/2021 22:27:04</publishTime>
+      <publishTime>06/17/2020 06:48:16</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Logging.Configuration.dll">
       <publishTime>02/17/2021 22:27:06</publishTime>
@@ -644,7 +644,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/17/2021 22:27:06</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Logging.dll">
-      <publishTime>02/17/2021 22:27:04</publishTime>
+      <publishTime>06/17/2020 06:48:28</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Logging.EventLog.dll">
       <publishTime>02/17/2021 22:27:06</publishTime>
@@ -665,10 +665,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/17/2021 22:27:06</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Options.dll">
-      <publishTime>02/17/2021 22:27:06</publishTime>
+      <publishTime>06/17/2020 06:47:24</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Primitives.dll">
-      <publishTime>02/17/2021 22:27:06</publishTime>
+      <publishTime>06/17/2020 06:47:48</publishTime>
     </File>
     <File Include="Microsoft.Extensions.WebEncoders.dll">
       <publishTime>02/17/2021 22:27:06</publishTime>
@@ -824,7 +824,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/16/2021 21:40:10</publishTime>
     </File>
     <File Include="System.Collections.Immutable.dll">
-      <publishTime>02/16/2021 21:40:12</publishTime>
+      <publishTime>04/14/2020 22:38:40</publishTime>
     </File>
     <File Include="System.Collections.NonGeneric.dll">
       <publishTime>02/16/2021 21:40:08</publishTime>
@@ -893,7 +893,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/16/2021 21:39:48</publishTime>
     </File>
     <File Include="System.Diagnostics.DiagnosticSource.dll">
-      <publishTime>02/16/2021 21:40:14</publishTime>
+      <publishTime>04/14/2020 22:48:06</publishTime>
     </File>
     <File Include="System.Diagnostics.EventLog.dll">
       <publishTime>02/17/2021 22:27:08</publishTime>
@@ -1343,7 +1343,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>04/19/2018 23:56:16</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>03/28/2021 17:11:34</publishTime>
+      <publishTime>03/29/2021 19:24:10</publishTime>
     </File>
     <File Include="WindowsBase.dll">
       <publishTime>02/16/2021 21:40:16</publishTime>
@@ -1372,15 +1372,5 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll">
       <publishTime>09/12/2019 17:08:36</publishTime>
     </File>
-  </ItemGroup>
-  <ItemGroup>
-    <DestinationConnectionStrings Include="DefaultConnection">
-      <Value>Server=den1.mssql7.gear.host%3bUser Id=consultaalunos%3bpassword=Tl81r0-1%3fT6n%3bInitial Catalog=consultaalunos%3bTrusted_Connection=False%3bMultipleActiveResultSets=true%3b</Value>
-    </DestinationConnectionStrings>
-  </ItemGroup>
-  <ItemGroup>
-    <EFMigrations Include="ApiAlunos.Context.AppDbContext">
-      <Value>Server=den1.mssql7.gear.host%3bUser Id=consultaalunos%3bpassword=Tl81r0-1%3fT6n%3bInitial Catalog=consultaalunos%3bTrusted_Connection=False%3bMultipleActiveResultSets=true%3b</Value>
-    </EFMigrations>
   </ItemGroup>
 </Project>

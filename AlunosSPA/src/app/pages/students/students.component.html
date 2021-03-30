@@ -14,6 +14,10 @@
       <label for="email">E-mail</label>
       <input type="email" class="form-control" formControlName="email">
     </div>
+    <div class="form-group">
+      <label for="turma">Turma</label>
+      <input type="string" class="form-control" formControlName="turma">
+    </div>
     <div class="mt-4">
       <button class="btn btn-outline-danger mr-3" (click)="back()">Voltar</button>
       <button [disabled]="!studentForm.valid" type="submit" class="btn btn-outline-success">Salvar</button>
@@ -32,6 +36,7 @@
           <th scope="col">ID</th>
           <th scope="col">Nome</th>
           <th scope="col">E-mail</th>
+          <th scope="col">Turma</th>
           <th scope="col">Opções</th>
         </tr>
       </thead>
@@ -40,6 +45,7 @@
           <th scope="row">{{ student.alunoId }}</th>
           <td>{{ student.nome }}</td>
           <td>{{ student.email }}</td>
+          <td>{{ student.turma }}</td>
           <td>
             <a (click)="studentSelect(student)" title="Editar"><img class="icon icon__edit" src="../../../assets/img/icons/edit.svg" alt="Ícone editar"></a>
             <a (click)="modalDelete(deleteModal, student.alunoId, student.nome)" title="Excluir"><img class="icon icon__delete" src="../../../assets/img/icons/delete.svg" alt="Ícone excluir"></a>

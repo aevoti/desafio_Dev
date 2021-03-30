@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="c:\users\anaca\documents\programming\desafio_dev\apialunos\apialunos\obj\Release\netcoreapp3.1\win-x86\PubTmp\Out\" />
+  <dbfullsql path="c:\users\anaca\documents\programming\desafio_dev\apialunos\apialunos\obj\Release\netcoreapp3.1\win-x86\PubTmp\EFSQLScripts\ApiAlunos.Context.AppDbContext.sql" />
+</sitemanifest>
