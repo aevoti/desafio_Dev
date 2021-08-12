@@ -2,6 +2,7 @@
 using ApiAlunos.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,9 +13,9 @@ namespace ApiAlunos.Controllers
     [ApiController]
     public class AlunosController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly DataContext _context;
 
-        public AlunosController(AppDbContext context)
+        public AlunosController(DataContext context)
         {
             _context = context;
         }
@@ -28,7 +29,7 @@ namespace ApiAlunos.Controllers
 
         // GET: api/Alunos/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Aluno>> GetAluno(int id)
+        public async Task<ActionResult<Aluno>> GetAluno([FromRoute] Guid id)
         {
             var aluno = await _context.Alunos.FindAsync(id);
 
@@ -42,17 +43,14 @@ namespace ApiAlunos.Controllers
 
         // PUT: api/Alunos/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAluno(int id, Aluno aluno)
+        public async Task<IActionResult> PutAluno([FromRoute] Guid id, [FromBody] Aluno aluno)
         {
-            if (id != aluno.AlunoId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(aluno).State = EntityState.Modified;
+            //Alterado para não ter que colocar o mesmo id na rota e no body do json.
+            aluno.AlunoId = id;
 
             try
             {
+                _context.Alunos.Update(aluno);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
@@ -67,12 +65,12 @@ namespace ApiAlunos.Controllers
                 }
             }
 
-            return NoContent();
+            return Ok(_context.Alunos.Local);
         }
 
         // POST: api/Alunos
         [HttpPost]
-        public async Task<ActionResult<Aluno>> PostAluno(Aluno aluno)
+        public async Task<ActionResult<Aluno>> PostAluno([FromBody] Aluno aluno)
         {
             _context.Alunos.Add(aluno);
             await _context.SaveChangesAsync();
@@ -82,7 +80,7 @@ namespace ApiAlunos.Controllers
 
         // DELETE: api/Alunos/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Aluno>> DeleteAluno(int id)
+        public async Task<ActionResult<Aluno>> DeleteAluno(Guid id)
         {
             var aluno = await _context.Alunos.FindAsync(id);
             if (aluno == null)
@@ -96,7 +94,7 @@ namespace ApiAlunos.Controllers
             return aluno;
         }
 
-        private bool AlunoExists(int id)
+        private bool AlunoExists(Guid id)
         {
             return _context.Alunos.Any(e => e.AlunoId == id);
         }

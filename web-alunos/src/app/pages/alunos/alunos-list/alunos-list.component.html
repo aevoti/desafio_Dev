@@ -1,0 +1,16 @@
+<div class="grid">
+    <div class="col-12">
+        <app-table-crud
+            [values]="alunos"
+            [columns]="columns"
+            [actions]="actions"
+            [class]="alunosClasse"
+            [service]="alunosService"
+            [idNameProperty]="idNameProperty"
+            [rows]="5"
+            [listStringFilter]="camposParaPesquisaFiltro"
+            [titulo]="tituloAluno"
+            (reload)="reloadAlunos($event)">
+        </app-table-crud>
+    </div>
+</div>
