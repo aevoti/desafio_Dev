@@ -1,0 +1,139 @@
+<div class="card">
+    <p-toolbar styleClass="p-mb-4">
+        <ng-template pTemplate="left">
+            <button pButton pRipple label="Novo" icon="pi pi-plus"
+                class="p-button-success p-mr-2" (click)="openNew()"></button>
+        </ng-template>
+    </p-toolbar>
+
+    <p-table
+        #dt
+        [columns]="columns"
+        [value]="values"
+        [rows]="rows"
+        [paginator]="true"
+        [globalFilterFields]="listStringFilter"
+        [rowHover]="true"
+        dataKey="id"
+        currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords}
+        registros"
+        [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                <div class="grid">
+                    <div class="col-5"></div>
+
+                    <div style="font-size: 30px;" class="col-5">
+                        <div>{{titulo}}</div>
+                    </div>
+                    <div class="col-2">
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input
+                                #busca
+                                pInputText type="text"
+                                (input)="dt.filterGlobal(busca.value,
+                                'contains')"
+                                placeholder="Buscar..." />
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr *ngIf="showHeader">
+                <th *ngIf="expandable" style="width: 2.25em"></th>
+                <th *ngIf="selectWithCheckbox && !notSelectHeaderWithCheckbox"
+                    style="width: 2.25em">
+                    <p-tableHeaderCheckbox *ngIf="selectionMode == 'multiple'"></p-tableHeaderCheckbox>
+                </th>
+                <th *ngIf="notSelectHeaderWithCheckbox" style="width: 2.25em">
+                </th>
+                <ng-container *ngFor="let col of columns">
+                    <div *ngIf="col.sortable; then sortableColumn; else
+                        notSortableColumn"></div>
+                    <ng-template #sortableColumn>
+                        <th [style.width]="col.width"
+                            [attr.title]="col.tooltipTitle"
+                            [ngClass]="col.headerClass"
+                            [pSortableColumn]="col.field">
+                            {{col.header}}
+                            <p-sortIcon [field]="col.field"></p-sortIcon>
+                        </th>
+                    </ng-template>
+                    <ng-template #notSortableColumn>
+                        <th [style.width]="col.width"
+                            [attr.title]="col.tooltipTitle"
+                            [ngClass]="col.headerClass">
+                            {{col.header}}
+                        </th>
+                    </ng-template>
+                </ng-container>
+                <th *ngIf="actions && actions.length"
+                    [style.width.px]="actionsLength">
+                    Ações
+                </th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-obj let-rowIndex="rowIndex">
+            <tr [pSelectableRow]="obj">
+
+            </tr>
+            <td *ngFor="let col of columns">
+                <input
+                    class="datatable-cell"
+                    type="text"
+                    [(ngModel)]="obj[col.field]"
+                    disabled>
+            </td>
+            <td *ngIf="actions && actions.length" [ngClass]="actionConfig &&
+                actionConfig.styleClass && actionConfig.styleClass(obj)"
+                [style.width.px]="actionsLength">
+                <ng-container *ngFor="let action of actions">
+                    <button
+                        style="margin-top: 5px;"
+                        pButton pRipple class="p-button-rounded p-mr-2
+                        posicionamento-botao-table"
+                        [class]="getColorButton(action, obj)"
+                        (click)="callAction(obj, action)">
+                        <span style="margin-left: 3px;" [class]="getIcon(action,
+                            obj)"></span>
+                    </button>
+                </ng-container>
+            </td>
+        </ng-template>
+    </p-table>
+</div>
+
+<p-dialog
+    [(visible)]="showDialog"
+    (onHide)="hideDialog()"
+    (onShow)="get()"
+    [style]="{width: '450px'}" header="{{titulo}}" [modal]="true"
+    styleClass="p-fluid">
+    <ng-template pTemplate="content" let-obj>
+        <div *ngFor="let col of columns">
+            <label>{{col.header}}</label>
+            <input type="text" pInputText [(ngModel)]="col.value" required
+                autofocus />
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancelar" icon="pi pi-times"
+            class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Salvar" icon="pi pi-check"
+            class="p-button-text" (click)="create()"></button>
+    </ng-template>
+</p-dialog>
+
+<p-confirmDialog
+    [style]="{width: '50vw'}"
+    [baseZIndex]="10000"
+    [closable]="false"
+    acceptLabel="Sim"
+    rejectLabel="Não"
+    rejectButtonStyleClass="p-button-text">
+</p-confirmDialog>
+<p-toast></p-toast>

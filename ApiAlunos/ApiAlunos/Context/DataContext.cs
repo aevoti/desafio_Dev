@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ApiAlunos.Context
 {
-    public class AppDbContext : DbContext
+    public class DataContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
         }
         public DbSet<Aluno> Alunos { get; set; }
